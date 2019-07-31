@@ -6,8 +6,6 @@ title: "Introduction to R [1]"
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-This is a tutorial document for the Tampere Summer school course **Introduction to R** made by the course lecturer [Chien Lu](https://humblelu.github.io/personal_website/). You can find it from the corresponding course  [webpage](https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school).
-
 ## Course Logistics
 
 * Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization

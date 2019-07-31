@@ -2,4 +2,4 @@
 title: "Introfuction to R"
 ---
 
-Hello, World!
+This is a tutorial document for the Tampere Summer school course **Introduction to R** made by the course lecturer [Chien Lu](https://humblelu.github.io/personal_website/). You can find it from the corresponding course  [webpage](https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school).
