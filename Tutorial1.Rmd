@@ -1,22 +1,10 @@
 ---
-title: "Introduction to R [1]"
+title: "Course Material [1]"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
-
-## Course Logistics
-
-* Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization
-* Assessment: Pass/Fail
-* Course Requirement:
-    + Deadline: 31.08
-    + 6 Exercise packs 
-    + Data analysis course work (individual or group)
-        + Perform statistical data analysis using R
-        + If you don't have your own dataset, come to discuss with me!
-    + No exams
 
 ## Learning R?
 

@@ -5,7 +5,11 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "Day 1"
+    - text: "Course Material [1]"
+      href: Tutorial1.html
+    - text: "Course Material [2]"
+      href: Tutorial1.html
+    - text: "Homework [3]"
       href: Tutorial1.html
 html_document:
     theme: flatly
