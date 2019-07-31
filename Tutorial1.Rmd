@@ -249,7 +249,7 @@ print("Hello R!")
 
 All the elements in a vector should be of the same object type. 
 
-Use `c` to create a *vector*.
+Use `c` to create a *vector*
 ```{r}
 ## number
 exp_1<- c(1, 2, 3, 4, 5)
@@ -262,6 +262,12 @@ exp_2
 ## string
 exp_3<- c("I", "am", "a", "meaningless", "example")
 exp_3
+```
+
+or use `vector` to define an empty vector
+```{r}
+emp_vec<- vector()
+emp_vec
 ```
 
 Use `seq` to create a vector with sequential numbers
@@ -379,6 +385,28 @@ x[2,1:3]
 x[1:2,c(1,3)]
 ```
 
+### Array
+Define an array
+```{r}
+x<- array(1:24, dim = c(4, 3, 2))
+x
+
+x[3,,]
+x[3,2,]
+x[3,2,1]
+```
+
+### List
+```{r}
+x<- list(name = "miina", age = 25, score = 1, pass = T, gender = "female")
+length(x)
+x$name
+x[2]
+x[[3]]
+x["pass"]
+x[["gender"]]
+```
+
 ## Exercise Pack 3
 
 1. Set the working directory to your Desktop and use `getwd` to verify
@@ -441,12 +469,21 @@ For efficient computation, try to use apply functions instead of for-loop
 
 ## Import and Export Data
 
-Read the data set from a file with `read.table()`
+First, have a look at the example dataset:
+
+Read the data set from a file with `read.table`, use function `head` to check the read dataset
 
 ```{r}
+steam<- read.table(file = "steam_subset.csv", header = T, sep = ",")
+head(steam)
 ```
 
+or use `read.csv` to read the file
 
+```{r}
+steam<- read.csv(file = "steam_subset.csv", header = T, sep = ",")
+head(steam)
+```
 
 ## Packages
 
