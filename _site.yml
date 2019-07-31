@@ -3,14 +3,12 @@ output_dir: "."
 navbar:
   title: "Introduction to R"
   left:
-    - text: "Home"
-      href: index.html
     - text: "Course Material [1]"
       href: Tutorial1.html
     - text: "Course Material [2]"
-      href: Tutorial1.html
-    - text: "Homework [3]"
-      href: Tutorial1.html
+      href: Tutorial2.html
+    - text: "Exercise Example"
+      href: Exercise.html
 html_document:
     theme: flatly
     css: style.css

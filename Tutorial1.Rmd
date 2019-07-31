@@ -6,7 +6,7 @@ title: "Course Material [1]"
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-## Learning R?
+## Why Learning R?
 
 * Free (impotrant!)
 * Massive statistical packages
@@ -29,17 +29,26 @@ Create a script by clicking _File_ >> _New File_ >> _R Script_
 
 To execute your code, highlight the code you wish to execute and press _Ctrl + Enter_
 
-Show the current working directory
+![](rstudio.png){width=500px}
+<br>
 
 ### RGui (Windows)
 Create a script by clicking _File_ >> _New Script_
 
 To execute your code, highlight the code you wish to execute and press _F5_
 
+![](rwindows.jpg){width=500px}
+
+<br>
+
 ### RGui (Mac OS)
 Create a script by clicking _File_ >> _New Document_
 
 To execute your code, highlight the code you wish to execute and press _Ctrl + Enter_
+
+![](rapple.png){width=500px}
+
+<br>
 
 ### Set up the working directory
 
@@ -56,7 +65,7 @@ dir()
 Change the working directory (mind the `/`)
 
 ```{r, eval=FALSE}
-setwd("C:/Users/cl422876/Documents")
+setwd("/Users/chienlu/Desktop")
 ```
 
 ### Quit the R session
@@ -116,15 +125,13 @@ my_square(4)
 
 where `<-` is the assignment operator
 
-<!-- or scientific notations -->
+## Exercise Pack 1
+1. Set the working directory to your Desktop and use `getwd` to verify
 
-<!-- ```{r} -->
-<!-- 9.6e-4 -->
-<!-- ``` -->
 
 ## Basic R Objects
 
-### Assign value to an
+### Assign value
 
 Use `<-` to assign a value to an object
 ```{r}
@@ -138,28 +145,105 @@ x = 1
 x
 ```
 
-### Numbers
+Use `class`, `mode` or `typeof` to check the type of the object
 
 ```{r}
-x<- 7	                # integer
-y<- 0.8	              # numeric (real number)
-z<- 3+0i            	# complex
-class(z)              # gives the class of z
-x<- 9.6e-4            # scientific notation
-
-Inf		                # infinity
-1/Inf
-Inf/1
-NaN       	          # not a number
-NA	                	# not available/missing value
-
-is.na(x)	            # tests whether x is  "not available" or not (=available)
-is.nan(x)             # tests whether x is "not a number" or not
+x<- 1.1
+class(x)
+mode(x)
+typeof(x)
 ```
 
+### Numbers
 
-### Logical Operations
+Numeric (real number)
 
+```{r}
+x<- 0.8
+class(x)
+```
+Complex number
+```{r}
+x<- 3+0i            	
+class(x)
+```
+
+Scientific notation
+```{r}
+x<- 9.6e-4            
+```
+
+Infinity (use `is.infinite` or `is.finite` to test)
+```{r}
+x<- 1/0
+x
+
+is.infinite(x)
+is.finite(x)
+```
+
+Not a number (undefined result, use `is.nan` to test)
+```{r}
+x<- 0/0
+x
+is.nan(x)
+```
+
+Null object (use `is.null` to test)
+```{r}
+x<- NULL
+is.null(x)
+```
+
+Not available/missing value (use `is.na` to test)
+```{r}
+x<- NA
+is.na(x)
+is.nan(x)
+```
+
+### Logical
+```{r}
+x<- TRUE
+x
+
+y<- FALSE
+y
+```
+
+or
+
+```{r}
+x<- T
+x
+
+y<- F
+y
+```
+
+Some logical operators
+
+* `!`: not
+* `==`: exactly equal to
+* `!=`: not equal to
+* `&`: and
+* `|`: or
+* `<`: less than
+* `<=`: less than or equal to
+* `>`: greater than
+* `>=`: greater than or equal to
+
+### Strings
+```{r}
+a <- "hello"
+a
+class(a)
+print("Hello R!")
+
+```
+
+## Exercise Pack 2
+1. Set the working directory to your Desktop and use `getwd` to verify
 
 ### Vectors
 
@@ -246,25 +330,67 @@ a[is.na(a)]<- 0
 a
 ```
 
-### Strings
-```{r}
-a <- "hello"          # we can have objects that are strings
-a
-class(a)              # or typeof(a): gives the class of the object a
-print("Hello R!")     # prints thw text in the argument of the function
-```
 ### Factors
+Represente categorical data with specifying levels (e.g. gender, education). A factor is stored as a vector of integers with corresponding labels.
 
+```{r}
+x<- c("Python user", "R user", "C++ user", "R user", "C++ user", "JAVA user", "R user")
+f_x<- factor(x)
+f_x
+levels(f_x)
+nlevels(f_x)
+class(f_x)
+summary(f_x)
+```
 
+or assign the labels you prefer
+
+```{r}
+x<- c(1, 2, 1, 2, 1, 1, 1)
+f_x<- factor(x, labels = c("male", "female"))
+f_x
+summary(f_x)
+```
+
+or by spliting a vector into groups with the function `cut`
+
+```{r}
+x<- c(12, 64, 47, 36, 31, 64, 25, 34,  6, 89)
+f_x<- cut(x, c(0, 14, 64, 100))
+f_x
+
+levels(f_x)<- c("child", "labor", "aged")
+summary(f_x)
+```
 
 ### Matrices
+Define a matrix
+```{r}
+x<- matrix(1:15, nrow = 3, ncol = 5)
+x
+```
 
-## Exercise Pack 1
+Subset a matrix
+```{r}
+x<- matrix(1:15, nrow = 3, ncol = 5)
+x[2,]
+x[,1]
+x[2,1:3]
+x[1:2,c(1,3)]
+```
+
+## Exercise Pack 3
 
 1. Set the working directory to your Desktop and use `getwd` to verify
-2. Create a vector which its variance value equals to 0 and mean value equals to 5.
-3. Create a function to convert the degree Celsius to degree Fahrenheit
-4. Create a function which returns the sum of the maximum and the mininum value of the input vector
+2. Check the types of the following objects
++ `Inf - Inf`
++ `Inf + Inf`
++ `0/0`
++ `sin(Inf)`
++ `Inf/0`
+3. Create a vector which its variance value equals to 0 and mean value equals to 5.
+4. Create a function to convert the degree Celsius to degree Fahrenheit
+5. Create a function which returns the sum of the maximum and the mininum value of the input vector
 
 Use `rep` to create a vector with replicate elements
 ```

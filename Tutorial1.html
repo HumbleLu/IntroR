@@ -284,16 +284,13 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
   <a href="Tutorial1.html">Course Material [1]</a>
 </li>
 <li>
-  <a href="Tutorial1.html">Course Material [2]</a>
+  <a href="Tutorial2.html">Course Material [2]</a>
 </li>
 <li>
-  <a href="Tutorial1.html">Homework [3]</a>
+  <a href="Exercise.html">Exercise Example</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -312,8 +309,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="learning-r" class="section level2">
-<h2>Learning R?</h2>
+<div id="why-learning-r" class="section level2">
+<h2>Why Learning R?</h2>
 <ul>
 <li>Free (impotrant!)</li>
 <li>Massive statistical packages</li>
@@ -340,17 +337,27 @@ $(document).ready(function () {
 <h3>RStudio</h3>
 <p>Create a script by clicking <em>File</em> &gt;&gt; <em>New File</em> &gt;&gt; <em>R Script</em></p>
 <p>To execute your code, highlight the code you wish to execute and press <em>Ctrl + Enter</em></p>
-<p>Show the current working directory</p>
+<p><img src="rstudio.png" width="500" /> <br></p>
 </div>
 <div id="rgui-windows" class="section level3">
 <h3>RGui (Windows)</h3>
 <p>Create a script by clicking <em>File</em> &gt;&gt; <em>New Script</em></p>
 <p>To execute your code, highlight the code you wish to execute and press <em>F5</em></p>
+<div class="figure">
+<img src="rwindows.jpg" width="500" />
+
+</div>
+<p><br></p>
 </div>
 <div id="rgui-mac-os" class="section level3">
 <h3>RGui (Mac OS)</h3>
 <p>Create a script by clicking <em>File</em> &gt;&gt; <em>New Document</em></p>
 <p>To execute your code, highlight the code you wish to execute and press <em>Ctrl + Enter</em></p>
+<div class="figure">
+<img src="rapple.png" width="500" />
+
+</div>
+<p><br></p>
 </div>
 <div id="set-up-the-working-directory" class="section level3">
 <h3>Set up the working directory</h3>
@@ -358,7 +365,7 @@ $(document).ready(function () {
 <p>List all the files under the current working directory</p>
 <pre class="r"><code>dir()</code></pre>
 <p>Change the working directory (mind the <code>/</code>)</p>
-<pre class="r"><code>setwd(&quot;C:/Users/cl422876/Documents&quot;)</code></pre>
+<pre class="r"><code>setwd(&quot;/Users/chienlu/Desktop&quot;)</code></pre>
 </div>
 <div id="quit-the-r-session" class="section level3">
 <h3>Quit the R session</h3>
@@ -406,15 +413,17 @@ $(document).ready(function () {
 my_square(4)
 #&gt; [1] 16</code></pre>
 <p>where <code>&lt;-</code> is the assignment operator</p>
-<!-- or scientific notations -->
-<!-- ```{r} -->
-<!-- 9.6e-4 -->
-<!-- ``` -->
+</div>
+<div id="exercise-pack-1" class="section level2">
+<h2>Exercise Pack 1</h2>
+<ol style="list-style-type: decimal">
+<li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
+</ol>
 </div>
 <div id="basic-r-objects" class="section level2">
 <h2>Basic R Objects</h2>
-<div id="assign-value-to-an" class="section level3">
-<h3>Assign value to an</h3>
+<div id="assign-value" class="section level3">
+<h3>Assign value</h3>
 <p>Use <code>&lt;-</code> to assign a value to an object</p>
 <pre class="r"><code>x&lt;- 1
 x
@@ -423,35 +432,99 @@ x
 <pre class="r"><code>x = 1
 x
 #&gt; [1] 1</code></pre>
+<p>Use <code>class</code>, <code>mode</code> or <code>typeof</code> to check the type of the object</p>
+<pre class="r"><code>x&lt;- 1.1
+class(x)
+#&gt; [1] &quot;numeric&quot;
+mode(x)
+#&gt; [1] &quot;numeric&quot;
+typeof(x)
+#&gt; [1] &quot;double&quot;</code></pre>
 </div>
 <div id="numbers" class="section level3">
 <h3>Numbers</h3>
-<pre class="r"><code>x&lt;- 7                   # integer
-y&lt;- 0.8               # numeric (real number)
-z&lt;- 3+0i                # complex
-class(z)              # gives the class of z
-#&gt; [1] &quot;complex&quot;
-x&lt;- 9.6e-4            # scientific notation
+<p>Numeric (real number)</p>
+<pre class="r"><code>x&lt;- 0.8
+class(x)
+#&gt; [1] &quot;numeric&quot;</code></pre>
+<p>Complex number</p>
+<pre class="r"><code>x&lt;- 3+0i                
+class(x)
+#&gt; [1] &quot;complex&quot;</code></pre>
+<p>Scientific notation</p>
+<pre class="r"><code>x&lt;- 9.6e-4            </code></pre>
+<p>Infinity (use <code>is.infinite</code> or <code>is.finite</code> to test)</p>
+<pre class="r"><code>x&lt;- 1/0
+x
+#&gt; [1] Inf
 
-Inf                     # infinity
-#&gt; [1] Inf
-1/Inf
-#&gt; [1] 0
-Inf/1
-#&gt; [1] Inf
-NaN                   # not a number
+is.infinite(x)
+#&gt; [1] TRUE
+is.finite(x)
+#&gt; [1] FALSE</code></pre>
+<p>Not a number (undefined result, use <code>is.nan</code> to test)</p>
+<pre class="r"><code>x&lt;- 0/0
+x
 #&gt; [1] NaN
-NA                      # not available/missing value
-#&gt; [1] NA
-
-is.na(x)                # tests whether x is  &quot;not available&quot; or not (=available)
-#&gt; [1] FALSE
-is.nan(x)             # tests whether x is &quot;not a number&quot; or not
+is.nan(x)
+#&gt; [1] TRUE</code></pre>
+<p>Null object (use <code>is.null</code> to test)</p>
+<pre class="r"><code>x&lt;- NULL
+is.null(x)
+#&gt; [1] TRUE</code></pre>
+<p>Not available/missing value (use <code>is.na</code> to test)</p>
+<pre class="r"><code>x&lt;- NA
+is.na(x)
+#&gt; [1] TRUE
+is.nan(x)
 #&gt; [1] FALSE</code></pre>
 </div>
-<div id="logical-operations" class="section level3">
-<h3>Logical Operations</h3>
+<div id="logical" class="section level3">
+<h3>Logical</h3>
+<pre class="r"><code>x&lt;- TRUE
+x
+#&gt; [1] TRUE
+
+y&lt;- FALSE
+y
+#&gt; [1] FALSE</code></pre>
+<p>or</p>
+<pre class="r"><code>x&lt;- T
+x
+#&gt; [1] TRUE
+
+y&lt;- F
+y
+#&gt; [1] FALSE</code></pre>
+<p>Some logical operators</p>
+<ul>
+<li><code>!</code>: not</li>
+<li><code>==</code>: exactly equal to</li>
+<li><code>!=</code>: not equal to</li>
+<li><code>&amp;</code>: and</li>
+<li><code>|</code>: or</li>
+<li><code>&lt;</code>: less than</li>
+<li><code>&lt;=</code>: less than or equal to</li>
+<li><code>&gt;</code>: greater than</li>
+<li><code>&gt;=</code>: greater than or equal to</li>
+</ul>
 </div>
+<div id="strings" class="section level3">
+<h3>Strings</h3>
+<pre class="r"><code>a &lt;- &quot;hello&quot;
+a
+#&gt; [1] &quot;hello&quot;
+class(a)
+#&gt; [1] &quot;character&quot;
+print(&quot;Hello R!&quot;)
+#&gt; [1] &quot;Hello R!&quot;</code></pre>
+</div>
+</div>
+<div id="exercise-pack-2" class="section level2">
+<h2>Exercise Pack 2</h2>
+<ol style="list-style-type: decimal">
+<li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
+</ol>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
 <p>All the elements in a vector should be of the same object type.</p>
@@ -533,27 +606,83 @@ a[is.na(a)]&lt;- 0
 a
 #&gt; [1] 1 0 2 0 3</code></pre>
 </div>
-<div id="strings" class="section level3">
-<h3>Strings</h3>
-<pre class="r"><code>a &lt;- &quot;hello&quot;          # we can have objects that are strings
-a
-#&gt; [1] &quot;hello&quot;
-class(a)              # or typeof(a): gives the class of the object a
-#&gt; [1] &quot;character&quot;
-print(&quot;Hello R!&quot;)     # prints thw text in the argument of the function
-#&gt; [1] &quot;Hello R!&quot;</code></pre>
-</div>
 <div id="factors" class="section level3">
 <h3>Factors</h3>
+<p>Represente categorical data with specifying levels (e.g. gender, education). A factor is stored as a vector of integers with corresponding labels.</p>
+<pre class="r"><code>x&lt;- c(&quot;Python user&quot;, &quot;R user&quot;, &quot;C++ user&quot;, &quot;R user&quot;, &quot;C++ user&quot;, &quot;JAVA user&quot;, &quot;R user&quot;)
+f_x&lt;- factor(x)
+f_x
+#&gt; [1] Python user R user      C++ user    R user      C++ user    JAVA user  
+#&gt; [7] R user     
+#&gt; Levels: C++ user JAVA user Python user R user
+levels(f_x)
+#&gt; [1] &quot;C++ user&quot;    &quot;JAVA user&quot;   &quot;Python user&quot; &quot;R user&quot;
+nlevels(f_x)
+#&gt; [1] 4
+class(f_x)
+#&gt; [1] &quot;factor&quot;
+summary(f_x)
+#&gt;    C++ user   JAVA user Python user      R user 
+#&gt;           2           1           1           3</code></pre>
+<p>or assign the labels you prefer</p>
+<pre class="r"><code>x&lt;- c(1, 2, 1, 2, 1, 1, 1)
+f_x&lt;- factor(x, labels = c(&quot;male&quot;, &quot;female&quot;))
+f_x
+#&gt; [1] male   female male   female male   male   male  
+#&gt; Levels: male female
+summary(f_x)
+#&gt;   male female 
+#&gt;      5      2</code></pre>
+<p>or by spliting a vector into groups with the function <code>cut</code></p>
+<pre class="r"><code>x&lt;- c(12, 64, 47, 36, 31, 64, 25, 34,  6, 89)
+f_x&lt;- cut(x, c(0, 14, 64, 100))
+f_x
+#&gt;  [1] (0,14]   (14,64]  (14,64]  (14,64]  (14,64]  (14,64]  (14,64] 
+#&gt;  [8] (14,64]  (0,14]   (64,100]
+#&gt; Levels: (0,14] (14,64] (64,100]
+
+levels(f_x)&lt;- c(&quot;child&quot;, &quot;labor&quot;, &quot;aged&quot;)
+summary(f_x)
+#&gt; child labor  aged 
+#&gt;     2     7     1</code></pre>
 </div>
 <div id="matrices" class="section level3">
 <h3>Matrices</h3>
+<p>Define a matrix</p>
+<pre class="r"><code>x&lt;- matrix(1:15, nrow = 3, ncol = 5)
+x
+#&gt;      [,1] [,2] [,3] [,4] [,5]
+#&gt; [1,]    1    4    7   10   13
+#&gt; [2,]    2    5    8   11   14
+#&gt; [3,]    3    6    9   12   15</code></pre>
+<p>Subset a matrix</p>
+<pre class="r"><code>x&lt;- matrix(1:15, nrow = 3, ncol = 5)
+x[2,]
+#&gt; [1]  2  5  8 11 14
+x[,1]
+#&gt; [1] 1 2 3
+x[2,1:3]
+#&gt; [1] 2 5 8
+x[1:2,c(1,3)]
+#&gt;      [,1] [,2]
+#&gt; [1,]    1    7
+#&gt; [2,]    2    8</code></pre>
 </div>
 </div>
-<div id="exercise-pack-1" class="section level2">
-<h2>Exercise Pack 1</h2>
+<div id="exercise-pack-3" class="section level2">
+<h2>Exercise Pack 3</h2>
 <ol style="list-style-type: decimal">
 <li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
+<li>Check the types of the following objects</li>
+</ol>
+<ul>
+<li><code>Inf - Inf</code></li>
+<li><code>Inf + Inf</code></li>
+<li><code>0/0</code></li>
+<li><code>sin(Inf)</code></li>
+<li><code>Inf/0</code></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
 <li>Create a vector which its variance value equals to 0 and mean value equals to 5.</li>
 <li>Create a function to convert the degree Celsius to degree Fahrenheit</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
@@ -635,6 +764,21 @@ while(i &lt; 5){
 #&gt; The following objects are masked from iris (pos = 12):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 13):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 14):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 15):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 16):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 17):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 mean(Sepal.Length)
 #&gt; [1] 5.843333
 sd(Sepal.Length)
@@ -664,8 +808,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1] -0.3231516  2.1637387 -0.9668632 -0.9174784  1.3389358 -1.2951057
-#&gt;  [7] -0.5225963  0.4929989 -1.4648840  0.9612775</code></pre>
+#&gt;  [1] -0.1625599 -0.4089279  0.1048936  1.0550557  1.2686667 -0.0731494
+#&gt;  [7]  1.6068477 -0.7686147 -0.5023207  0.5369623</code></pre>
 </div>
 </div>
 <div id="plot-and-graphics" class="section level2">

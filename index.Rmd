@@ -1,17 +1,27 @@
 ---
-title: "Introfuction to R"
+title: "Introduction to R"
 ---
 
-This is a tutorial document for the Tampere Summer school course **Introduction to R** made by the course lecturer [Chien Lu](https://humblelu.github.io/personal_website/). You can find it from the corresponding course  [webpage](https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school).
+This is a tutorial website for Tampere Summer school course **Introduction to R** (corresponding [webpage](https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school)) made by the course lecturer [Chien Lu](https://humblelu.github.io/personal_website/) (chien.lu@tuni.fi).
+
+<center>
+![](drop.png){width=500px}
+</center>
+<br>
 
 ## Course Logistics
 
-* Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization
+* Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization.
 * Assessment: Pass/Fail
 * Course Requirement:
-    + Deadline: 31.08
     + 6 Exercise packs 
+        + .txt file
+        + Deadline: 31.08.2019 [Extension possible]
+        + email to chien.lu@tuni.fi by the deadline
     + Data analysis course work (individual or group)
+        + PDF format
         + Perform statistical data analysis using R
         + If you don't have your own dataset, come to discuss with me!
-    + No exams
+        + Deadline: 31.08.2019 [Extension possible]
+        + email to chien.lu@tuni.fi by the deadline
+    + No exams (yayyy!)
