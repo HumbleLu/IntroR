@@ -7,3 +7,6 @@ navbar:
       href: index.html
     - text: "Day 1"
       href: Tutorial1.html
+html_document:
+    theme: flatly
+    css: style.css

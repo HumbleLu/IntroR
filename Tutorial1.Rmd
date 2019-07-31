@@ -1,10 +1,5 @@
 ---
 title: "Introduction to R [1]"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to R [1]}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}

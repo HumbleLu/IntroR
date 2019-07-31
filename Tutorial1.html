@@ -8,78 +8,255 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 <title>Introduction to R [1]</title>
 
-
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
   }
-})();
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
 </script>
 
 
 
-<link rel="stylesheet" href="/home/chienlu/R/x86_64-pc-linux-gnu-library/3.4/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" type="text/css" />
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
 
 
 
@@ -89,10 +266,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction to R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Tutorial1.html">Day 1</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
 
 
 <h1 class="title toc-ignore">Introduction to R [1]</h1>
 
+</div>
 
 
 <p>This is a tutorial document for the Tampere Summer school course <strong>Introduction to R</strong> made by the course lecturer <a href="https://humblelu.github.io/personal_website/">Chien Lu</a>. You can find it from the corresponding course <a href="https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school">webpage</a>.</p>
@@ -156,24 +367,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="set-up-the-working-directory" class="section level3">
 <h3>Set up the working directory</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
+<pre class="r"><code>getwd()</code></pre>
 <p>List all the files under the current working directory</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>()</code></pre></div>
+<pre class="r"><code>dir()</code></pre>
 <p>Change the working directory (mind the <code>/</code>)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/cl422876/Documents&quot;</span>)</code></pre></div>
+<pre class="r"><code>setwd(&quot;C:/Users/cl422876/Documents&quot;)</code></pre>
 </div>
 <div id="quit-the-r-session" class="section level3">
 <h3>Quit the R session</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">q</span>()</code></pre></div>
+<pre class="r"><code>q()</code></pre>
 </div>
 </div>
 <div id="r-as-calculator" class="section level2">
 <h2>R as Calculator</h2>
 <p>You can start with playing around with R, use it as a calculator</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>
-<span class="co">#&gt; [1] 4</span>
-<span class="dv">6</span><span class="op">*</span>(<span class="dv">5</span><span class="op">-</span><span class="dv">1</span>)
-<span class="co">#&gt; [1] 24</span></code></pre></div>
+<pre class="r"><code>1 + 3
+#&gt; [1] 4
+6*(5-1)
+#&gt; [1] 24</code></pre>
 <p>you can also try out some more complicated (fancier) computations, such as Trigonometric functions (high school nightmare):</p>
 <ul>
 <li>sin(<span class="math inline">\(\frac{\pi}{2}\)</span>) = ?</li>
@@ -181,8 +392,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>tan(<span class="math inline">\(\frac{\pi}{4}\)</span>) = ?</li>
 </ul>
 <p>find out the answers using functions <code>sin()</code>, <code>cos()</code>, and <code>tan()</code>, for example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sin</span>(pi<span class="op">/</span><span class="dv">2</span>)
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+<pre class="r"><code>sin(pi/2)
+#&gt; [1] 1</code></pre>
 <p>or other mathematical functions are available, such as:</p>
 <ul>
 <li><code>exp()</code>: Exponential with base <em>e</em></li>
@@ -196,17 +407,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><code>factorial()</code>: Factorial function</li>
 </ul>
 <p>Verify if the function <code>factorial</code> returns the correct value</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">5</span>)
-<span class="co">#&gt; [1] 120</span>
-<span class="dv">5</span><span class="op">*</span><span class="dv">4</span><span class="op">*</span><span class="dv">3</span><span class="op">*</span><span class="dv">2</span><span class="op">*</span><span class="dv">1</span>
-<span class="co">#&gt; [1] 120</span></code></pre></div>
+<pre class="r"><code>factorial(5)
+#&gt; [1] 120
+5*4*3*2*1
+#&gt; [1] 120</code></pre>
 <p>You also can use <code>function</code> to define your own function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_square&lt;-<span class="st"> </span><span class="cf">function</span>(x){
-  x<span class="op">^</span><span class="dv">2</span>
+<pre class="r"><code>my_square&lt;- function(x){
+  x^2
 }
 
-<span class="kw">my_square</span>(<span class="dv">4</span>)
-<span class="co">#&gt; [1] 16</span></code></pre></div>
+my_square(4)
+#&gt; [1] 16</code></pre>
 <p>where <code>&lt;-</code> is the assignment operator</p>
 <!-- or scientific notations -->
 <!-- ```{r} -->
@@ -218,38 +429,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="assign-value-to-an" class="section level3">
 <h3>Assign value to an</h3>
 <p>Use <code>&lt;-</code> to assign a value to an object</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="st"> </span><span class="dv">1</span>
+<pre class="r"><code>x&lt;- 1
 x
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+#&gt; [1] 1</code></pre>
 <p>of course, <code>=</code> also works</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">1</span>
+<pre class="r"><code>x = 1
 x
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+#&gt; [1] 1</code></pre>
 </div>
 <div id="numbers" class="section level3">
 <h3>Numbers</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="st"> </span><span class="dv">7</span>                   <span class="co"># integer</span>
-y&lt;-<span class="st"> </span><span class="fl">0.8</span>               <span class="co"># numeric (real number)</span>
-z&lt;-<span class="st"> </span><span class="dv">3</span><span class="op">+</span>0i                <span class="co"># complex</span>
-<span class="kw">class</span>(z)              <span class="co"># gives the class of z</span>
-<span class="co">#&gt; [1] &quot;complex&quot;</span>
-x&lt;-<span class="st"> </span><span class="fl">9.6e-4</span>            <span class="co"># scientific notation</span>
+<pre class="r"><code>x&lt;- 7                   # integer
+y&lt;- 0.8               # numeric (real number)
+z&lt;- 3+0i                # complex
+class(z)              # gives the class of z
+#&gt; [1] &quot;complex&quot;
+x&lt;- 9.6e-4            # scientific notation
 
-<span class="ot">Inf</span>                     <span class="co"># infinity</span>
-<span class="co">#&gt; [1] Inf</span>
-<span class="dv">1</span><span class="op">/</span><span class="ot">Inf</span>
-<span class="co">#&gt; [1] 0</span>
-<span class="ot">Inf</span><span class="op">/</span><span class="dv">1</span>
-<span class="co">#&gt; [1] Inf</span>
-<span class="ot">NaN</span>                   <span class="co"># not a number</span>
-<span class="co">#&gt; [1] NaN</span>
-<span class="ot">NA</span>                      <span class="co"># not available/missing value</span>
-<span class="co">#&gt; [1] NA</span>
+Inf                     # infinity
+#&gt; [1] Inf
+1/Inf
+#&gt; [1] 0
+Inf/1
+#&gt; [1] Inf
+NaN                   # not a number
+#&gt; [1] NaN
+NA                      # not available/missing value
+#&gt; [1] NA
 
-<span class="kw">is.na</span>(x)                <span class="co"># tests whether x is  &quot;not available&quot; or not (=available)</span>
-<span class="co">#&gt; [1] FALSE</span>
-<span class="kw">is.nan</span>(x)             <span class="co"># tests whether x is &quot;not a number&quot; or not</span>
-<span class="co">#&gt; [1] FALSE</span></code></pre></div>
+is.na(x)                # tests whether x is  &quot;not available&quot; or not (=available)
+#&gt; [1] FALSE
+is.nan(x)             # tests whether x is &quot;not a number&quot; or not
+#&gt; [1] FALSE</code></pre>
 </div>
 <div id="logical-operations" class="section level3">
 <h3>Logical Operations</h3>
@@ -258,28 +469,28 @@ x&lt;-<span class="st"> </span><span class="fl">9.6e-4</span>            <span c
 <h3>Vectors</h3>
 <p>All the elements in a vector should be of the same object type.</p>
 <p>Use <code>c</code> to create a <em>vector</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## number
-exp_<span class="dv">1</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
-exp_<span class="dv">1</span>
-<span class="co">#&gt; [1] 1 2 3 4 5</span>
+<pre class="r"><code>## number
+exp_1&lt;- c(1, 2, 3, 4, 5)
+exp_1
+#&gt; [1] 1 2 3 4 5
 
 ## logical
-exp_<span class="dv">2</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)
-exp_<span class="dv">2</span>
-<span class="co">#&gt; [1]  TRUE FALSE FALSE  TRUE</span>
+exp_2&lt;- c(TRUE, FALSE, FALSE, TRUE)
+exp_2
+#&gt; [1]  TRUE FALSE FALSE  TRUE
 
 ## string
-exp_<span class="dv">3</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;am&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;meaningless&quot;</span>, <span class="st">&quot;example&quot;</span>)
-exp_<span class="dv">3</span>
-<span class="co">#&gt; [1] &quot;I&quot;           &quot;am&quot;          &quot;a&quot;           &quot;meaningless&quot; &quot;example&quot;</span></code></pre></div>
+exp_3&lt;- c(&quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;meaningless&quot;, &quot;example&quot;)
+exp_3
+#&gt; [1] &quot;I&quot;           &quot;am&quot;          &quot;a&quot;           &quot;meaningless&quot; &quot;example&quot;</code></pre>
 <p>Use <code>seq</code> to create a vector with sequential numbers</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">5</span>, <span class="dt">by =</span> <span class="dv">1</span>)
+<pre class="r"><code>a&lt;- seq(from = 1, to = 5, by = 1)
 a
-<span class="co">#&gt; [1] 1 2 3 4 5</span></code></pre></div>
+#&gt; [1] 1 2 3 4 5</code></pre>
 <p>or just simply:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>
+<pre class="r"><code>a&lt;- 1:5
 a
-<span class="co">#&gt; [1] 1 2 3 4 5</span></code></pre></div>
+#&gt; [1] 1 2 3 4 5</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -288,62 +499,62 @@ a
 <li><code>cumsum()</code> and <code>cumprod()</code>: Cumulative sum and product of the elements of a vector</li>
 </ul>
 <p>Concatenate vectors</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec_<span class="dv">1</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)
-vec_<span class="dv">2</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)
-vec_join&lt;-<span class="st"> </span><span class="kw">c</span>(vec_<span class="dv">1</span>, vec_<span class="dv">2</span>)
+<pre class="r"><code>vec_1&lt;- c(1, 1, 1)
+vec_2&lt;- c(2, 2, 2)
+vec_join&lt;- c(vec_1, vec_2)
 vec_join
-<span class="co">#&gt; [1] 1 1 1 2 2 2</span>
+#&gt; [1] 1 1 1 2 2 2
 
-vec_<span class="dv">3</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)
-vec_join&lt;-<span class="st"> </span><span class="kw">c</span>(vec_<span class="dv">1</span>, vec_<span class="dv">2</span>, vec_<span class="dv">3</span>)
+vec_3&lt;- c(3, 3, 3)
+vec_join&lt;- c(vec_1, vec_2, vec_3)
 vec_join
-<span class="co">#&gt; [1] 1 1 1 2 2 2 3 3 3</span></code></pre></div>
+#&gt; [1] 1 1 1 2 2 2 3 3 3</code></pre>
 <p>Subset a vector</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+<pre class="r"><code>a&lt;- c(1, 2, 3, 4, 5)
 
-<span class="co"># extract with indices</span>
-a[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]
-<span class="co">#&gt; [1] 1 3 5</span>
+# extract with indices
+a[c(1, 3, 5)]
+#&gt; [1] 1 3 5
 
-<span class="co"># extract with logicals</span>
-a[<span class="kw">c</span>(T, F, T, F, T)]
-<span class="co">#&gt; [1] 1 3 5</span>
+# extract with logicals
+a[c(T, F, T, F, T)]
+#&gt; [1] 1 3 5
 
-a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>
-<span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE</span>
+a %% 2 == 1
+#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE
 
-a[(a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)]
-<span class="co">#&gt; [1] 1 3 5</span>
+a[(a %% 2 == 1)]
+#&gt; [1] 1 3 5
 
-<span class="co"># omit</span>
-a[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]
-<span class="co">#&gt; [1] 1 3 5</span>
+# omit
+a[-c(2, 4)]
+#&gt; [1] 1 3 5
 
-a[<span class="op">-</span><span class="kw">which</span>(a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)]
-<span class="co">#&gt; [1] 1 3 5</span></code></pre></div>
+a[-which(a %% 2 == 0)]
+#&gt; [1] 1 3 5</code></pre>
 <p><code>NA</code> values in a vector</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">3</span>)
+<pre class="r"><code>a&lt;- c(1, NA, 2, NA, 3)
 a
-<span class="co">#&gt; [1]  1 NA  2 NA  3</span>
+#&gt; [1]  1 NA  2 NA  3
 
-b&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
-b <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>)
-<span class="co">#&gt; [1]  1 NA  3 NA  5</span>
+b&lt;- c(1, 2, 3, 4, 5)
+b * c(1, NA, 1, NA, 1)
+#&gt; [1]  1 NA  3 NA  5
 
-<span class="co"># replace NA with 0</span>
-a[<span class="kw">is.na</span>(a)]&lt;-<span class="st"> </span><span class="dv">0</span>
+# replace NA with 0
+a[is.na(a)]&lt;- 0
 a
-<span class="co">#&gt; [1] 1 0 2 0 3</span></code></pre></div>
+#&gt; [1] 1 0 2 0 3</code></pre>
 </div>
 <div id="strings" class="section level3">
 <h3>Strings</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> &quot;hello&quot;</span>          <span class="co"># we can have objects that are strings</span>
+<pre class="r"><code>a &lt;- &quot;hello&quot;          # we can have objects that are strings
 a
-<span class="co">#&gt; [1] &quot;hello&quot;</span>
-<span class="kw">class</span>(a)              <span class="co"># or typeof(a): gives the class of the object a</span>
-<span class="co">#&gt; [1] &quot;character&quot;</span>
-<span class="kw">print</span>(<span class="st">&quot;Hello R!&quot;</span>)     <span class="co"># prints thw text in the argument of the function</span>
-<span class="co">#&gt; [1] &quot;Hello R!&quot;</span></code></pre></div>
+#&gt; [1] &quot;hello&quot;
+class(a)              # or typeof(a): gives the class of the object a
+#&gt; [1] &quot;character&quot;
+print(&quot;Hello R!&quot;)     # prints thw text in the argument of the function
+#&gt; [1] &quot;Hello R!&quot;</code></pre>
 </div>
 <div id="factors" class="section level3">
 <h3>Factors</h3>
@@ -364,19 +575,19 @@ a
 <pre><code>b&lt;- rep(x = 1, times = 3)
 b</code></pre>
 <p>For loop</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){
-  <span class="kw">print</span>(i)
+<pre class="r"><code>for(i in 1:5){
+  print(i)
 }
-<span class="co">#&gt; [1] 1</span>
-<span class="co">#&gt; [1] 2</span>
-<span class="co">#&gt; [1] 3</span>
-<span class="co">#&gt; [1] 4</span>
-<span class="co">#&gt; [1] 5</span></code></pre></div>
+#&gt; [1] 1
+#&gt; [1] 2
+#&gt; [1] 3
+#&gt; [1] 4
+#&gt; [1] 5</code></pre>
 <p>While loop</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i&lt;-<span class="st"> </span><span class="dv">1</span>
-<span class="cf">while</span>(i <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>){
-  i&lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">2</span>
-}</code></pre></div>
+<pre class="r"><code>i&lt;- 1
+while(i &lt; 5){
+  i&lt;- i + 2
+}</code></pre>
 <p>Apply functions</p>
 </div>
 <div id="exercise-pack" class="section level2">
@@ -389,9 +600,9 @@ b</code></pre>
 <div id="useful-tips" class="section level3">
 <h3>Useful tips</h3>
 <p>You can use <code>#</code> to add comment, the code after will not be executed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co">#I have no idea why I created this vector</span></code></pre></div>
+<pre class="r"><code>a&lt;- c(1, 2, 3) #I have no idea why I created this vector</code></pre>
 <p>Use <code>?</code> to call R help when you have difficulties.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?c</code></pre></div>
+<pre class="r"><code>?c</code></pre>
 <p>For efficient computation, try to use apply functions instead of for-loop</p>
 </div>
 </div>
@@ -406,13 +617,31 @@ b</code></pre>
 <h2>Statistical Computation</h2>
 <div id="basic-operations" class="section level3">
 <h3>Basic Operations</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attach</span>(iris)
-<span class="kw">mean</span>(Sepal.Length)
-<span class="co">#&gt; [1] 5.843333</span>
-<span class="kw">sd</span>(Sepal.Length)
-<span class="co">#&gt; [1] 0.8280661</span>
-<span class="kw">median</span>(Sepal.Length)
-<span class="co">#&gt; [1] 5.8</span></code></pre></div>
+<pre class="r"><code>attach(iris)
+#&gt; The following objects are masked from iris (pos = 3):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 4):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 5):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 6):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 7):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 8):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+mean(Sepal.Length)
+#&gt; [1] 5.843333
+sd(Sepal.Length)
+#&gt; [1] 0.8280661
+median(Sepal.Length)
+#&gt; [1] 5.8</code></pre>
 </div>
 <div id="t-test" class="section level3">
 <h3>t-test</h3>
@@ -429,15 +658,15 @@ b</code></pre>
 <li><code>r</code>xxx: randome samples</li>
 </ul>
 <p>Take normal distribution for an example</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dnorm</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)
-<span class="co">#&gt; [1] 0.3989423</span>
-<span class="kw">qnorm</span>(.<span class="dv">975</span>, <span class="dv">0</span>, <span class="dv">1</span>)
-<span class="co">#&gt; [1] 1.959964</span>
-<span class="kw">pnorm</span>(<span class="fl">1.96</span>, <span class="dv">0</span>, <span class="dv">1</span>)
-<span class="co">#&gt; [1] 0.9750021</span>
-<span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)
-<span class="co">#&gt;  [1]  1.86190874 -0.05784349 -1.50504610  0.84062223  0.73120196</span>
-<span class="co">#&gt;  [6]  0.84066799  1.87219856 -1.38177916 -0.03520706 -0.44697677</span></code></pre></div>
+<pre class="r"><code>dnorm(0, 0, 1)
+#&gt; [1] 0.3989423
+qnorm(.975, 0, 1)
+#&gt; [1] 1.959964
+pnorm(1.96, 0, 1)
+#&gt; [1] 0.9750021
+rnorm(10, 0, 1)
+#&gt;  [1]  0.522964900 -0.368793262 -1.255191654 -0.654422824  0.755700897
+#&gt;  [6]  0.811688712  0.901733072 -0.001017689  0.818332953 -1.240483382</code></pre>
 </div>
 </div>
 <div id="plot-and-graphics" class="section level2">
@@ -449,6 +678,22 @@ b</code></pre>
 </div>
 
 
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
