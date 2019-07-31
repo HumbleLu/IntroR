@@ -6,4 +6,4 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Day 1"
-      href: Tutorial_1.html
+      href: Tutorial1.html

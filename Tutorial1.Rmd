@@ -334,10 +334,9 @@ For efficient computation, try to use apply functions instead of for-loop
 
 ## Import and Export Data
 
-Read the data set from a file
+Read the data set from a file with `read.table()`
 
 ```{r}
-read.table()
 ```
 
 

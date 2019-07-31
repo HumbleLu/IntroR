@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>Introduction to R [1]</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<link rel="stylesheet" href="/home/chienlu/R/x86_64-pc-linux-gnu-library/3.4/rmarkdown/rmarkdown/templates/html_vignette/resources/vignette.css" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to R [1]</h1>
+
+
+
+<p>This is a tutorial document for the Tampere Summer school course <strong>Introduction to R</strong> made by the course lecturer <a href="https://humblelu.github.io/personal_website/">Chien Lu</a>. You can find it from the corresponding course <a href="https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school">webpage</a>.</p>
+<div id="course-logistics" class="section level2">
+<h2>Course Logistics</h2>
+<ul>
+<li>Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization</li>
+<li>Assessment: Pass/Fail</li>
+<li>Course Requirement:
+<ul>
+<li>Deadline: 31.08</li>
+<li>6 Exercise packs</li>
+<li>Data analysis course work (individual or group)
+<ul>
+<li>Perform statistical data analysis using R</li>
+<li>If you don’t have your own dataset, come to discuss with me!</li>
+</ul></li>
+<li>No exams</li>
+</ul></li>
+</ul>
+</div>
+<div id="learning-r" class="section level2">
+<h2>Learning R?</h2>
+<ul>
+<li>Free (impotrant!)</li>
+<li>Massive statistical packages</li>
+<li>More and more popular in both academia and industry</li>
+<li><em>… Millions of other reasons</em></li>
+</ul>
+<div id="further-reading" class="section level3">
+<h3>Further Reading</h3>
+<ul>
+<li>Matloff, Norman. <em>The art of R programming: A tour of statistical software design</em>. No Starch Press, 2011.</li>
+</ul>
+</div>
+</div>
+<div id="before-starting" class="section level2">
+<h2>Before Starting</h2>
+<ul>
+<li>Download R from <a href="https://cran.r-project.org/mirrors.html">CRAN</a></li>
+<li>You can also Download an useful GUI called <a href="https://www.rstudio.com/products/rstudio/">RStudio</a></li>
+</ul>
+</div>
+<div id="getting-started" class="section level2">
+<h2>Getting Started!</h2>
+<div id="rstudio" class="section level3">
+<h3>RStudio</h3>
+<p>Create a script by clicking <em>File</em> &gt;&gt; <em>New File</em> &gt;&gt; <em>R Script</em></p>
+<p>To execute your code, highlight the code you wish to execute and press <em>Ctrl + Enter</em></p>
+<p>Show the current working directory</p>
+</div>
+<div id="rgui-windows" class="section level3">
+<h3>RGui (Windows)</h3>
+<p>Create a script by clicking <em>File</em> &gt;&gt; <em>New Script</em></p>
+<p>To execute your code, highlight the code you wish to execute and press <em>F5</em></p>
+</div>
+<div id="rgui-mac-os" class="section level3">
+<h3>RGui (Mac OS)</h3>
+<p>Create a script by clicking <em>File</em> &gt;&gt; <em>New Document</em></p>
+<p>To execute your code, highlight the code you wish to execute and press <em>Ctrl + Enter</em></p>
+</div>
+<div id="set-up-the-working-directory" class="section level3">
+<h3>Set up the working directory</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
+<p>List all the files under the current working directory</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>()</code></pre></div>
+<p>Change the working directory (mind the <code>/</code>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Users/cl422876/Documents&quot;</span>)</code></pre></div>
+</div>
+<div id="quit-the-r-session" class="section level3">
+<h3>Quit the R session</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">q</span>()</code></pre></div>
+</div>
+</div>
+<div id="r-as-calculator" class="section level2">
+<h2>R as Calculator</h2>
+<p>You can start with playing around with R, use it as a calculator</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="dv">6</span><span class="op">*</span>(<span class="dv">5</span><span class="op">-</span><span class="dv">1</span>)
+<span class="co">#&gt; [1] 24</span></code></pre></div>
+<p>you can also try out some more complicated (fancier) computations, such as Trigonometric functions (high school nightmare):</p>
+<ul>
+<li>sin(<span class="math inline">\(\frac{\pi}{2}\)</span>) = ?</li>
+<li>cos(<span class="math inline">\(\pi\)</span>) = ?</li>
+<li>tan(<span class="math inline">\(\frac{\pi}{4}\)</span>) = ?</li>
+</ul>
+<p>find out the answers using functions <code>sin()</code>, <code>cos()</code>, and <code>tan()</code>, for example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sin</span>(pi<span class="op">/</span><span class="dv">2</span>)
+<span class="co">#&gt; [1] 1</span></code></pre></div>
+<p>or other mathematical functions are available, such as:</p>
+<ul>
+<li><code>exp()</code>: Exponential with base <em>e</em></li>
+<li><code>log()</code>: Logarithm</li>
+<li><code>log10()</code>: Logarithm with the base 10</li>
+<li><code>sqrt()</code>: Square root</li>
+<li><code>abs()</code>: Absolute value</li>
+<li><code>round()</code>: Round the value</li>
+<li><code>floor()</code>: Round down the value</li>
+<li><code>ceiling()</code>: Round up the value</li>
+<li><code>factorial()</code>: Factorial function</li>
+</ul>
+<p>Verify if the function <code>factorial</code> returns the correct value</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">5</span>)
+<span class="co">#&gt; [1] 120</span>
+<span class="dv">5</span><span class="op">*</span><span class="dv">4</span><span class="op">*</span><span class="dv">3</span><span class="op">*</span><span class="dv">2</span><span class="op">*</span><span class="dv">1</span>
+<span class="co">#&gt; [1] 120</span></code></pre></div>
+<p>You also can use <code>function</code> to define your own function</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_square&lt;-<span class="st"> </span><span class="cf">function</span>(x){
+  x<span class="op">^</span><span class="dv">2</span>
+}
+
+<span class="kw">my_square</span>(<span class="dv">4</span>)
+<span class="co">#&gt; [1] 16</span></code></pre></div>
+<p>where <code>&lt;-</code> is the assignment operator</p>
+<!-- or scientific notations -->
+<!-- ```{r} -->
+<!-- 9.6e-4 -->
+<!-- ``` -->
+</div>
+<div id="basic-r-objects" class="section level2">
+<h2>Basic R Objects</h2>
+<div id="assign-value-to-an" class="section level3">
+<h3>Assign value to an</h3>
+<p>Use <code>&lt;-</code> to assign a value to an object</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="st"> </span><span class="dv">1</span>
+x
+<span class="co">#&gt; [1] 1</span></code></pre></div>
+<p>of course, <code>=</code> also works</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="dv">1</span>
+x
+<span class="co">#&gt; [1] 1</span></code></pre></div>
+</div>
+<div id="numbers" class="section level3">
+<h3>Numbers</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x&lt;-<span class="st"> </span><span class="dv">7</span>                   <span class="co"># integer</span>
+y&lt;-<span class="st"> </span><span class="fl">0.8</span>               <span class="co"># numeric (real number)</span>
+z&lt;-<span class="st"> </span><span class="dv">3</span><span class="op">+</span>0i                <span class="co"># complex</span>
+<span class="kw">class</span>(z)              <span class="co"># gives the class of z</span>
+<span class="co">#&gt; [1] &quot;complex&quot;</span>
+x&lt;-<span class="st"> </span><span class="fl">9.6e-4</span>            <span class="co"># scientific notation</span>
+
+<span class="ot">Inf</span>                     <span class="co"># infinity</span>
+<span class="co">#&gt; [1] Inf</span>
+<span class="dv">1</span><span class="op">/</span><span class="ot">Inf</span>
+<span class="co">#&gt; [1] 0</span>
+<span class="ot">Inf</span><span class="op">/</span><span class="dv">1</span>
+<span class="co">#&gt; [1] Inf</span>
+<span class="ot">NaN</span>                   <span class="co"># not a number</span>
+<span class="co">#&gt; [1] NaN</span>
+<span class="ot">NA</span>                      <span class="co"># not available/missing value</span>
+<span class="co">#&gt; [1] NA</span>
+
+<span class="kw">is.na</span>(x)                <span class="co"># tests whether x is  &quot;not available&quot; or not (=available)</span>
+<span class="co">#&gt; [1] FALSE</span>
+<span class="kw">is.nan</span>(x)             <span class="co"># tests whether x is &quot;not a number&quot; or not</span>
+<span class="co">#&gt; [1] FALSE</span></code></pre></div>
+</div>
+<div id="logical-operations" class="section level3">
+<h3>Logical Operations</h3>
+</div>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>All the elements in a vector should be of the same object type.</p>
+<p>Use <code>c</code> to create a <em>vector</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## number
+exp_<span class="dv">1</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+exp_<span class="dv">1</span>
+<span class="co">#&gt; [1] 1 2 3 4 5</span>
+
+## logical
+exp_<span class="dv">2</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)
+exp_<span class="dv">2</span>
+<span class="co">#&gt; [1]  TRUE FALSE FALSE  TRUE</span>
+
+## string
+exp_<span class="dv">3</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;I&quot;</span>, <span class="st">&quot;am&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;meaningless&quot;</span>, <span class="st">&quot;example&quot;</span>)
+exp_<span class="dv">3</span>
+<span class="co">#&gt; [1] &quot;I&quot;           &quot;am&quot;          &quot;a&quot;           &quot;meaningless&quot; &quot;example&quot;</span></code></pre></div>
+<p>Use <code>seq</code> to create a vector with sequential numbers</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">5</span>, <span class="dt">by =</span> <span class="dv">1</span>)
+a
+<span class="co">#&gt; [1] 1 2 3 4 5</span></code></pre></div>
+<p>or just simply:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>
+a
+<span class="co">#&gt; [1] 1 2 3 4 5</span></code></pre></div>
+<ul>
+<li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
+<li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
+<li><code>pmin()</code> and <code>pmax()</code>: Element-wise minima and maxima of several vectors</li>
+<li><code>sum()</code> and <code>prod()</code>: Sum and product of the elements of a vector</li>
+<li><code>cumsum()</code> and <code>cumprod()</code>: Cumulative sum and product of the elements of a vector</li>
+</ul>
+<p>Concatenate vectors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec_<span class="dv">1</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)
+vec_<span class="dv">2</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)
+vec_join&lt;-<span class="st"> </span><span class="kw">c</span>(vec_<span class="dv">1</span>, vec_<span class="dv">2</span>)
+vec_join
+<span class="co">#&gt; [1] 1 1 1 2 2 2</span>
+
+vec_<span class="dv">3</span>&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)
+vec_join&lt;-<span class="st"> </span><span class="kw">c</span>(vec_<span class="dv">1</span>, vec_<span class="dv">2</span>, vec_<span class="dv">3</span>)
+vec_join
+<span class="co">#&gt; [1] 1 1 1 2 2 2 3 3 3</span></code></pre></div>
+<p>Subset a vector</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+
+<span class="co"># extract with indices</span>
+a[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]
+<span class="co">#&gt; [1] 1 3 5</span>
+
+<span class="co"># extract with logicals</span>
+a[<span class="kw">c</span>(T, F, T, F, T)]
+<span class="co">#&gt; [1] 1 3 5</span>
+
+a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>
+<span class="co">#&gt; [1]  TRUE FALSE  TRUE FALSE  TRUE</span>
+
+a[(a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)]
+<span class="co">#&gt; [1] 1 3 5</span>
+
+<span class="co"># omit</span>
+a[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]
+<span class="co">#&gt; [1] 1 3 5</span>
+
+a[<span class="op">-</span><span class="kw">which</span>(a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)]
+<span class="co">#&gt; [1] 1 3 5</span></code></pre></div>
+<p><code>NA</code> values in a vector</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">2</span>, <span class="ot">NA</span>, <span class="dv">3</span>)
+a
+<span class="co">#&gt; [1]  1 NA  2 NA  3</span>
+
+b&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+b <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">1</span>)
+<span class="co">#&gt; [1]  1 NA  3 NA  5</span>
+
+<span class="co"># replace NA with 0</span>
+a[<span class="kw">is.na</span>(a)]&lt;-<span class="st"> </span><span class="dv">0</span>
+a
+<span class="co">#&gt; [1] 1 0 2 0 3</span></code></pre></div>
+</div>
+<div id="strings" class="section level3">
+<h3>Strings</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> &quot;hello&quot;</span>          <span class="co"># we can have objects that are strings</span>
+a
+<span class="co">#&gt; [1] &quot;hello&quot;</span>
+<span class="kw">class</span>(a)              <span class="co"># or typeof(a): gives the class of the object a</span>
+<span class="co">#&gt; [1] &quot;character&quot;</span>
+<span class="kw">print</span>(<span class="st">&quot;Hello R!&quot;</span>)     <span class="co"># prints thw text in the argument of the function</span>
+<span class="co">#&gt; [1] &quot;Hello R!&quot;</span></code></pre></div>
+</div>
+<div id="factors" class="section level3">
+<h3>Factors</h3>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
+</div>
+</div>
+<div id="exercise-pack-1" class="section level2">
+<h2>Exercise Pack 1</h2>
+<ol style="list-style-type: decimal">
+<li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
+<li>Create a vector which its variance value equals to 0 and mean value equals to 5.</li>
+<li>Create a function to convert the degree Celsius to degree Fahrenheit</li>
+<li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
+</ol>
+<p>Use <code>rep</code> to create a vector with replicate elements</p>
+<pre><code>b&lt;- rep(x = 1, times = 3)
+b</code></pre>
+<p>For loop</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){
+  <span class="kw">print</span>(i)
+}
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 2</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; [1] 5</span></code></pre></div>
+<p>While loop</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i&lt;-<span class="st"> </span><span class="dv">1</span>
+<span class="cf">while</span>(i <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>){
+  i&lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">2</span>
+}</code></pre></div>
+<p>Apply functions</p>
+</div>
+<div id="exercise-pack" class="section level2">
+<h2>Exercise Pack</h2>
+<ol style="list-style-type: decimal">
+<li>Using a loop two print out all the prime numbers smaller than 50</li>
+<li></li>
+<li></li>
+</ol>
+<div id="useful-tips" class="section level3">
+<h3>Useful tips</h3>
+<p>You can use <code>#</code> to add comment, the code after will not be executed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co">#I have no idea why I created this vector</span></code></pre></div>
+<p>Use <code>?</code> to call R help when you have difficulties.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?c</code></pre></div>
+<p>For efficient computation, try to use apply functions instead of for-loop</p>
+</div>
+</div>
+<div id="import-and-export-data" class="section level2">
+<h2>Import and Export Data</h2>
+<p>Read the data set from a file with <code>read.table()</code></p>
+</div>
+<div id="packages" class="section level2">
+<h2>Packages</h2>
+</div>
+<div id="statistical-computation" class="section level2">
+<h2>Statistical Computation</h2>
+<div id="basic-operations" class="section level3">
+<h3>Basic Operations</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attach</span>(iris)
+<span class="kw">mean</span>(Sepal.Length)
+<span class="co">#&gt; [1] 5.843333</span>
+<span class="kw">sd</span>(Sepal.Length)
+<span class="co">#&gt; [1] 0.8280661</span>
+<span class="kw">median</span>(Sepal.Length)
+<span class="co">#&gt; [1] 5.8</span></code></pre></div>
+</div>
+<div id="t-test" class="section level3">
+<h3>t-test</h3>
+</div>
+<div id="analysis-of-variance-anova" class="section level3">
+<h3>Analysis of Variance (ANOVA)</h3>
+</div>
+<div id="distributions" class="section level3">
+<h3>Distributions</h3>
+<ul>
+<li><code>d</code>xxx: density</li>
+<li><code>q</code>xxx: quantile</li>
+<li><code>p</code>xxx: cumulative</li>
+<li><code>r</code>xxx: randome samples</li>
+</ul>
+<p>Take normal distribution for an example</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dnorm</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="co">#&gt; [1] 0.3989423</span>
+<span class="kw">qnorm</span>(.<span class="dv">975</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="co">#&gt; [1] 1.959964</span>
+<span class="kw">pnorm</span>(<span class="fl">1.96</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="co">#&gt; [1] 0.9750021</span>
+<span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="co">#&gt;  [1]  1.86190874 -0.05784349 -1.50504610  0.84062223  0.73120196</span>
+<span class="co">#&gt;  [6]  0.84066799  1.87219856 -1.38177916 -0.03520706 -0.44697677</span></code></pre></div>
+</div>
+</div>
+<div id="plot-and-graphics" class="section level2">
+<h2>Plot and Graphics</h2>
+<ul>
+<li><code>save.image()</code></li>
+</ul>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
