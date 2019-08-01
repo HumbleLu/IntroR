@@ -205,8 +205,8 @@ $(document).ready(function () {
 
 <div id="plot-and-graphics" class="section level2">
 <h2>6. Plot and Graphics</h2>
-<p><code>abline</code></p>
 <ul>
+<li><code>save.image()</code></li>
 <li><code>save.image()</code></li>
 </ul>
 <div id="exercise-6" class="section level3">
@@ -235,17 +235,64 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1] -1.66955249  0.15172616 -1.26086049  1.44285080 -0.09337501
-#&gt;  [6] -1.42897754  0.32088252 -0.58986288 -1.49858704 -0.27512223</code></pre>
+#&gt;  [1] -0.6759455 -0.5724884 -0.1980138 -0.9511864  1.2540321  0.9307141
+#&gt;  [7] -0.8556130 -1.7525608 -0.4383389  0.8855912</code></pre>
 </div>
 <div id="student-t-test" class="section level3">
 <h3>Student t-test</h3>
+<pre class="r"><code>attach(iris)
+levels(Species)
+#&gt; [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;
+t.test(Sepal.Length[Species == &quot;setosa&quot;], Sepal.Length[Species == &quot;versicolor&quot;])
+#&gt; 
+#&gt;  Welch Two Sample t-test
+#&gt; 
+#&gt; data:  Sepal.Length[Species == &quot;setosa&quot;] and Sepal.Length[Species == &quot;versicolor&quot;]
+#&gt; t = -10.521, df = 86.538, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  -1.1057074 -0.7542926
+#&gt; sample estimates:
+#&gt; mean of x mean of y 
+#&gt;     5.006     5.936</code></pre>
 </div>
 <div id="analysis-of-variance-anova" class="section level3">
 <h3>Analysis of Variance (ANOVA)</h3>
+<pre class="r"><code>aov_res&lt;- aov(Sepal.Length ~ Species)
+summary(aov_res)
+#&gt;              Df Sum Sq Mean Sq F value Pr(&gt;F)    
+#&gt; Species       2  63.21  31.606   119.3 &lt;2e-16 ***
+#&gt; Residuals   147  38.96   0.265                   
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div id="linear-regression" class="section level3">
 <h3>Linear Regression</h3>
+<pre class="r"><code>lm_res&lt;- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species)
+summary(lm_res)
+#&gt; 
+#&gt; Call:
+#&gt; lm(formula = Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + 
+#&gt;     Species)
+#&gt; 
+#&gt; Residuals:
+#&gt;      Min       1Q   Median       3Q      Max 
+#&gt; -0.79424 -0.21874  0.00899  0.20255  0.73103 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                   Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)        2.17127    0.27979   7.760 1.43e-12 ***
+#&gt; Sepal.Width        0.49589    0.08607   5.761 4.87e-08 ***
+#&gt; Petal.Length       0.82924    0.06853  12.101  &lt; 2e-16 ***
+#&gt; Petal.Width       -0.31516    0.15120  -2.084  0.03889 *  
+#&gt; Speciesversicolor -0.72356    0.24017  -3.013  0.00306 ** 
+#&gt; Speciesvirginica  -1.02350    0.33373  -3.067  0.00258 ** 
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 0.3068 on 144 degrees of freedom
+#&gt; Multiple R-squared:  0.8673, Adjusted R-squared:  0.8627 
+#&gt; F-statistic: 188.3 on 5 and 144 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div id="packages" class="section level2">

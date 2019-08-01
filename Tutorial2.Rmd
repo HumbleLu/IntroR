@@ -8,8 +8,7 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 
 ## 6. Plot and Graphics
 
-`abline`
-
+* `save.image()` 
 * `save.image()` 
 
 ### *Exercise 6*
@@ -36,15 +35,22 @@ rnorm(10, 0, 1)
 
 ### Student t-test
 ```{r}
+attach(iris)
+levels(Species)
+t.test(Sepal.Length[Species == "setosa"], Sepal.Length[Species == "versicolor"])
 ```
 
 ### Analysis of Variance (ANOVA)
 ```{r}
+aov_res<- aov(Sepal.Length ~ Species)
+summary(aov_res)
 ```
 
 ### Linear Regression
 ```{r}
+lm_res<- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species)
+summary(lm_res)
 ```
 
-
 ## 8. Packages
+`install.packages`, `library`

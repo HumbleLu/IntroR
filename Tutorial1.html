@@ -526,7 +526,7 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1]  3 64 65 51 27</code></pre>
+#&gt; [1] 78 17 44 53 46</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -536,16 +536,16 @@ s
 </ul>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 27 76 31 72 62
+#&gt; [1] 10 15 73  4 19
 
 min(s)
-#&gt; [1] 27
+#&gt; [1] 4
 max(s)
-#&gt; [1] 76
+#&gt; [1] 73
 which.min(s)
-#&gt; [1] 1
+#&gt; [1] 4
 which.max(s)
-#&gt; [1] 2</code></pre>
+#&gt; [1] 3</code></pre>
 <p>Concatenate vectors</p>
 <pre class="r"><code>vec_1&lt;- c(1, 1, 1)
 vec_2&lt;- c(2, 2, 2)
@@ -787,6 +787,8 @@ sd(Level)
 
 # get rid of it
 detach(steam)</code></pre>
+<p>Save the dataset to a csv file</p>
+<pre class="r"><code>write.csv(toy_dat, file = &quot;toy.csv&quot;, row.names = F)</code></pre>
 </div>
 <div id="exercise-pack-3" class="section level3">
 <h3><em>Exercise Pack 3</em></h3>
@@ -795,7 +797,7 @@ detach(steam)</code></pre>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
 <li>Create a function which approximates the sin function with 4th-order taylor series.</li>
 <li>Compute the coefficient of variation (CV) of each column in the <code>steam</code> dataset.</li>
-<li>Create a toy data frame object with at least 5 rows and 3 columns.</li>
+<li>Create a toy data frame object with at least 5 rows and 3 columns, save it to a .csv file.</li>
 </ol>
 </div>
 </div>
