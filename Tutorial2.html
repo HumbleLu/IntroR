@@ -69,7 +69,9 @@ h6 {
 </style>
 
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -88,14 +90,8 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
-}
-summary {
-  display: list-item;
 }
 </style>
 
@@ -111,6 +107,7 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
+
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -130,43 +127,6 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -188,85 +148,19 @@ $(document).ready(function () {
 });
 </script>
 
+
+<div class="container-fluid main-container">
+
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
 });
 </script>
 
 <!-- code folding -->
 
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
 
 
 
@@ -309,66 +203,19 @@ $(document).ready(function () {
 </div>
 
 
-<div id="import-and-export-data" class="section level2">
-<h2>5. Import and Export Data</h2>
-<p>The example dataset steam_subset.csv can be downloaded <a href="https://gofile.io/?c=7bP3y4">here</a>. The colums are seperated with comma( , ) and the first line is the column names.</p>
-<p>Read the data set from a file with <code>read.table</code>, use functions <code>head</code> and <code>str</code> to check the dataset</p>
-<pre class="r"><code>steam&lt;- read.table(file = &quot;steam_subset.csv&quot;, sep = &quot;,&quot;, header = T)
-head(steam)
-#&gt;   UserId Level Showcases Comments Badges
-#&gt; 1      1    17         1       24     10
-#&gt; 2      2    55         2      105     47
-#&gt; 3      3     0         0       11      0
-#&gt; 4      4    16         1       15     12
-#&gt; 5      5    52         4       98     38
-#&gt; 6      6    27         2        5     41
-str(steam)
-#&gt; &#39;data.frame&#39;:    500 obs. of  5 variables:
-#&gt;  $ UserId   : int  1 2 3 4 5 6 7 8 9 10 ...
-#&gt;  $ Level    : int  17 55 0 16 52 27 57 14 21 71 ...
-#&gt;  $ Showcases: int  1 2 0 1 4 2 5 1 2 7 ...
-#&gt;  $ Comments : int  24 105 11 15 98 5 1024 16 25 111 ...
-#&gt;  $ Badges   : int  10 47 0 12 38 41 72 10 21 66 ...</code></pre>
-<p>or use <code>read.csv</code> to read the file</p>
-<pre class="r"><code>steam&lt;- read.csv(file = &quot;steam_subset.csv&quot;, header = T, sep = &quot;,&quot;)
-head(steam)
-#&gt;   UserId Level Showcases Comments Badges
-#&gt; 1      1    17         1       24     10
-#&gt; 2      2    55         2      105     47
-#&gt; 3      3     0         0       11      0
-#&gt; 4      4    16         1       15     12
-#&gt; 5      5    52         4       98     38
-#&gt; 6      6    27         2        5     41
-str(steam)
-#&gt; &#39;data.frame&#39;:    500 obs. of  5 variables:
-#&gt;  $ UserId   : int  1 2 3 4 5 6 7 8 9 10 ...
-#&gt;  $ Level    : int  17 55 0 16 52 27 57 14 21 71 ...
-#&gt;  $ Showcases: int  1 2 0 1 4 2 5 1 2 7 ...
-#&gt;  $ Comments : int  24 105 11 15 98 5 1024 16 25 111 ...
-#&gt;  $ Badges   : int  10 47 0 12 38 41 72 10 21 66 ...</code></pre>
-<p>Computation on the variables</p>
-<pre class="r"><code>mean(steam$Level)
-#&gt; [1] 37.648
-sd(steam$Level)
-#&gt; [1] 68.99508</code></pre>
-<p>Attach a dataset</p>
-<pre class="r"><code>attach(steam)
-#&gt; The following objects are masked from steam (pos = 3):
-#&gt; 
-#&gt;     Badges, Comments, Level, Showcases, UserId
-#&gt; The following objects are masked from steam (pos = 4):
-#&gt; 
-#&gt;     Badges, Comments, Level, Showcases, UserId
-#&gt; The following objects are masked from steam (pos = 5):
-#&gt; 
-#&gt;     Badges, Comments, Level, Showcases, UserId
-#&gt; The following objects are masked from steam (pos = 6):
-#&gt; 
-#&gt;     Badges, Comments, Level, Showcases, UserId
-mean(Level)
-#&gt; [1] 37.648
-sd(Level)
-#&gt; [1] 68.99508</code></pre>
+<div id="plot-and-graphics" class="section level2">
+<h2>6. Plot and Graphics</h2>
+<p><code>abline</code></p>
+<ul>
+<li><code>save.image()</code></li>
+</ul>
+<div id="exercise-6" class="section level3">
+<h3><em>Exercise 6</em></h3>
+<ol style="list-style-type: decimal">
+<li>Make a function with parameter n to approximate the <em>sin</em> function</li>
+<li>Make plot comparing with the actual value</li>
+</ol>
+</div>
 </div>
 <div id="statistical-computation" class="section level2">
 <h2>6. Statistical Computation</h2>
@@ -388,8 +235,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  0.6301150 -0.6961878  0.1544842  1.0443407 -0.4807790  0.8792812
-#&gt;  [7] -0.1098402 -0.7840379  0.4871022  0.3309671</code></pre>
+#&gt;  [1] -0.99551779 -0.73053984 -2.15430793  0.86261392 -0.15065174
+#&gt;  [6]  1.84039572 -0.39056872  0.03356008 -1.01180844  0.63083621</code></pre>
 </div>
 <div id="student-t-test" class="section level3">
 <h3>Student t-test</h3>
@@ -399,21 +246,6 @@ rnorm(10, 0, 1)
 </div>
 <div id="linear-regression" class="section level3">
 <h3>Linear Regression</h3>
-</div>
-</div>
-<div id="plot-and-graphics" class="section level2">
-<h2>6. Plot and Graphics</h2>
-<p><code>abline</code></p>
-<ul>
-<li><code>save.image()</code></li>
-</ul>
-<div id="exercise-6" class="section level3">
-<h3><em>Exercise 6</em></h3>
-<ol style="list-style-type: decimal">
-<li>Make a function with parameter n to approximate the <em>sin</em> function</li>
-<li>Make plot comparing with the actual value</li>
-</ol>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </div>
 </div>
 <div id="packages" class="section level2">

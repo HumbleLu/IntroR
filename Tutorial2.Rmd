@@ -6,41 +6,15 @@ title: "Course Material [2]"
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-## 5. Import and Export Data
+## 6. Plot and Graphics
 
-The example dataset steam_subset.csv can be downloaded [here](https://gofile.io/?c=7bP3y4). The colums are seperated with comma( , ) and the first line is the column names.
+`abline`
 
-Read the data set from a file with `read.table`, use functions `head` and `str` to check the dataset
+* `save.image()` 
 
-```{r}
-steam<- read.table(file = "steam_subset.csv", sep = ",", header = T)
-head(steam)
-str(steam)
-```
-
-
-or use `read.csv` to read the file
-
-```{r}
-steam<- read.csv(file = "steam_subset.csv", header = T, sep = ",")
-head(steam)
-str(steam)
-```
-
-Computation on the variables
-```{r}
-mean(steam$Level)
-sd(steam$Level)
-```
-
-Attach a dataset
-```{r}
-attach(steam)
-mean(Level)
-sd(Level)
-```
-
-
+### *Exercise 6*
+1. Make a function with parameter n to approximate the *sin* function
+2. Make plot comparing with the actual value
 
 ## 6. Statistical Computation
 
@@ -72,16 +46,5 @@ rnorm(10, 0, 1)
 ```{r}
 ```
 
-## 6. Plot and Graphics
-
-`abline`
-
-* `save.image()` 
-
-### *Exercise 6*
-1. Make a function with parameter n to approximate the *sin* function
-2. Make plot comparing with the actual value
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ## 8. Packages

@@ -69,7 +69,9 @@ h6 {
 </style>
 
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -88,14 +90,8 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
-}
-summary {
-  display: list-item;
 }
 </style>
 
@@ -111,6 +107,7 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
+
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -130,43 +127,6 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -188,85 +148,19 @@ $(document).ready(function () {
 });
 </script>
 
+
+<div class="container-fluid main-container">
+
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
 });
 </script>
 
 <!-- code folding -->
 
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
 
 
 
@@ -419,13 +313,6 @@ $(document).ready(function () {
 #&gt; [1] 120
 factorial(5)
 #&gt; [1] 120</code></pre>
-<p>You also can use <code>function</code> to define your own function (will go back to this later)</p>
-<pre class="r"><code>my_square&lt;- function(x){
-  x^2
-}
-
-my_square(4)
-#&gt; [1] 16</code></pre>
 <p>where <code>&lt;-</code> is the assignment operator</p>
 <div id="exercise-pack-1" class="section level3">
 <h3><em>Exercise Pack 1</em></h3>
@@ -439,17 +326,17 @@ my_square(4)
 </div>
 <div id="basic-r-objects" class="section level2">
 <h2>2. Basic R Objects</h2>
-<div id="assign-value" class="section level3">
-<h3>Assign value</h3>
-<p>Use <code>&lt;-</code> to assign a value to an object</p>
+<div id="declare-value" class="section level3">
+<h3>Declare value</h3>
+<p>Use <code>&lt;-</code> to declare a value to an object.</p>
 <pre class="r"><code>x&lt;- 1
 x
 #&gt; [1] 1</code></pre>
-<p>of course, <code>=</code> also works</p>
+<p>of course, using <code>=</code> to assign the value also works.</p>
 <pre class="r"><code>x = 1
 x
 #&gt; [1] 1</code></pre>
-<p>Use <code>class</code>, <code>mode</code> or <code>typeof</code> to check the type of the object</p>
+<p>Use <code>class</code>, <code>mode</code> or <code>typeof</code> to check the type of the object.</p>
 <pre class="r"><code>x&lt;- 1.1
 class(x)
 #&gt; [1] &quot;numeric&quot;
@@ -460,9 +347,13 @@ typeof(x)
 </div>
 <div id="working-environment" class="section level3">
 <h3>Working environment</h3>
-<p>List all the objects under the current working environment</p>
+<p>List all the objects under the current working environment.</p>
 <pre class="r"><code>ls()</code></pre>
-<p>Remove all the objects under the current working environment</p>
+<ul>
+<li><code>rm()</code> remove object</li>
+<li><code>object.size()</code> memory used by the object</li>
+</ul>
+<p>Remove all the objects under the current working environment.</p>
 <pre class="r"><code>rm(list = ls())</code></pre>
 </div>
 <div id="numbers" class="section level3">
@@ -535,7 +426,10 @@ y
 <li><code>&lt;</code>: less than</li>
 <li><code>&lt;=</code>: less than or equal to</li>
 <li><code>&gt;</code>: greater than</li>
-<li><code>&gt;=</code>: greater than or equal to</li>
+<li><p><code>&gt;=</code>: greater than or equal to</p></li>
+<li><strong>?</strong> <code>!!!T | !F</code> = ?</li>
+<li><strong>?</strong> <code>T &gt; F</code> = ?</li>
+<li><p><strong>?</strong> <code>T + F</code> = ?</p></li>
 </ul>
 </div>
 <div id="strings" class="section level3">
@@ -548,11 +442,36 @@ class(a)
 print(&quot;Hello R!&quot;)
 #&gt; [1] &quot;Hello R!&quot;</code></pre>
 </div>
+<div id="functions" class="section level3">
+<h3>Functions</h3>
+<p>Define your own function with <code>function</code>.</p>
+<pre class="r"><code>my_square&lt;- function(x){
+  x^2
+}
+
+my_square(4)
+#&gt; [1] 16</code></pre>
+<p>or</p>
+<pre class="r"><code>my_plus&lt;- function(x, y){
+  x + y
+}
+
+my_plus(2, 3)
+#&gt; [1] 5</code></pre>
+<p>Note that the last element in the function will be returned as the output value. Or you can use <code>return</code> to specify your output value.</p>
+<pre class="r"><code>my_square&lt;- function(x){
+  return(x^2)
+  x^3 # does not affect the output
+}
+
+my_square(4)
+#&gt; [1] 16</code></pre>
+</div>
 <div id="exercise-pack-2" class="section level3">
-<h3>Exercise Pack 2</h3>
+<h3><em>Exercise Pack 2</em></h3>
 <ol style="list-style-type: decimal">
-<li></li>
-<li></li>
+<li>Check <code>identical(as.integer(5), 5.0)</code> and <code>as.integer(5.0) == 5</code>, which one is TRUE?</li>
+<li>List all object under the current environment. Check the memory used by the first object in the list.</li>
 <li>Check the types of the following objects</li>
 </ol>
 <ul>
@@ -562,6 +481,14 @@ print(&quot;Hello R!&quot;)
 <li><code>sin(Inf)</code></li>
 <li><code>Inf/0</code></li>
 </ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Complete the following function to compute the area of an ellipse where <code>a</code> and <code>b</code> are the axes.</li>
+</ol>
+<pre class="r"><code>ellipse_area&lt;- function(a, b){
+  
+}
+
+ellipse_area(3, 5)</code></pre>
 </div>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
@@ -596,6 +523,10 @@ a
 <p>Use <code>rep</code> to create a vector with replicate elements</p>
 <pre><code>b&lt;- rep(x = 1, times = 3)
 b</code></pre>
+<p>Use <code>sample</code> to create a vector with random numbers</p>
+<pre class="r"><code>s&lt;- sample(1:100, 5)
+s
+#&gt; [1] 52  8 99 76 10</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -603,6 +534,18 @@ b</code></pre>
 <li><code>sum()</code> and <code>prod()</code>: Sum and product of the elements of a vector</li>
 <li><code>cumsum()</code> and <code>cumprod()</code>: Cumulative sum and product of the elements of a vector</li>
 </ul>
+<pre class="r"><code>s&lt;- sample(1:100, 5)
+s
+#&gt; [1] 11 87 79 15 43
+
+min(s)
+#&gt; [1] 11
+max(s)
+#&gt; [1] 87
+which.min(s)
+#&gt; [1] 1
+which.max(s)
+#&gt; [1] 2</code></pre>
 <p>Concatenate vectors</p>
 <pre class="r"><code>vec_1&lt;- c(1, 1, 1)
 vec_2&lt;- c(2, 2, 2)
@@ -651,7 +594,16 @@ a[is.na(a)]&lt;- 0
 a
 #&gt; [1] 1 0 2 0 3</code></pre>
 <p>Vectorized computation</p>
-<p><strong>?</strong> ´a = c(1, 2, 3, 4)´ and ´b = c(1, 2, 3, 4)´ What is the value of ´a*b´?</p>
+<pre class="r"><code>a&lt;- c(1, 2, 3, 4)
+b&lt;- c(5, 6, 7, 8)
+
+a + b
+#&gt; [1]  6  8 10 12
+a * b
+#&gt; [1]  5 12 21 32</code></pre>
+<ul>
+<li><strong>?</strong> ´a = c(1, 2, 3, 4)´ and ´b = c(1, 2, 3)´ What is the value of ´a*b´?</li>
+</ul>
 </div>
 <div id="factors" class="section level3">
 <h3>Factors</h3>
@@ -767,68 +719,233 @@ x[[&quot;gender&quot;]]
 <div id="data-frames" class="section level3">
 <h3>Data Frames</h3>
 <p>A data frame generalized matrix in which each column may have different object types. It can be also seen as aa list of colume vectors with all equal length, thus, the way to extract the colums is the same as how you do on a list.</p>
-<pre class="r"><code>dat&lt;- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c(&quot;Tampere&quot;, &quot;Pori&quot;, &quot;Tampere&quot;, &quot;Helsinki&quot;, &quot;Turku&quot;))
-dat
+<pre class="r"><code>toy_dat&lt;- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c(&quot;Tampere&quot;, &quot;Pori&quot;, &quot;Tampere&quot;, &quot;Helsinki&quot;, &quot;Turku&quot;))
+toy_dat
 #&gt;   id age     city
 #&gt; 1  1  15  Tampere
 #&gt; 2  2   5     Pori
 #&gt; 3  3  11  Tampere
 #&gt; 4  4  10 Helsinki
 #&gt; 5  5  95    Turku
-dat$id
+toy_dat$id
 #&gt; [1] 1 2 3 4 5
-dat[2]
+toy_dat[2]
 #&gt;   age
 #&gt; 1  15
 #&gt; 2   5
 #&gt; 3  11
 #&gt; 4  10
 #&gt; 5  95</code></pre>
+<p>Import and Export Dataset</p>
+<p>The example dataset steam_subset.csv can be downloaded <a href="https://gofile.io/?c=7bP3y4">here</a>. The colums are seperated with comma( , ) and the first line is the column names.</p>
+<p>Read the data set from a file with <code>read.table</code>, use functions <code>head</code> and <code>str</code> to check the dataset</p>
+<pre class="r"><code>steam&lt;- read.table(file = &quot;steam_subset.csv&quot;, sep = &quot;,&quot;, header = T)
+head(steam)
+#&gt;   UserId Level Showcases Comments Badges
+#&gt; 1      1    17         1       24     10
+#&gt; 2      2    55         2      105     47
+#&gt; 3      3     0         0       11      0
+#&gt; 4      4    16         1       15     12
+#&gt; 5      5    52         4       98     38
+#&gt; 6      6    27         2        5     41
+str(steam)
+#&gt; &#39;data.frame&#39;:    500 obs. of  5 variables:
+#&gt;  $ UserId   : int  1 2 3 4 5 6 7 8 9 10 ...
+#&gt;  $ Level    : int  17 55 0 16 52 27 57 14 21 71 ...
+#&gt;  $ Showcases: int  1 2 0 1 4 2 5 1 2 7 ...
+#&gt;  $ Comments : int  24 105 11 15 98 5 1024 16 25 111 ...
+#&gt;  $ Badges   : int  10 47 0 12 38 41 72 10 21 66 ...</code></pre>
+<p>or use <code>read.csv</code> to read the file</p>
+<pre class="r"><code>steam&lt;- read.csv(file = &quot;steam_subset.csv&quot;, header = T, sep = &quot;,&quot;)
+head(steam)
+#&gt;   UserId Level Showcases Comments Badges
+#&gt; 1      1    17         1       24     10
+#&gt; 2      2    55         2      105     47
+#&gt; 3      3     0         0       11      0
+#&gt; 4      4    16         1       15     12
+#&gt; 5      5    52         4       98     38
+#&gt; 6      6    27         2        5     41
+str(steam)
+#&gt; &#39;data.frame&#39;:    500 obs. of  5 variables:
+#&gt;  $ UserId   : int  1 2 3 4 5 6 7 8 9 10 ...
+#&gt;  $ Level    : int  17 55 0 16 52 27 57 14 21 71 ...
+#&gt;  $ Showcases: int  1 2 0 1 4 2 5 1 2 7 ...
+#&gt;  $ Comments : int  24 105 11 15 98 5 1024 16 25 111 ...
+#&gt;  $ Badges   : int  10 47 0 12 38 41 72 10 21 66 ...</code></pre>
+<p>Computation on the variables</p>
+<pre class="r"><code>mean(steam$Level)
+#&gt; [1] 37.648
+sd(steam$Level)
+#&gt; [1] 68.99508</code></pre>
+<p>Attach a dataset</p>
+<pre class="r"><code># stick to it
+attach(steam)
+mean(Level)
+#&gt; [1] 37.648
+sd(Level)
+#&gt; [1] 68.99508
+
+# get rid of it
+detach(steam)</code></pre>
 </div>
 <div id="exercise-pack-3" class="section level3">
-<h3>Exercise Pack 3</h3>
+<h3><em>Exercise Pack 3</em></h3>
 <ol style="list-style-type: decimal">
-<li>Create a vector which its variance value equals to 0 and mean value equals to 5.</li>
+<li>Create a vector <code>z</code> of length 10 with variance equals to 0 and mean equals to 5. Verify with function <code>mean</code> and <code>var</code>.</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
+<li>Create a function which approximates the sin function with 4th-order taylor series.</li>
+<li>Compute the coefficient of variation (CV) of each column in the <code>steam</code> dataset.</li>
+<li>Create a toy data frame object with at least 5 rows and 3 columns.</li>
 </ol>
 </div>
 </div>
-<div id="basic-computation" class="section level2">
-<h2>4. Basic Computation</h2>
+<div id="computations" class="section level2">
+<h2>4. Computations</h2>
 <div id="loops" class="section level3">
 <h3>Loops</h3>
 <p>For loop</p>
-<pre class="r"><code>for(i in 1:5){
+<pre class="r"><code>for(i in c(1, 3, 5)){
   print(i)
 }
 #&gt; [1] 1
-#&gt; [1] 2
 #&gt; [1] 3
-#&gt; [1] 4
+#&gt; [1] 5</code></pre>
+<p>or</p>
+<pre class="r"><code>for(i in seq(1, 5, 2)){
+  print(i)
+}
+#&gt; [1] 1
+#&gt; [1] 3
 #&gt; [1] 5</code></pre>
 <p>While loop</p>
 <pre class="r"><code>i&lt;- 1
-while(i &lt; 5){
+while(i &lt;= 5){
+  print(i)
   i&lt;- i + 2
-}</code></pre>
+}
+#&gt; [1] 1
+#&gt; [1] 3
+#&gt; [1] 5</code></pre>
 </div>
-<div id="functions" class="section level3">
-<h3>Functions</h3>
+<div id="conditional-statement" class="section level3">
+<h3>Conditional statement</h3>
+<p><code>if</code> statement</p>
+<pre class="r"><code>x&lt;- 2
+if(x &gt; 0){
+print(&quot;Positive number&quot;)
+}
+#&gt; [1] &quot;Positive number&quot;</code></pre>
+<p><code>if</code> … <code>else</code> statement</p>
+<pre class="r"><code>x&lt;- -1
+if(x &gt; 0){
+print(&quot;Positive number&quot;)
+} else {
+print(&quot;Not a positive number&quot;)
+}
+#&gt; [1] &quot;Not a positive number&quot;</code></pre>
+<p><code>if</code> … <code>else</code> ladder</p>
+<pre class="r"><code>x&lt;- 0
+if(x &gt; 0){
+print(&quot;Positive number&quot;)
+} else if(x &lt; 0){
+print(&quot;Negative number&quot;)
+} else{
+  print(&quot;Zero&quot;)
+}
+#&gt; [1] &quot;Zero&quot;</code></pre>
+</div>
+<div id="more-functions" class="section level3">
+<h3>More Functions</h3>
+<p>You can set up a default input</p>
+<pre class="r"><code>hello&lt;- function(obj = &quot;R&quot;){
+  print(paste(&quot;Hello&quot;, obj, &quot;!&quot;))
+}
+
+hello()
+#&gt; [1] &quot;Hello R !&quot;
+hello(&quot;World&quot;)
+#&gt; [1] &quot;Hello World !&quot;</code></pre>
+<p>A function can also generate a function. For example, the volume of a <span class="math inline">\(d\)</span>-dimensional hypersphere with radius <span class="math inline">\(r\)</span> is <span class="math inline">\(\frac{\pi^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)} r^d\)</span>.</p>
+<pre class="r"><code>hypersphere&lt;- function(d){
+  function(r){
+    (pi^(d/2)/gamma(d/2 + 1)) * (r^d)
+  } 
+}</code></pre>
+<p>A circle is a 2-dimensional case:</p>
+<pre class="r"><code>circle&lt;- hypersphere(2)
+circle(1)
+#&gt; [1] 3.141593</code></pre>
+<p>A ball is a 3-dimensional case:</p>
+<pre class="r"><code>ball&lt;- hypersphere(3)
+ball(1)
+#&gt; [1] 4.18879</code></pre>
+<p>or</p>
+<pre class="r"><code>hypersphere(2)(1)
+#&gt; [1] 3.141593
+hypersphere(3)(1)
+#&gt; [1] 4.18879</code></pre>
+<p>Operators are also functions.</p>
+<pre class="r"><code>1 + 1
+#&gt; [1] 2
+&quot;+&quot;(1,1)
+#&gt; [1] 2</code></pre>
+<p><strong>?</strong> What is the output of <code>&quot;**&quot;(1, 2)</code> ?</p>
+<p>You can also define your operator with <code>%</code></p>
+<pre class="r"><code>&quot;%negative prod%&quot;&lt;- function(a, b){
+  a * b * (-1)
+}
+
+2 %negative prod% 3
+#&gt; [1] -6</code></pre>
 </div>
 <div id="apply-functions" class="section level3">
 <h3>Apply functions</h3>
-<p><code>apply</code>, <code>sapply</code>, <code>lapply</code></p>
+<p><code>apply</code> takes a matrix, the MARGIN detering the row-wise (<code>1</code>) or column-wise (<code>2</code>) computation.</p>
+<pre class="r"><code>a&lt;- matrix(1:6, 2, 3)
+a
+#&gt;      [,1] [,2] [,3]
+#&gt; [1,]    1    3    5
+#&gt; [2,]    2    4    6
+apply(a, 1, sum)
+#&gt; [1]  9 12
+apply(a, 2, sum)
+#&gt; [1]  3  7 11</code></pre>
+<p><code>lapply</code> takes a list or a vector, returns a list.</p>
+<pre class="r"><code>lapply(c(1, 2, 3, 4), function(x) x + 1)
+#&gt; [[1]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 3
+#&gt; 
+#&gt; [[3]]
+#&gt; [1] 4
+#&gt; 
+#&gt; [[4]]
+#&gt; [1] 5</code></pre>
+<p><code>lapply</code> takes a list or a vector, returns a vector</p>
+<pre class="r"><code>sapply(c(1, 2, 3, 4), function(x) x + 1)
+#&gt; [1] 2 3 4 5</code></pre>
 </div>
-<div id="useful-tips" class="section level3">
-<h3>Useful tips</h3>
+<div id="some-useful-tips" class="section level3">
+<h3>Some Useful tips</h3>
 <p>You can use <code>#</code> to add comment, the code after will not be executed.</p>
 <pre class="r"><code>a&lt;- c(1, 2, 3) #I have no idea why I created this vector</code></pre>
 <p>Use <code>?</code> to call R help when you have difficulties.</p>
 <pre class="r"><code>?c</code></pre>
 </div>
 <div id="exercise-pack-4" class="section level3">
-<h3>Exercise Pack 4</h3>
+<h3><em>Exercise Pack 4</em></h3>
 <ol style="list-style-type: decimal">
+<li>Use conditional statement to complete the following greeting function. The function prints <code>&quot;good morning&quot;</code>, <code>&quot;good afternoon&quot;</code>, <code>&quot;good evening&quot;</code> or <code>&quot;good night&quot;</code> according to the current hour.</li>
+</ol>
+<p>Note. <code>lubridate::hour(Sys.time())</code> returns the current hour (0-24).</p>
+<pre class="r"><code>greeting&lt;- function(hour = lubridate::hour(Sys.time())){
+  
+}
+
+greeting()</code></pre>
+<ol start="2" style="list-style-type: decimal">
 <li>Write a for loop to sum up all the elements of a vector, compare the result of simply using the function <code>sum</code>. Use the function <code>Sys.time()</code> to record the time, for example:</li>
 </ol>
 <pre class="r"><code>start&lt;- Sys.time()
@@ -837,9 +954,10 @@ while(i &lt; 5){
 
 end&lt;- Sys.time()
 end - start</code></pre>
-<ol start="2" style="list-style-type: decimal">
+<ol start="3" style="list-style-type: decimal">
 <li>Write a loop to print out all the prime numbers smaller than 50</li>
-<li></li>
+<li>Make an operator %$&gt;€% to detect if the amount of money of the left hand side is greater the the right hand side. Where the left hand side is in usd ($) and the right hand side is in euro (€). The exchange rate is 1€ = 1.1$.</li>
+<li>Use sapply to calcluate the object size of all the objects under current environment. Hint: you will need functions <code>ls()</code> and <code>object.size()</code>.</li>
 </ol>
 </div>
 </div>

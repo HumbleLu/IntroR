@@ -128,16 +128,6 @@ __?__ Can you verify if the function `factorial` returns the correct result of $
 factorial(5)
 ```
 
-You also can use `function` to define your own function (will go back to this later)
-
-```{r}
-my_square<- function(x){
-  x^2
-}
-
-my_square(4)
-```
-
 where `<-` is the assignment operator
 
 ### *Exercise Pack 1*
@@ -148,22 +138,21 @@ where `<-` is the assignment operator
 
 ## 2. Basic R Objects
 
-### Assign value
+### Declare value
 
-Use `<-` to assign a value to an object
+Use `<-` to declare a value to an object.
 ```{r}
 x<- 1
 x
 ```
 
-of course, `=` also works
+of course, using `=` to assign the value also works.
 ```{r}
 x = 1
 x
 ```
 
-Use `class`, `mode` or `typeof` to check the type of the object
-
+Use `class`, `mode` or `typeof` to check the type of the object.
 ```{r}
 x<- 1.1
 class(x)
@@ -172,14 +161,15 @@ typeof(x)
 ```
 
 ### Working environment
-List all the objects under the current working environment
-
+List all the objects under the current working environment.
 ```{r, eval=FALSE}
 ls()
 ```
 
-Remove all the objects under the current working environment
+* `rm()` remove object
+* `object.size()` memory used by the object
 
+Remove all the objects under the current working environment.
 ```{r, eval=FALSE}
 rm(list = ls())
 ```
@@ -187,7 +177,6 @@ rm(list = ls())
 ### Numbers
 
 Numeric (real number)
-
 ```{r}
 x<- 0.8
 class(x)
@@ -270,6 +259,10 @@ Some logical operators
 * `>`: greater than
 * `>=`: greater than or equal to
 
+* __?__ `!!!T | !F` = ?
+* __?__ `T > F` = ?
+* __?__ `T + F` = ?
+
 ### Strings
 ```{r}
 a <- "hello"
@@ -279,15 +272,57 @@ print("Hello R!")
 
 ```
 
-### Exercise Pack 2
-1. 
-2. 
+### Functions
+
+Define your own function with `function`.
+
+```{r}
+my_square<- function(x){
+  x^2
+}
+
+my_square(4)
+```
+
+or
+
+```{r}
+my_plus<- function(x, y){
+  x + y
+}
+
+my_plus(2, 3)
+```
+
+Note that the last element in the function will be returned as the output value. Or you can use `return` to specify your output value.
+
+```{r}
+my_square<- function(x){
+  return(x^2)
+  x^3 # does not affect the output
+}
+
+my_square(4)
+```
+
+### *Exercise Pack 2*
+1. Check `identical(as.integer(5), 5.0)` and `as.integer(5.0) == 5`, which one is TRUE?
+2. List all object under the current environment. Check the memory used by the first object in the list.
 3. Check the types of the following objects
 + `Inf - Inf`
 + `Inf + Inf`
 + `0/0`
 + `sin(Inf)`
 + `Inf/0`
+4. Complete the following function to compute the area of an ellipse where `a` and `b` are the axes.
+
+```{r, eval=F}
+ellipse_area<- function(a, b){
+  
+}
+
+ellipse_area(3, 5)
+```
 
 ### Vectors
 
@@ -332,6 +367,13 @@ b<- rep(x = 1, times = 3)
 b
 ```
 
+Use `sample` to create a vector with random numbers
+
+```{r}
+s<- sample(1:100, 5)
+s
+```
+
 * `min()` and `max()`: Minimum value and maximum value within a vector
 * `which.min()` and `which.max()`: Index of the minimal element and maximal
 element of a vector
@@ -339,6 +381,16 @@ element of a vector
 * `sum()` and `prod()`: Sum and product of the elements of a vector
 * `cumsum()` and `cumprod()`: Cumulative sum and product of the elements of a
 vector
+
+```{r}
+s<- sample(1:100, 5)
+s
+
+min(s)
+max(s)
+which.min(s)
+which.max(s)
+```
 
 Concatenate vectors
 ```{r}
@@ -388,7 +440,15 @@ a
 
 Vectorized computation
 
-__?__ ´a = c(1, 2, 3, 4)´ and ´b = c(1, 2, 3, 4)´ What is the value of ´a*b´?
+```{r}
+a<- c(1, 2, 3, 4)
+b<- c(5, 6, 7, 8)
+
+a + b
+a * b
+```
+
+* __?__ `a = c(1, 2, 3, 4)` and `b = c(1, 2, 3)` What is the value of `a*b`?
 
 
 ### Factors
@@ -465,23 +525,71 @@ x[["gender"]]
 ### Data Frames
 A data frame generalized matrix in which each column may have different object types. It can be also seen as aa list of colume vectors with all equal length, thus, the way to extract the colums is the same as how you do on a list.
 ```{r}
-dat<- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c("Tampere", "Pori", "Tampere", "Helsinki", "Turku"))
-dat
-dat$id
-dat[2]
+toy_dat<- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c("Tampere", "Pori", "Tampere", "Helsinki", "Turku"))
+toy_dat
+toy_dat$id
+toy_dat[2]
 ```
 
-### Exercise Pack 3
-1. Create a vector which its variance value equals to 0 and mean value equals to 5.
-2. Create a function which returns the sum of the maximum and the mininum value of the input vector
+Import and Export Dataset
 
-## 4. Basic Computation
+The example dataset steam_subset.csv can be downloaded [here](https://gofile.io/?c=7bP3y4). The colums are seperated with comma( , ) and the first line is the column names.
+
+Read the data set from a file with `read.table`, use functions `head` and `str` to check the dataset
+
+```{r}
+steam<- read.table(file = "steam_subset.csv", sep = ",", header = T)
+head(steam)
+str(steam)
+```
+
+or use `read.csv` to read the file
+
+```{r}
+steam<- read.csv(file = "steam_subset.csv", header = T, sep = ",")
+head(steam)
+str(steam)
+```
+
+Computation on the variables
+```{r}
+mean(steam$Level)
+sd(steam$Level)
+```
+
+Attach a dataset
+```{r}
+# stick to it
+attach(steam)
+mean(Level)
+sd(Level)
+
+# get rid of it
+detach(steam)
+```
+
+### *Exercise Pack 3*
+1. Create a vector `z` of length 10 with variance equals to 0 and mean equals to 5. Verify with function `mean` and `var`.
+2. Create a function which returns the sum of the maximum and the mininum value of the input vector
+3. Create a function which approximates the sin function with 4th-order taylor series. 
+4. Compute the coefficient of variation (CV) of each column in the `steam` dataset.
+5. Create a toy data frame object with at least 5 rows and 3 columns.
+
+## 4. Computations
 
 ### Loops
 
 For loop
 ```{r}
-for(i in 1:5){
+for(i in c(1, 3, 5)){
+  print(i)
+}
+```
+
+or
+
+```{r}
+for(i in seq(1, 5, 2)){
   print(i)
 }
 ```
@@ -489,22 +597,124 @@ for(i in 1:5){
 While loop
 ```{r}
 i<- 1
-while(i < 5){
+while(i <= 5){
+  print(i)
   i<- i + 2
 }
 ```
 
-### Functions
+### Conditional statement
+`if` statement
 ```{r}
+x<- 2
+if(x > 0){
+print("Positive number")
+}
+```
+
+`if` ... `else` statement
+```{r}
+x<- -1
+if(x > 0){
+print("Positive number")
+} else {
+print("Not a positive number")
+}
+```
+
+`if` ... `else` ladder
+```{r}
+x<- 0
+if(x > 0){
+print("Positive number")
+} else if(x < 0){
+print("Negative number")
+} else{
+  print("Zero")
+}
+```
+
+### More Functions
+
+You can set up a default input
+```{r}
+hello<- function(obj = "R"){
+  print(paste("Hello", obj, "!"))
+}
+
+hello()
+hello("World")
+```
+
+A function can also generate a function. For example, the volume of a $d$-dimensional hypersphere with radius $r$ is $\frac{\pi^{\frac{d}{2}}}{\Gamma(\frac{d}{2} + 1)} r^d$.
+
+```{r}
+hypersphere<- function(d){
+  function(r){
+    (pi^(d/2)/gamma(d/2 + 1)) * (r^d)
+  } 
+}
+```
+
+A circle is a 2-dimensional case:
+```{r}
+circle<- hypersphere(2)
+circle(1)
+```
+
+A ball is a 3-dimensional case:
+```{r}
+ball<- hypersphere(3)
+ball(1)
+```
+
+or
+
+```{r}
+hypersphere(2)(1)
+hypersphere(3)(1)
+```
+
+Operators are also functions.
+
+```{r}
+1 + 1
+"+"(1,1)
+```
+
+__?__ What is the output of `"**"(1, 2)` ?
+
+You can also define your operator with `%`
+
+```{r}
+"%negative prod%"<- function(a, b){
+  a * b * (-1)
+}
+
+2 %negative prod% 3
 ```
 
 ### Apply functions
-`apply`, `sapply`, `lapply`
 
+`apply` takes a matrix, the MARGIN detering the row-wise (`1`) or column-wise (`2`)  computation.
 ```{r}
+a<- matrix(1:6, 2, 3)
+a
+apply(a, 1, sum)
+apply(a, 2, sum)
 ```
 
-### Useful tips
+`lapply` takes a list or a vector, returns a list.
+```{r}
+lapply(c(1, 2, 3, 4), function(x) x + 1)
+```
+
+`lapply` takes a list or a vector, returns a vector
+```{r}
+sapply(c(1, 2, 3, 4), function(x) x + 1)
+```
+
+### Some Useful tips
 
 You can use `#` to add comment, the code after will not be executed.
 
@@ -518,9 +728,18 @@ Use `?` to call R help when you have difficulties.
 ?c
 ```
 
-### Exercise Pack 4
+### *Exercise Pack 4*
+1. Use conditional statement to complete the following greeting function. The function prints `"good morning"`, `"good afternoon"`, `"good evening"` or `"good night"` according to the current hour.
 
-1. Write a for loop to sum up all the elements of a vector, compare the result of simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
+Note. `lubridate::hour(Sys.time())` returns the current hour (0-24).
+```{r, eval=F}
+greeting<- function(hour = lubridate::hour(Sys.time())){
+  
+}
+
+greeting()
+```
+2. Write a for loop to sum up all the elements of a vector, compare the result of simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
 ```{r, eval=F}
 start<- Sys.time()
 
@@ -529,6 +748,6 @@ start<- Sys.time()
 end<- Sys.time()
 end - start
 ```
-
-2. Write a loop to print out all the prime numbers smaller than 50
-3. 
+3. Write a loop to print out all the prime numbers smaller than 50
+4. Make an operator %$>€% to detect if the amount of money of the left hand side is greater the the right hand side. Where the left hand side is in usd (\$) and the right hand side is in euro (€). The exchange rate is 1€ = 1.1\$.
+5. Use sapply to calcluate the object size of all the objects under current environment. Hint: you will need functions `ls()` and `object.size()`.
