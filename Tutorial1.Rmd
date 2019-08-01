@@ -279,7 +279,7 @@ print("Hello R!")
 
 ```
 
-## Exercise Pack 2
+### Exercise Pack 2
 1. 
 2. 
 3. Check the types of the following objects
@@ -324,6 +324,12 @@ or just simply:
 ```{r}
 a<- 1:5
 a
+```
+
+Use `rep` to create a vector with replicate elements
+```
+b<- rep(x = 1, times = 3)
+b
 ```
 
 * `min()` and `max()`: Minimum value and maximum value within a vector
@@ -457,23 +463,21 @@ x[["gender"]]
 ```
 
 ### Data Frames
-A generalized matrix in which each column may have different object types.
+A data frame generalized matrix in which each column may have different object types. It can be also seen as aa list of colume vectors with all equal length, thus, the way to extract the colums is the same as how you do on a list.
 ```{r}
 dat<- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c("Tampere", "Pori", "Tampere", "Helsinki", "Turku"))
-
+dat
+dat$id
+dat[2]
 ```
 
-## Exercise Pack 3
+### Exercise Pack 3
 1. Create a vector which its variance value equals to 0 and mean value equals to 5.
 2. Create a function which returns the sum of the maximum and the mininum value of the input vector
 
-Use `rep` to create a vector with replicate elements
-```
-b<- rep(x = 1, times = 3)
-b
-```
-
 ## 4. Basic Computation
+
+### Loops
 
 For loop
 ```{r}
@@ -490,17 +494,15 @@ while(i < 5){
 }
 ```
 
-Apply functions
+### Functions
+```{r}
+```
+
+### Apply functions
 `apply`, `sapply`, `lapply`
 
 ```{r}
 ```
-## Exercise Pack
-
-1. Using a loop two print out all the prime numbers smaller than 50
-2. 
-3. 
-
 
 ### Useful tips
 
@@ -516,5 +518,17 @@ Use `?` to call R help when you have difficulties.
 ?c
 ```
 
-For efficient computation, try to use apply functions instead of for-loop
+### Exercise Pack 4
 
+1. Write a for loop to sum up all the elements of a vector, compare the result of simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
+```{r, eval=F}
+start<- Sys.time()
+
+#computation
+
+end<- Sys.time()
+end - start
+```
+
+2. Write a loop to print out all the prime numbers smaller than 50
+3. 

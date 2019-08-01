@@ -548,9 +548,8 @@ class(a)
 print(&quot;Hello R!&quot;)
 #&gt; [1] &quot;Hello R!&quot;</code></pre>
 </div>
-</div>
-<div id="exercise-pack-2" class="section level2">
-<h2>Exercise Pack 2</h2>
+<div id="exercise-pack-2" class="section level3">
+<h3>Exercise Pack 2</h3>
 <ol style="list-style-type: decimal">
 <li></li>
 <li></li>
@@ -563,6 +562,7 @@ print(&quot;Hello R!&quot;)
 <li><code>sin(Inf)</code></li>
 <li><code>Inf/0</code></li>
 </ul>
+</div>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
 <p>All the elements in a vector should be of the same object type.</p>
@@ -593,6 +593,9 @@ a
 <pre class="r"><code>a&lt;- 1:5
 a
 #&gt; [1] 1 2 3 4 5</code></pre>
+<p>Use <code>rep</code> to create a vector with replicate elements</p>
+<pre><code>b&lt;- rep(x = 1, times = 3)
+b</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -763,22 +766,37 @@ x[[&quot;gender&quot;]]
 </div>
 <div id="data-frames" class="section level3">
 <h3>Data Frames</h3>
-<p>A generalized matrix in which each column may have different object types.</p>
-<pre class="r"><code>dat&lt;- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c(&quot;Tampere&quot;, &quot;Pori&quot;, &quot;Tampere&quot;, &quot;Helsinki&quot;, &quot;Turku&quot;))</code></pre>
+<p>A data frame generalized matrix in which each column may have different object types. It can be also seen as aa list of colume vectors with all equal length, thus, the way to extract the colums is the same as how you do on a list.</p>
+<pre class="r"><code>dat&lt;- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c(&quot;Tampere&quot;, &quot;Pori&quot;, &quot;Tampere&quot;, &quot;Helsinki&quot;, &quot;Turku&quot;))
+dat
+#&gt;   id age     city
+#&gt; 1  1  15  Tampere
+#&gt; 2  2   5     Pori
+#&gt; 3  3  11  Tampere
+#&gt; 4  4  10 Helsinki
+#&gt; 5  5  95    Turku
+dat$id
+#&gt; [1] 1 2 3 4 5
+dat[2]
+#&gt;   age
+#&gt; 1  15
+#&gt; 2   5
+#&gt; 3  11
+#&gt; 4  10
+#&gt; 5  95</code></pre>
 </div>
-</div>
-<div id="exercise-pack-3" class="section level2">
-<h2>Exercise Pack 3</h2>
+<div id="exercise-pack-3" class="section level3">
+<h3>Exercise Pack 3</h3>
 <ol style="list-style-type: decimal">
 <li>Create a vector which its variance value equals to 0 and mean value equals to 5.</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
 </ol>
-<p>Use <code>rep</code> to create a vector with replicate elements</p>
-<pre><code>b&lt;- rep(x = 1, times = 3)
-b</code></pre>
+</div>
 </div>
 <div id="basic-computation" class="section level2">
 <h2>4. Basic Computation</h2>
+<div id="loops" class="section level3">
+<h3>Loops</h3>
 <p>For loop</p>
 <pre class="r"><code>for(i in 1:5){
   print(i)
@@ -793,22 +811,36 @@ b</code></pre>
 while(i &lt; 5){
   i&lt;- i + 2
 }</code></pre>
-<p>Apply functions <code>apply</code>, <code>sapply</code>, <code>lapply</code></p>
 </div>
-<div id="exercise-pack" class="section level2">
-<h2>Exercise Pack</h2>
-<ol style="list-style-type: decimal">
-<li>Using a loop two print out all the prime numbers smaller than 50</li>
-<li></li>
-<li></li>
-</ol>
+<div id="functions" class="section level3">
+<h3>Functions</h3>
+</div>
+<div id="apply-functions" class="section level3">
+<h3>Apply functions</h3>
+<p><code>apply</code>, <code>sapply</code>, <code>lapply</code></p>
+</div>
 <div id="useful-tips" class="section level3">
 <h3>Useful tips</h3>
 <p>You can use <code>#</code> to add comment, the code after will not be executed.</p>
 <pre class="r"><code>a&lt;- c(1, 2, 3) #I have no idea why I created this vector</code></pre>
 <p>Use <code>?</code> to call R help when you have difficulties.</p>
 <pre class="r"><code>?c</code></pre>
-<p>For efficient computation, try to use apply functions instead of for-loop</p>
+</div>
+<div id="exercise-pack-4" class="section level3">
+<h3>Exercise Pack 4</h3>
+<ol style="list-style-type: decimal">
+<li>Write a for loop to sum up all the elements of a vector, compare the result of simply using the function <code>sum</code>. Use the function <code>Sys.time()</code> to record the time, for example:</li>
+</ol>
+<pre class="r"><code>start&lt;- Sys.time()
+
+#computation
+
+end&lt;- Sys.time()
+end - start</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Write a loop to print out all the prime numbers smaller than 50</li>
+<li></li>
+</ol>
 </div>
 </div>
 
