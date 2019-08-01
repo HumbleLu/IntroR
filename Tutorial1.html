@@ -360,10 +360,10 @@ $(document).ready(function () {
 <h3>Quit the R session</h3>
 <pre class="r"><code>q()</code></pre>
 </div>
-<div id="exercise-1" class="section level3">
-<h3><em>Exercise 1</em></h3>
+<div id="exercise-pack-0" class="section level3">
+<h3><em>Exercise Pack 0</em></h3>
 <ol style="list-style-type: decimal">
-<li>Check your current directory</li>
+<li>Check your current directory with the function <code>getwd</code>.</li>
 <li>Change your working directory to your desktop and list all the file/folders</li>
 </ol>
 </div>
@@ -375,17 +375,26 @@ $(document).ready(function () {
 #&gt; [1] 4
 6*(5-1)
 #&gt; [1] 24</code></pre>
-<p>you can also try out some more complicated (fancier) computations, such as Trigonometric functions (high school nightmare):</p>
+<p>Some useful operators:</p>
 <ul>
-<li>sin(<span class="math inline">\(\frac{\pi}{2}\)</span>) = ?</li>
-<li>cos(<span class="math inline">\(\pi\)</span>) = ?</li>
-<li>tan(<span class="math inline">\(\frac{\pi}{4}\)</span>) = ?</li>
+<li><code>+</code>: addition</li>
+<li><code>-</code>: subtraction</li>
+<li><code>*</code>: multiplication</li>
+<li><code>/</code>: division</li>
+<li><code>x %% y</code>: modulus (Remainder from division)</li>
+<li><code>x %/% y</code>: integer division</li>
+<li><code>^ or **</code>: exponentiation, e.g. <code>3^2</code> or <code>3**2</code> to compute <span class="math inline">\(3^2\)</span></li>
 </ul>
-<p>find out the answers using functions <code>sin()</code>, <code>cos()</code>, and <code>tan()</code>, for example:</p>
-<pre class="r"><code>sin(pi/2)
-#&gt; [1] 1</code></pre>
-<p>or other mathematical functions are available, such as:</p>
+<p><strong>?</strong> What is the output of the following code?</p>
 <ul>
+<li><code>-1^2</code> = ?</li>
+<li><code>(-1)^2</code> = ?</li>
+</ul>
+<p>You can also try out some more complicated (fancier) computations, such as Trigonometric functions (high school nightmare):</p>
+<ul>
+<li><code>sin()</code>: sine</li>
+<li><code>cos()</code>: cosine</li>
+<li><code>tan()</code>: tangent</li>
 <li><code>exp()</code>: Exponential with base <em>e</em></li>
 <li><code>log()</code>: Logarithm</li>
 <li><code>log10()</code>: Logarithm with the base 10</li>
@@ -395,13 +404,22 @@ $(document).ready(function () {
 <li><code>floor()</code>: Round down the value</li>
 <li><code>ceiling()</code>: Round up the value</li>
 <li><code>factorial()</code>: Factorial function</li>
+<li><code>gamma()</code>: Gamma function</li>
+<li><code>digamma()</code>: Digamma function</li>
+<li>…</li>
 </ul>
-<p>Verify if the function <code>factorial</code> returns the correct value</p>
-<pre class="r"><code>factorial(5)
+<p><strong>?</strong> What are the solutions to the following equations</p>
+<ul>
+<li>sin(<span class="math inline">\(\frac{\pi}{2}\)</span>) = ?</li>
+<li>cos(<span class="math inline">\(\pi\)</span>) = ?</li>
+<li>tan(<span class="math inline">\(\frac{\pi}{4}\)</span>) = ?</li>
+</ul>
+<p><strong>?</strong> Can you verify if the function <code>factorial</code> returns the correct result of <span class="math inline">\(5!\)</span>?</p>
+<pre class="r"><code>5*4*3*2*1
 #&gt; [1] 120
-5*4*3*2*1
+factorial(5)
 #&gt; [1] 120</code></pre>
-<p>You also can use <code>function</code> to define your own function</p>
+<p>You also can use <code>function</code> to define your own function (will go back to this later)</p>
 <pre class="r"><code>my_square&lt;- function(x){
   x^2
 }
@@ -409,15 +427,18 @@ $(document).ready(function () {
 my_square(4)
 #&gt; [1] 16</code></pre>
 <p>where <code>&lt;-</code> is the assignment operator</p>
-</div>
-<div id="exercise-pack-1" class="section level2">
-<h2>Exercise Pack 1</h2>
+<div id="exercise-pack-1" class="section level3">
+<h3><em>Exercise Pack 1</em></h3>
 <ol style="list-style-type: decimal">
-<li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
+<li>Calculate the volume of a sphere (ball) whose raduis <span class="math inline">\(r = 2\)</span></li>
+<li>What is <span class="math inline">\(35^\circ C\)</span> in Fahrenheit (<span class="math inline">\(^\circ F\)</span>)?</li>
+<li>Use 5 different <span class="math inline">\(\theta\)</span> values to calculate the result of <span class="math inline">\(sin(\theta)^2 + cos(\theta)^2\)</span></li>
+<li>In a right triangle with sides <span class="math inline">\(a = b = 2 &lt; c\)</span>, how long is <span class="math inline">\(c\)</span>? (Use Pythagorean Theorem)</li>
 </ol>
 </div>
+</div>
 <div id="basic-r-objects" class="section level2">
-<h2>3. Basic R Objects</h2>
+<h2>2. Basic R Objects</h2>
 <div id="assign-value" class="section level3">
 <h3>Assign value</h3>
 <p>Use <code>&lt;-</code> to assign a value to an object</p>
@@ -481,6 +502,11 @@ is.na(x)
 #&gt; [1] TRUE
 is.nan(x)
 #&gt; [1] FALSE</code></pre>
+<p>Use <code>identical</code> to check if two objects are identical</p>
+<pre class="r"><code>x&lt;- 1e-3
+y&lt;- 0.001
+identical(x, y)
+#&gt; [1] TRUE</code></pre>
 </div>
 <div id="logical" class="section level3">
 <h3>Logical</h3>
@@ -526,8 +552,17 @@ print(&quot;Hello R!&quot;)
 <div id="exercise-pack-2" class="section level2">
 <h2>Exercise Pack 2</h2>
 <ol style="list-style-type: decimal">
-<li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
+<li></li>
+<li></li>
+<li>Check the types of the following objects</li>
 </ol>
+<ul>
+<li><code>Inf - Inf</code></li>
+<li><code>Inf + Inf</code></li>
+<li><code>0/0</code></li>
+<li><code>sin(Inf)</code></li>
+<li><code>Inf/0</code></li>
+</ul>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
 <p>All the elements in a vector should be of the same object type.</p>
@@ -612,6 +647,8 @@ b * c(1, NA, 1, NA, 1)
 a[is.na(a)]&lt;- 0
 a
 #&gt; [1] 1 0 2 0 3</code></pre>
+<p>Vectorized computation</p>
+<p><strong>?</strong> ´a = c(1, 2, 3, 4)´ and ´b = c(1, 2, 3, 4)´ What is the value of ´a*b´?</p>
 </div>
 <div id="factors" class="section level3">
 <h3>Factors</h3>
@@ -675,8 +712,8 @@ x[1:2,c(1,3)]
 #&gt; [1,]    1    7
 #&gt; [2,]    2    8</code></pre>
 </div>
-<div id="array" class="section level3">
-<h3>Array</h3>
+<div id="arrays" class="section level3">
+<h3>Arrays</h3>
 <p>Define an array</p>
 <pre class="r"><code>x&lt;- array(1:24, dim = c(4, 3, 2))
 x
@@ -706,8 +743,8 @@ x[3,2,]
 x[3,2,1]
 #&gt; [1] 7</code></pre>
 </div>
-<div id="list" class="section level3">
-<h3>List</h3>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
 <pre class="r"><code>x&lt;- list(name = &quot;miina&quot;, age = 25, score = 1, pass = T, gender = &quot;female&quot;)
 length(x)
 #&gt; [1] 5
@@ -724,25 +761,16 @@ x[&quot;pass&quot;]
 x[[&quot;gender&quot;]]
 #&gt; [1] &quot;female&quot;</code></pre>
 </div>
-<div id="data-frame" class="section level3">
-<h3>Data Frame</h3>
+<div id="data-frames" class="section level3">
+<h3>Data Frames</h3>
+<p>A generalized matrix in which each column may have different object types.</p>
+<pre class="r"><code>dat&lt;- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c(&quot;Tampere&quot;, &quot;Pori&quot;, &quot;Tampere&quot;, &quot;Helsinki&quot;, &quot;Turku&quot;))</code></pre>
 </div>
 </div>
 <div id="exercise-pack-3" class="section level2">
 <h2>Exercise Pack 3</h2>
 <ol style="list-style-type: decimal">
-<li>Check the types of the following objects</li>
-</ol>
-<ul>
-<li><code>Inf - Inf</code></li>
-<li><code>Inf + Inf</code></li>
-<li><code>0/0</code></li>
-<li><code>sin(Inf)</code></li>
-<li><code>Inf/0</code></li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
 <li>Create a vector which its variance value equals to 0 and mean value equals to 5.</li>
-<li>Create a function to convert the degree Celsius to degree Fahrenheit</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
 </ol>
 <p>Use <code>rep</code> to create a vector with replicate elements</p>

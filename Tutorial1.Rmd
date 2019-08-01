@@ -70,8 +70,8 @@ setwd("/Users/chienlu/Desktop")
 q()
 ```
 
-### *Exercise 1*
-1. Check your current directory
+### *Exercise Pack 0*
+1. Check your current directory with the function `getwd`.
 2. Change your working directory to your desktop and list all the file/folders
 
 ## 1. R as Calculator
@@ -83,20 +83,26 @@ You can start with playing around with R, use it as a calculator
 6*(5-1)
 ```
 
-you can also try out some more complicated (fancier) computations, such as Trigonometric functions (high school nightmare):
+Some useful operators:
 
-* sin($\frac{\pi}{2}$) = ?
-* cos($\pi$) = ?
-* tan($\frac{\pi}{4}$) = ?
+* `+`: addition
+* `-`: subtraction
+* `*`: multiplication
+* `/`: division
+* `x %% y`: modulus (Remainder from division)
+* `x %/% y`: integer division
+* `^ or **`: exponentiation, e.g. `3^2` or `3**2` to compute $3^2$ 
 
-find out the answers using functions `sin()`, `cos()`, and `tan()`, for example:
+__?__ What is the output of the following code?
 
-```{r}
-sin(pi/2)
-```
+* `-1^2` = ?
+* `(-1)^2` = ?
 
-or other mathematical functions are available, such as: 
+You can also try out some more complicated (fancier) computations, such as Trigonometric functions (high school nightmare):
 
+* `sin()`: sine 
+* `cos()`: cosine
+* `tan()`: tangent
 * `exp()`: Exponential with base _e_
 * `log()`: Logarithm
 * `log10()`: Logarithm with the base 10
@@ -106,14 +112,23 @@ or other mathematical functions are available, such as:
 * `floor()`: Round down the value
 * `ceiling()`: Round up the value
 * `factorial()`: Factorial function
+* `gamma()`: Gamma function
+* `digamma()`: Digamma function
+* ...
 
-Verify if the function `factorial` returns the correct value
+__?__ What are the solutions to the following equations
+
+* sin($\frac{\pi}{2}$) = ?
+* cos($\pi$) = ?
+* tan($\frac{\pi}{4}$) = ?
+
+__?__ Can you verify if the function `factorial` returns the correct result of $5!$?
 ```{r}
-factorial(5)
 5*4*3*2*1
+factorial(5)
 ```
 
-You also can use `function` to define your own function 
+You also can use `function` to define your own function (will go back to this later)
 
 ```{r}
 my_square<- function(x){
@@ -125,11 +140,13 @@ my_square(4)
 
 where `<-` is the assignment operator
 
-## Exercise Pack 1
-1. Set the working directory to your Desktop and use `getwd` to verify
+### *Exercise Pack 1*
+1. Calculate the volume of a sphere (ball) whose raduis $r = 2$
+2. What is $35^\circ C$ in Fahrenheit ($^\circ F$)?
+3. Use 5 different $\theta$ values to calculate the result of $sin(\theta)^2 + cos(\theta)^2$
+4. In a right triangle with sides $a = b = 2 < c$, how long is $c$? (Use Pythagorean Theorem)
 
-
-## 3. Basic R Objects
+## 2. Basic R Objects
 
 ### Assign value
 
@@ -215,6 +232,13 @@ is.na(x)
 is.nan(x)
 ```
 
+Use `identical` to check if two objects are identical
+```{r}
+x<- 1e-3
+y<- 0.001
+identical(x, y)
+```
+
 ### Logical
 ```{r}
 x<- TRUE
@@ -256,7 +280,14 @@ print("Hello R!")
 ```
 
 ## Exercise Pack 2
-1. Set the working directory to your Desktop and use `getwd` to verify
+1. 
+2. 
+3. Check the types of the following objects
++ `Inf - Inf`
++ `Inf + Inf`
++ `0/0`
++ `sin(Inf)`
++ `Inf/0`
 
 ### Vectors
 
@@ -349,6 +380,11 @@ a[is.na(a)]<- 0
 a
 ```
 
+Vectorized computation
+
+__?__ ´a = c(1, 2, 3, 4)´ and ´b = c(1, 2, 3, 4)´ What is the value of ´a*b´?
+
+
 ### Factors
 Represente categorical data with specifying levels (e.g. gender, education). A factor is stored as a vector of integers with corresponding labels.
 
@@ -398,7 +434,7 @@ x[2,1:3]
 x[1:2,c(1,3)]
 ```
 
-### Array
+### Arrays
 Define an array
 ```{r}
 x<- array(1:24, dim = c(4, 3, 2))
@@ -409,7 +445,7 @@ x[3,2,]
 x[3,2,1]
 ```
 
-### List
+### Lists
 ```{r}
 x<- list(name = "miina", age = 25, score = 1, pass = T, gender = "female")
 length(x)
@@ -420,18 +456,16 @@ x["pass"]
 x[["gender"]]
 ```
 
-### Data Frame
+### Data Frames
+A generalized matrix in which each column may have different object types.
+```{r}
+dat<- data.frame(id = 1:5, age = c(15, 5, 11, 10, 95), city = c("Tampere", "Pori", "Tampere", "Helsinki", "Turku"))
+
+```
 
 ## Exercise Pack 3
-1. Check the types of the following objects
-+ `Inf - Inf`
-+ `Inf + Inf`
-+ `0/0`
-+ `sin(Inf)`
-+ `Inf/0`
-2. Create a vector which its variance value equals to 0 and mean value equals to 5.
-3. Create a function to convert the degree Celsius to degree Fahrenheit
-4. Create a function which returns the sum of the maximum and the mininum value of the input vector
+1. Create a vector which its variance value equals to 0 and mean value equals to 5.
+2. Create a function which returns the sum of the maximum and the mininum value of the input vector
 
 Use `rep` to create a vector with replicate elements
 ```

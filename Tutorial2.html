@@ -359,6 +359,9 @@ sd(steam$Level)
 #&gt; The following objects are masked from steam (pos = 4):
 #&gt; 
 #&gt;     Badges, Comments, Level, Showcases, UserId
+#&gt; The following objects are masked from steam (pos = 5):
+#&gt; 
+#&gt;     Badges, Comments, Level, Showcases, UserId
 mean(Level)
 #&gt; [1] 37.648
 sd(Level)
@@ -382,8 +385,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  0.1417003 -0.1660905  0.5855189  1.0667841 -2.4401949  0.7500041
-#&gt;  [7] -1.1438626 -1.2475052  0.0616314  1.4780868</code></pre>
+#&gt;  [1] -2.8814294 -0.6989380  0.1258244 -0.7441212 -0.1350837 -0.2657203
+#&gt;  [7]  0.5118790  1.1545847  0.4768106  0.7848515</code></pre>
 </div>
 <div id="student-t-test" class="section level3">
 <h3>Student t-test</h3>
@@ -396,11 +399,19 @@ rnorm(10, 0, 1)
 </div>
 </div>
 <div id="plot-and-graphics" class="section level2">
-<h2>7. Plot and Graphics</h2>
+<h2>6. Plot and Graphics</h2>
+<p><code>abline</code></p>
 <ul>
 <li><code>save.image()</code></li>
 </ul>
+<div id="exercise-6" class="section level3">
+<h3><em>Exercise 6</em></h3>
+<ol style="list-style-type: decimal">
+<li>Make a function with parameter n to approximate the <em>sin</em> function</li>
+<li>Make plot comparing with the actual value</li>
+</ol>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+</div>
 </div>
 <div id="packages" class="section level2">
 <h2>8. Packages</h2>
