@@ -9,6 +9,11 @@ This is a tutorial website for Tampere Summer school course **Introduction to R*
 </center>
 <br>
 
+### Further Reading
+
+* Matloff, Norman. _The art of R programming: A tour of statistical software design_. No Starch Press, 2011.
+
+
 ## Course Logistics
 
 * Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization.

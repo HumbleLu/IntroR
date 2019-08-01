@@ -6,4 +6,76 @@ title: "Course Material [2]"
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-Under Construction
+## 5. Import and Export Data
+
+The example dataset steam_subset.csv can be downloaded [here](https://gofile.io/?c=7bP3y4). The colums are seperated with comma( , ) and the first line is the column names.
+
+Read the data set from a file with `read.table`, use functions `head` and `str` to check the dataset
+
+```{r}
+steam<- read.table(file = "steam_subset.csv", sep = ",", header = T)
+head(steam)
+str(steam)
+```
+
+
+or use `read.csv` to read the file
+
+```{r}
+steam<- read.csv(file = "steam_subset.csv", header = T, sep = ",")
+head(steam)
+str(steam)
+```
+
+Computation on the variables
+```{r}
+mean(steam$Level)
+sd(steam$Level)
+```
+
+Attach a dataset
+```{r}
+attach(steam)
+mean(Level)
+sd(Level)
+```
+
+
+
+## 6. Statistical Computation
+
+### Distributions
+
+* `d`xxx: density
+* `q`xxx: quantile
+* `p`xxx: cumulative 
+* `r`xxx: randome samples
+
+Take normal distribution for an example
+
+```{r}
+dnorm(0, 0, 1)
+qnorm(.975, 0, 1)
+pnorm(1.96, 0, 1)
+rnorm(10, 0, 1)
+```
+
+### Student t-test
+```{r}
+```
+
+### Analysis of Variance (ANOVA)
+```{r}
+```
+
+### Linear Regression
+```{r}
+```
+
+## 7. Plot and Graphics
+
+* `save.image()` 
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## 8. Packages

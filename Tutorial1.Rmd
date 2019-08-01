@@ -6,6 +6,8 @@ title: "Course Material [1]"
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
+## 0. Getting Started!
+
 ## Why Learning R?
 
 * Free (impotrant!)
@@ -13,16 +15,10 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 * More and more popular in both academia and industry
 * _... Millions of  other reasons_
 
-### Further Reading
-
-* Matloff, Norman. _The art of R programming: A tour of statistical software design_. No Starch Press, 2011.
-
-## Before Starting
 
 * Download R from [CRAN](https://cran.r-project.org/mirrors.html)
 * You can also Download an useful GUI called [RStudio](https://www.rstudio.com/products/rstudio/)
 
-## Getting Started!
 
 ### RStudio
 Create a script by clicking _File_ >> _New File_ >> _R Script_
@@ -56,7 +52,7 @@ To execute your code, highlight the code you wish to execute and press _Ctrl + E
 getwd()
 ```
 
-List all the files under the current working directory
+List all the files/folders under the current working directory
 
 ```{r, eval=FALSE}
 dir()
@@ -74,7 +70,11 @@ setwd("/Users/chienlu/Desktop")
 q()
 ```
 
-## R as Calculator
+### *Exercise 1*
+1. Check your current directory
+2. Change your working directory to your desktop and list all the file/folders
+
+## 1. R as Calculator
 
 You can start with playing around with R, use it as a calculator
 
@@ -129,7 +129,7 @@ where `<-` is the assignment operator
 1. Set the working directory to your Desktop and use `getwd` to verify
 
 
-## Basic R Objects
+## 3. Basic R Objects
 
 ### Assign value
 
@@ -152,6 +152,19 @@ x<- 1.1
 class(x)
 mode(x)
 typeof(x)
+```
+
+### Working environment
+List all the objects under the current working environment
+
+```{r, eval=FALSE}
+ls()
+```
+
+Remove all the objects under the current working environment
+
+```{r, eval=FALSE}
+rm(list = ls())
 ```
 
 ### Numbers
@@ -407,18 +420,18 @@ x["pass"]
 x[["gender"]]
 ```
 
-## Exercise Pack 3
+### Data Frame
 
-1. Set the working directory to your Desktop and use `getwd` to verify
-2. Check the types of the following objects
+## Exercise Pack 3
+1. Check the types of the following objects
 + `Inf - Inf`
 + `Inf + Inf`
 + `0/0`
 + `sin(Inf)`
 + `Inf/0`
-3. Create a vector which its variance value equals to 0 and mean value equals to 5.
-4. Create a function to convert the degree Celsius to degree Fahrenheit
-5. Create a function which returns the sum of the maximum and the mininum value of the input vector
+2. Create a vector which its variance value equals to 0 and mean value equals to 5.
+3. Create a function to convert the degree Celsius to degree Fahrenheit
+4. Create a function which returns the sum of the maximum and the mininum value of the input vector
 
 Use `rep` to create a vector with replicate elements
 ```
@@ -426,6 +439,7 @@ b<- rep(x = 1, times = 3)
 b
 ```
 
+## 4. Basic Computation
 
 For loop
 ```{r}
@@ -443,7 +457,10 @@ while(i < 5){
 ```
 
 Apply functions
+`apply`, `sapply`, `lapply`
 
+```{r}
+```
 ## Exercise Pack
 
 1. Using a loop two print out all the prime numbers smaller than 50
@@ -467,59 +484,3 @@ Use `?` to call R help when you have difficulties.
 
 For efficient computation, try to use apply functions instead of for-loop
 
-## Import and Export Data
-
-First, have a look at the example dataset:
-
-Read the data set from a file with `read.table`, use function `head` to check the read dataset
-
-```{r}
-steam<- read.table(file = "steam_subset.csv", header = T, sep = ",")
-head(steam)
-```
-
-or use `read.csv` to read the file
-
-```{r}
-steam<- read.csv(file = "steam_subset.csv", header = T, sep = ",")
-head(steam)
-```
-
-## Packages
-
-## Statistical Computation
-
-### Basic Operations
-
-```{r}
-attach(iris)
-mean(Sepal.Length)
-sd(Sepal.Length)
-median(Sepal.Length)
-```
-
-### t-test
-
-### Analysis of Variance (ANOVA)
-
-### Distributions
-
-* `d`xxx: density
-* `q`xxx: quantile
-* `p`xxx: cumulative 
-* `r`xxx: randome samples
-
-Take normal distribution for an example
-
-```{r}
-dnorm(0, 0, 1)
-qnorm(.975, 0, 1)
-pnorm(1.96, 0, 1)
-rnorm(10, 0, 1)
-```
-
-## Plot and Graphics
-
-* `save.image()` 
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

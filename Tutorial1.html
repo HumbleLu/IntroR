@@ -309,30 +309,19 @@ $(document).ready(function () {
 </div>
 
 
+<div id="getting-started" class="section level2">
+<h2>0. Getting Started!</h2>
+</div>
 <div id="why-learning-r" class="section level2">
 <h2>Why Learning R?</h2>
 <ul>
 <li>Free (impotrant!)</li>
 <li>Massive statistical packages</li>
 <li>More and more popular in both academia and industry</li>
-<li><em>… Millions of other reasons</em></li>
-</ul>
-<div id="further-reading" class="section level3">
-<h3>Further Reading</h3>
-<ul>
-<li>Matloff, Norman. <em>The art of R programming: A tour of statistical software design</em>. No Starch Press, 2011.</li>
-</ul>
-</div>
-</div>
-<div id="before-starting" class="section level2">
-<h2>Before Starting</h2>
-<ul>
+<li><p><em>… Millions of other reasons</em></p></li>
 <li>Download R from <a href="https://cran.r-project.org/mirrors.html">CRAN</a></li>
-<li>You can also Download an useful GUI called <a href="https://www.rstudio.com/products/rstudio/">RStudio</a></li>
+<li><p>You can also Download an useful GUI called <a href="https://www.rstudio.com/products/rstudio/">RStudio</a></p></li>
 </ul>
-</div>
-<div id="getting-started" class="section level2">
-<h2>Getting Started!</h2>
 <div id="rstudio" class="section level3">
 <h3>RStudio</h3>
 <p>Create a script by clicking <em>File</em> &gt;&gt; <em>New File</em> &gt;&gt; <em>R Script</em></p>
@@ -362,7 +351,7 @@ $(document).ready(function () {
 <div id="set-up-the-working-directory" class="section level3">
 <h3>Set up the working directory</h3>
 <pre class="r"><code>getwd()</code></pre>
-<p>List all the files under the current working directory</p>
+<p>List all the files/folders under the current working directory</p>
 <pre class="r"><code>dir()</code></pre>
 <p>Change the working directory (mind the <code>/</code>)</p>
 <pre class="r"><code>setwd(&quot;/Users/chienlu/Desktop&quot;)</code></pre>
@@ -371,9 +360,16 @@ $(document).ready(function () {
 <h3>Quit the R session</h3>
 <pre class="r"><code>q()</code></pre>
 </div>
+<div id="exercise-1" class="section level3">
+<h3><em>Exercise 1</em></h3>
+<ol style="list-style-type: decimal">
+<li>Check your current directory</li>
+<li>Change your working directory to your desktop and list all the file/folders</li>
+</ol>
+</div>
 </div>
 <div id="r-as-calculator" class="section level2">
-<h2>R as Calculator</h2>
+<h2>1. R as Calculator</h2>
 <p>You can start with playing around with R, use it as a calculator</p>
 <pre class="r"><code>1 + 3
 #&gt; [1] 4
@@ -421,7 +417,7 @@ my_square(4)
 </ol>
 </div>
 <div id="basic-r-objects" class="section level2">
-<h2>Basic R Objects</h2>
+<h2>3. Basic R Objects</h2>
 <div id="assign-value" class="section level3">
 <h3>Assign value</h3>
 <p>Use <code>&lt;-</code> to assign a value to an object</p>
@@ -440,6 +436,13 @@ mode(x)
 #&gt; [1] &quot;numeric&quot;
 typeof(x)
 #&gt; [1] &quot;double&quot;</code></pre>
+</div>
+<div id="working-environment" class="section level3">
+<h3>Working environment</h3>
+<p>List all the objects under the current working environment</p>
+<pre class="r"><code>ls()</code></pre>
+<p>Remove all the objects under the current working environment</p>
+<pre class="r"><code>rm(list = ls())</code></pre>
 </div>
 <div id="numbers" class="section level3">
 <h3>Numbers</h3>
@@ -721,11 +724,13 @@ x[&quot;pass&quot;]
 x[[&quot;gender&quot;]]
 #&gt; [1] &quot;female&quot;</code></pre>
 </div>
+<div id="data-frame" class="section level3">
+<h3>Data Frame</h3>
+</div>
 </div>
 <div id="exercise-pack-3" class="section level2">
 <h2>Exercise Pack 3</h2>
 <ol style="list-style-type: decimal">
-<li>Set the working directory to your Desktop and use <code>getwd</code> to verify</li>
 <li>Check the types of the following objects</li>
 </ol>
 <ul>
@@ -735,7 +740,7 @@ x[[&quot;gender&quot;]]
 <li><code>sin(Inf)</code></li>
 <li><code>Inf/0</code></li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
+<ol start="2" style="list-style-type: decimal">
 <li>Create a vector which its variance value equals to 0 and mean value equals to 5.</li>
 <li>Create a function to convert the degree Celsius to degree Fahrenheit</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
@@ -743,6 +748,9 @@ x[[&quot;gender&quot;]]
 <p>Use <code>rep</code> to create a vector with replicate elements</p>
 <pre><code>b&lt;- rep(x = 1, times = 3)
 b</code></pre>
+</div>
+<div id="basic-computation" class="section level2">
+<h2>4. Basic Computation</h2>
 <p>For loop</p>
 <pre class="r"><code>for(i in 1:5){
   print(i)
@@ -757,7 +765,7 @@ b</code></pre>
 while(i &lt; 5){
   i&lt;- i + 2
 }</code></pre>
-<p>Apply functions</p>
+<p>Apply functions <code>apply</code>, <code>sapply</code>, <code>lapply</code></p>
 </div>
 <div id="exercise-pack" class="section level2">
 <h2>Exercise Pack</h2>
@@ -774,126 +782,6 @@ while(i &lt; 5){
 <pre class="r"><code>?c</code></pre>
 <p>For efficient computation, try to use apply functions instead of for-loop</p>
 </div>
-</div>
-<div id="import-and-export-data" class="section level2">
-<h2>Import and Export Data</h2>
-<p>First, have a look at the example dataset:</p>
-<p>Read the data set from a file with <code>read.table</code>, use function <code>head</code> to check the read dataset</p>
-<pre class="r"><code>steam&lt;- read.table(file = &quot;steam_subset.csv&quot;, header = T, sep = &quot;,&quot;)
-head(steam)
-#&gt;   UserId Level Showcases Comments Badges
-#&gt; 1      1    17         1       24     10
-#&gt; 2      2    55         2      105     47
-#&gt; 3      3     0         0       11      0
-#&gt; 4      4    16         1       15     12
-#&gt; 5      5    52         4       98     38
-#&gt; 6      6    27         2        5     41</code></pre>
-<p>or use <code>read.csv</code> to read the file</p>
-<pre class="r"><code>steam&lt;- read.csv(file = &quot;steam_subset.csv&quot;, header = T, sep = &quot;,&quot;)
-head(steam)
-#&gt;   UserId Level Showcases Comments Badges
-#&gt; 1      1    17         1       24     10
-#&gt; 2      2    55         2      105     47
-#&gt; 3      3     0         0       11      0
-#&gt; 4      4    16         1       15     12
-#&gt; 5      5    52         4       98     38
-#&gt; 6      6    27         2        5     41</code></pre>
-</div>
-<div id="packages" class="section level2">
-<h2>Packages</h2>
-</div>
-<div id="statistical-computation" class="section level2">
-<h2>Statistical Computation</h2>
-<div id="basic-operations" class="section level3">
-<h3>Basic Operations</h3>
-<pre class="r"><code>attach(iris)
-#&gt; The following objects are masked from iris (pos = 3):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 4):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 5):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 6):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 7):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 8):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 9):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 10):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 11):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 12):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 13):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 14):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 15):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 16):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 17):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 18):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-mean(Sepal.Length)
-#&gt; [1] 5.843333
-sd(Sepal.Length)
-#&gt; [1] 0.8280661
-median(Sepal.Length)
-#&gt; [1] 5.8</code></pre>
-</div>
-<div id="t-test" class="section level3">
-<h3>t-test</h3>
-</div>
-<div id="analysis-of-variance-anova" class="section level3">
-<h3>Analysis of Variance (ANOVA)</h3>
-</div>
-<div id="distributions" class="section level3">
-<h3>Distributions</h3>
-<ul>
-<li><code>d</code>xxx: density</li>
-<li><code>q</code>xxx: quantile</li>
-<li><code>p</code>xxx: cumulative</li>
-<li><code>r</code>xxx: randome samples</li>
-</ul>
-<p>Take normal distribution for an example</p>
-<pre class="r"><code>dnorm(0, 0, 1)
-#&gt; [1] 0.3989423
-qnorm(.975, 0, 1)
-#&gt; [1] 1.959964
-pnorm(1.96, 0, 1)
-#&gt; [1] 0.9750021
-rnorm(10, 0, 1)
-#&gt;  [1]  0.01373693 -1.28467813 -0.25109208 -0.65048625 -0.21770123
-#&gt;  [6]  1.98603623  0.11852493  0.90077726 -0.82351322 -0.83163287</code></pre>
-</div>
-</div>
-<div id="plot-and-graphics" class="section level2">
-<h2>Plot and Graphics</h2>
-<ul>
-<li><code>save.image()</code></li>
-</ul>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </div>
 
 
