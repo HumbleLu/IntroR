@@ -8,6 +8,8 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 
 ## 5. Plot and Graphics
 
+Some commonly used functions
+
 * `plot()` 
 * `points()` 
 * `lines()`
