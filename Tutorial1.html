@@ -529,7 +529,7 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 35 96 78 88 91</code></pre>
+#&gt; [1] 58 73 78 46 55</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -539,16 +539,16 @@ s
 </ul>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 64 82 54 10 46
+#&gt; [1] 82 55 62 63 91
 
 min(s)
-#&gt; [1] 10
+#&gt; [1] 55
 max(s)
-#&gt; [1] 82
+#&gt; [1] 91
 which.min(s)
-#&gt; [1] 4
+#&gt; [1] 2
 which.max(s)
-#&gt; [1] 2</code></pre>
+#&gt; [1] 5</code></pre>
 <p>Concatenate vectors</p>
 <pre class="r"><code>vec_1&lt;- c(1, 1, 1)
 vec_2&lt;- c(2, 2, 2)
@@ -961,7 +961,7 @@ end&lt;- Sys.time()
 end - start</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Write a loop to print out all the prime numbers smaller than 50.</li>
-<li>Make an operator %$&gt;€% to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars ($) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1$.</li>
+<li>Make an operator <code>%$&gt;€%</code> to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars ($) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1$.</li>
 <li>Use <code>apply</code> to compute the coefficient of variation (CV) of each column in the steam dataset.</li>
 <li>Use <code>sapply</code> to calcluate the object size of all the objects under current environment. Hint: you will need functions <code>ls()</code> and <code>object.size()</code>.</li>
 </ol>

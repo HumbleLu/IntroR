@@ -252,13 +252,7 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)</code></pre>
 #&gt; The following objects are masked from iris (pos = 4):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 5):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 #&gt; The following objects are masked from iris (pos = 6):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 7):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 #&gt; The following objects are masked from iris (pos = 8):
@@ -267,12 +261,27 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)</code></pre>
 #&gt; The following objects are masked from iris (pos = 9):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 10):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 11):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 12):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 13):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 hist(Sepal.Length)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="barplot" class="section level3">
 <h3>Barplot</h3>
 <pre class="r"><code>attach(chickwts)
+#&gt; The following objects are masked from chickwts (pos = 6):
+#&gt; 
+#&gt;     feed, weight
 barplot(table(feed))</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
@@ -337,8 +346,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  1.263895712 -1.231860925 -0.459607809 -0.699896298 -1.136009379
-#&gt;  [6]  0.855471318 -0.781652997 -1.364264239 -0.009972949 -0.577423641</code></pre>
+#&gt;  [1] -0.57857181  0.15236191  1.15387511  1.08170445  1.39970265
+#&gt;  [6] -0.61493591 -0.63017454 -2.23240529  0.63579921 -0.05791352</code></pre>
 </div>
 <div id="student-t-test" class="section level3">
 <h3>Student t-test</h3>
@@ -349,19 +358,25 @@ rnorm(10, 0, 1)
 #&gt; The following objects are masked from iris (pos = 6):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 7):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 #&gt; The following objects are masked from iris (pos = 8):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 9):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 #&gt; The following objects are masked from iris (pos = 10):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 #&gt; The following objects are masked from iris (pos = 11):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 12):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 13):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 14):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 15):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 levels(Species)
@@ -393,6 +408,9 @@ summary(aov_res)
 <h3>Linear Regression</h3>
 <pre class="r"><code>attach(airquality)
 #&gt; The following objects are masked from airquality (pos = 6):
+#&gt; 
+#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
+#&gt; The following objects are masked from airquality (pos = 10):
 #&gt; 
 #&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
 lm_res&lt;- lm(Ozone ~ Solar.R + Wind + Temp)

@@ -757,6 +757,6 @@ end<- Sys.time()
 end - start
 ```
 3. Write a loop to print out all the prime numbers smaller than 50.
-4. Make an operator %$>€% to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars (\$) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1\$.
+4. Make an operator `%$>€%` to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars (\$) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1\$.
 5. Use `apply` to compute the coefficient of variation (CV) of each column in the steam dataset.
 6. Use `sapply` to calcluate the object size of all the objects under current environment. Hint: you will need functions `ls()` and `object.size()`.
