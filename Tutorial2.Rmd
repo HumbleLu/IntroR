@@ -6,14 +6,111 @@ title: "Course Material [2]"
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
 
-## 6. Plot and Graphics
+## 5. Plot and Graphics
 
-* `save.image()` 
-* `save.image()` 
+* `plot()` 
+* `points()` 
+* `lines()`
+* `test()`
+* `mtest()`
+* `abline()`
 
-### *Exercise 6*
-1. Make a function with parameter n to approximate the *sin* function
-2. Make plot comparing with the actual value
+```{r}
+x<- seq(0, 2*pi, .2)
+plot(x, sin(x), type = "p")
+plot(x, sin(x), type = "l")
+plot(x, sin(x), type = "o")
+```
+
+Add points, lines, legend
+```{r}
+plot(x, sin(x), type = "o")
+points(x, cos(x), pch = 19, col = 2)
+lines(x, cos(x), lty = 2, col = 2)
+legend(4, 1, legend = c("sin", "cos"), pch = c(1, 19), lty = c(1, 2), col = c(1, 2))
+```
+
+`pch`: point style
+```{r}
+plot(sapply(1:5, function(x) rep(x, 5)), rep(5:1, 5),
+     pch = 1:25, xlab = "", ylab = "", main = "", xlim = c(0.7, 5.2), axes = F)
+
+text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)
+```
+
+`lty`: line style
+
+```{r}
+plot(NULL, xlim = c(0,4), ylim = c(1,6), xlab = "", ylab = "", axes = F)
+for(i in 1:6){
+  lines(c(1, 4), c(i, i), lty = i)
+  text(0.5, i, paste("lty = ", i))
+}
+```
+
+`color`: color
+```{r}
+plot(sapply(1:5, function(x) rep(x, 5)), rep(5:1, 5),
+     pch = 16, col = 1:25, xlab = "", ylab = "", main = "", xlim = c(0.7, 5.2), axes = F)
+
+text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)
+```
+
+### Histogram
+```{r}
+attach(iris)
+hist(Sepal.Length)
+```
+
+### Barplot
+```{r}
+attach(chickwts)
+barplot(table(feed))
+```
+
+### Boxplot
+```{r}
+boxplot(weight)
+```
+
+Group-wise
+```{r}
+boxplot(weight~feed)
+```
+
+### Multiple plots
+```{r}
+par(mfrow = c(2,2))
+barplot(table(feed))
+hist(weight)
+boxplot(weight)
+boxplot(weight~feed)
+```
+
+```{r}
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+boxplot(weight~feed)
+hist(weight)
+barplot(table(feed))
+```
+
+### Scatter plot
+```{r}
+str(trees)
+pairs(trees)
+```
+
+### Plot into a file
+```{r, eval = F}
+png(file = "exmple.png", bg = "transparent")
+plot(x, sin(x), type = "o")
+dev.off()
+```
+
+### *Exercise 5*
+[To be announced]
+<!-- 1. Make a function with parameter n to approximate the *sin* function -->
+<!-- 2. Make plot comparing with the actual value -->
 
 ## 6. Statistical Computation
 
@@ -48,9 +145,27 @@ summary(aov_res)
 
 ### Linear Regression
 ```{r}
-lm_res<- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species)
+attach(airquality)
+lm_res<- lm(Ozone ~ Solar.R + Wind + Temp)
 summary(lm_res)
+
 ```
 
-## 8. Packages
-`install.packages`, `library`
+Model selction via stepwise approach
+
+```{r}
+lm_step<- step(lm_res)
+summary(lm_step)
+```
+
+Prediction
+```{r}
+input<- data.frame("Solar.R" = c(10, 100), "Wind" = c(20, 5), "Temp" = c(76, 76))
+predict(lm_step, input)
+```
+
+### *Exercise 6*
+[To be announced]
+
+<!-- ## 7. Packages -->
+<!-- `installed.packages`, `install.packages`, `(.packages())`, `library` -->

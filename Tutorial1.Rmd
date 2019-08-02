@@ -577,7 +577,7 @@ write.csv(toy_dat, file = "toy.csv", row.names = F)
 1. Create a vector `z` of length 10 with variance equals to 0 and mean equals to 5. Verify with function `mean` and `var`.
 2. Create a function which returns the sum of the maximum and the mininum value of the input vector
 3. Create a function which approximates the sin function with 4th-order taylor series. 
-4. Compute the coefficient of variation (CV) of each column in the `steam` dataset.
+4. Compute the CV (coefficient of variation) values of variables `Levels` and `Badges` in the `steam` dataset.
 5. Create a toy data frame object with at least 5 rows and 3 columns, save it to a .csv file.
 
 ## 4. Computations
@@ -736,7 +736,6 @@ Use `?` to call R help when you have difficulties.
 ### *Exercise Pack 4*
 1. Use conditional statement to complete the following greeting function. The function prints `"good morning"`, `"good afternoon"`, `"good evening"` or `"good night"` according to the current hour.
 
-Note. `lubridate::hour(Sys.time())` returns the current hour (0-24).
 ```{r, eval=F}
 greeting<- function(hour = lubridate::hour(Sys.time())){
   
@@ -744,6 +743,8 @@ greeting<- function(hour = lubridate::hour(Sys.time())){
 
 greeting()
 ```
+Note. `lubridate::hour(Sys.time())` returns the current hour (0-24).
+
 2. Write a for loop to sum up all the elements of a vector, compare the result of simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
 ```{r, eval=F}
 start<- Sys.time()
@@ -753,6 +754,7 @@ start<- Sys.time()
 end<- Sys.time()
 end - start
 ```
-3. Write a loop to print out all the prime numbers smaller than 50
-4. Make an operator %$>€% to detect if the amount of money of the left hand side is greater the the right hand side. Where the left hand side is in usd (\$) and the right hand side is in euro (€). The exchange rate is 1€ = 1.1\$.
-5. Use sapply to calcluate the object size of all the objects under current environment. Hint: you will need functions `ls()` and `object.size()`.
+3. Write a loop to print out all the prime numbers smaller than 50.
+4. Make an operator %$>€% to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars (\$) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1\$.
+5. Use `apply` to compute the coefficient of variation (CV) of each column in the steam dataset.
+6. Use `sapply` to calcluate the object size of all the objects under current environment. Hint: you will need functions `ls()` and `object.size()`.
