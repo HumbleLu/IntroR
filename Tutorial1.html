@@ -254,6 +254,20 @@ $(document).ready(function () {
 <h3>Quit the R session</h3>
 <pre class="r"><code>q()</code></pre>
 </div>
+<div id="some-useful-tips" class="section level3">
+<h3>Some Useful tips</h3>
+<ul>
+<li>You can use <code>#</code> to add comment, the code after will not be executed.</li>
+</ul>
+<pre class="r"><code>a&lt;- c(1, 2, 3) #I have no idea why I created this vector</code></pre>
+<ul>
+<li>Use <code>?</code> to call R help when you have difficulties.</li>
+</ul>
+<pre class="r"><code>?dir</code></pre>
+<ul>
+<li>When encountering problems, always <em>Google</em>!</li>
+</ul>
+</div>
 <div id="exercise-pack-0" class="section level3">
 <h3><em>Exercise Pack 0</em></h3>
 <ol style="list-style-type: decimal">
@@ -528,7 +542,20 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 30 53 81 87 29</code></pre>
+#&gt; [1]  5 53 88 54 44</code></pre>
+<p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
+<pre class="r"><code>sample(1:100, 5)
+#&gt; [1] 96 45 67 56 10
+sample(1:100, 5)
+#&gt; [1] 90 25  5 32 92
+
+set.seed(123)
+sample(1:100, 5)
+#&gt; [1] 29 79 41 86 91
+
+set.seed(123)
+sample(1:100, 5)
+#&gt; [1] 29 79 41 86 91</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -538,16 +565,16 @@ s
 </ul>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 73 97 49 98 47
+#&gt; [1]  5 53 88 54 44
 
 min(s)
-#&gt; [1] 47
-max(s)
-#&gt; [1] 98
-which.min(s)
 #&gt; [1] 5
+max(s)
+#&gt; [1] 88
+which.min(s)
+#&gt; [1] 1
 which.max(s)
-#&gt; [1] 4</code></pre>
+#&gt; [1] 3</code></pre>
 <p>Concatenate vectors</p>
 <pre class="r"><code>vec_1&lt;- c(1, 1, 1)
 vec_2&lt;- c(2, 2, 2)
@@ -930,13 +957,6 @@ apply(a, 2, sum)
 <p><code>lapply</code> takes a list or a vector, returns a vector</p>
 <pre class="r"><code>sapply(c(1, 2, 3, 4), function(x) x + 1)
 #&gt; [1] 2 3 4 5</code></pre>
-</div>
-<div id="some-useful-tips" class="section level3">
-<h3>Some Useful tips</h3>
-<p>You can use <code>#</code> to add comment, the code after will not be executed.</p>
-<pre class="r"><code>a&lt;- c(1, 2, 3) #I have no idea why I created this vector</code></pre>
-<p>Use <code>?</code> to call R help when you have difficulties.</p>
-<pre class="r"><code>?c</code></pre>
 </div>
 <div id="exercise-pack-4" class="section level3">
 <h3><em>Exercise Pack 4</em></h3>

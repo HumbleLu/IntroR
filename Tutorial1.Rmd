@@ -70,6 +70,22 @@ setwd("/Users/chienlu/Desktop")
 q()
 ```
 
+### Some Useful tips
+
+* You can use `#` to add comment, the code after will not be executed.
+
+```{r}
+a<- c(1, 2, 3) #I have no idea why I created this vector
+```
+
+* Use `?` to call R help when you have difficulties.
+
+```{r}
+?dir
+```
+
+* When encountering problems, always _Google_!
+
 ### *Exercise Pack 0*
 1. Check your current directory with the function `getwd`.
 2. Change your working directory to your desktop and list all the file/folders
@@ -373,6 +389,20 @@ Use `sample` to create a vector with random numbers
 s<- sample(1:100, 5)
 s
 ```
+
+Set the seed with `set.seed` function before sampling if you want to reproduce the result.
+
+```{r}
+sample(1:100, 5)
+sample(1:100, 5)
+
+set.seed(123)
+sample(1:100, 5)
+
+set.seed(123)
+sample(1:100, 5)
+```
+
 
 * `min()` and `max()`: Minimum value and maximum value within a vector
 * `which.min()` and `which.max()`: Index of the minimal element and maximal
@@ -717,20 +747,6 @@ lapply(c(1, 2, 3, 4), function(x) x + 1)
 `lapply` takes a list or a vector, returns a vector
 ```{r}
 sapply(c(1, 2, 3, 4), function(x) x + 1)
-```
-
-### Some Useful tips
-
-You can use `#` to add comment, the code after will not be executed.
-
-```{r}
-a<- c(1, 2, 3) #I have no idea why I created this vector
-```
-
-Use `?` to call R help when you have difficulties.
-
-```{r}
-?c
 ```
 
 ### *Exercise Pack 4*
