@@ -490,6 +490,9 @@ my_square(4)
 
 ellipse_area(3, 5)</code></pre>
 </div>
+</div>
+<div id="data-structures" class="section level2">
+<h2>3. Data structures</h2>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
 <p>All the elements in a vector should be of the same object type.</p>
@@ -526,7 +529,7 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 78 20 65 66 21</code></pre>
+#&gt; [1] 35 96 78 88 91</code></pre>
 <ul>
 <li><code>min()</code> and <code>max()</code>: Minimum value and maximum value within a vector</li>
 <li><code>which.min()</code> and <code>which.max()</code>: Index of the minimal element and maximal element of a vector</li>
@@ -536,16 +539,16 @@ s
 </ul>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 15 58 85 76 95
+#&gt; [1] 64 82 54 10 46
 
 min(s)
-#&gt; [1] 15
+#&gt; [1] 10
 max(s)
-#&gt; [1] 95
+#&gt; [1] 82
 which.min(s)
-#&gt; [1] 1
+#&gt; [1] 4
 which.max(s)
-#&gt; [1] 5</code></pre>
+#&gt; [1] 2</code></pre>
 <p>Concatenate vectors</p>
 <pre class="r"><code>vec_1&lt;- c(1, 1, 1)
 vec_2&lt;- c(2, 2, 2)
