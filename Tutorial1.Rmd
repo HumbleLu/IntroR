@@ -128,8 +128,6 @@ __?__ Can you verify if the function `factorial` returns the correct result of $
 factorial(5)
 ```
 
-where `<-` is the assignment operator
-
 ### *Exercise Pack 1*
 1. Calculate the volume of a sphere (ball) whose raduis $r = 2$
 2. What is $35^\circ C$ in Fahrenheit ($^\circ F$)?
