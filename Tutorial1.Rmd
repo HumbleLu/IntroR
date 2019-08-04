@@ -8,16 +8,17 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 
 ## 0. Getting Started!
 
-## Why Learning R?
+## Why Learn R?
 
-* Free (impotrant!)
+* Free (impotrant)
 * Massive statistical packages
 * More and more popular in both academia and industry
 * _... Millions of  other reasons_
 
+## How to access
 
 * Download R from [CRAN](https://cran.r-project.org/mirrors.html)
-* You can also Download an useful GUI called [RStudio](https://www.rstudio.com/products/rstudio/)
+* You can also download an useful GUI called [RStudio](https://www.rstudio.com/products/rstudio/)
 
 
 ### RStudio
