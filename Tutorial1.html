@@ -206,15 +206,20 @@ $(document).ready(function () {
 <div id="getting-started" class="section level2">
 <h2>0. Getting Started!</h2>
 </div>
-<div id="why-learning-r" class="section level2">
-<h2>Why Learning R?</h2>
+<div id="why-learn-r" class="section level2">
+<h2>Why Learn R?</h2>
 <ul>
-<li>Free (impotrant!)</li>
+<li>Free (impotrant)</li>
 <li>Massive statistical packages</li>
 <li>More and more popular in both academia and industry</li>
-<li><p><em>… Millions of other reasons</em></p></li>
+<li><em>… Millions of other reasons</em></li>
+</ul>
+</div>
+<div id="how-to-access" class="section level2">
+<h2>How to access</h2>
+<ul>
 <li>Download R from <a href="https://cran.r-project.org/mirrors.html">CRAN</a></li>
-<li><p>You can also Download an useful GUI called <a href="https://www.rstudio.com/products/rstudio/">RStudio</a></p></li>
+<li>You can also download an useful GUI called <a href="https://www.rstudio.com/products/rstudio/">RStudio</a></li>
 </ul>
 <div id="rstudio" class="section level3">
 <h3>RStudio</h3>
@@ -542,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(1:100, 5)
 s
-#&gt; [1] 79 46 69 97 50</code></pre>
+#&gt; [1] 36 92 52 70 33</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1]  1 43 59 39 72
+#&gt; [1] 20 85 67 58 28
 sample(1:100, 5)
-#&gt; [1]  61  86 100  89   4
+#&gt; [1]  7 10 34 12 56
 
 set.seed(123)
 sample(1:100, 5)
@@ -909,6 +914,9 @@ print(&quot;Positive number&quot;)
 } else {
 print(&quot;Not a positive number&quot;)
 }
+#&gt; [1] &quot;Not a positive number&quot;</code></pre>
+<p>or</p>
+<pre class="r"><code>ifelse(x&gt;0, &quot;Positive number&quot;, &quot;Not a positive number&quot;)
 #&gt; [1] &quot;Not a positive number&quot;</code></pre>
 <p><code>if</code> … <code>else</code> ladder</p>
 <pre class="r"><code>x&lt;- 0

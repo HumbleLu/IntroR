@@ -679,6 +679,12 @@ print("Not a positive number")
 }
 ```
 
+or
+
+```{r}
+ifelse(x>0, "Positive number", "Not a positive number")
+```
+
 `if` ... `else` ladder
 ```{r}
 x<- 0
