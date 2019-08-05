@@ -545,14 +545,14 @@ a
 <pre><code>b&lt;- rep(x = 1, times = 3)
 b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
-<pre class="r"><code>s&lt;- sample(1:100, 5)
+<pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 36 92 52 70 33</code></pre>
+#&gt; [1] 21 53 59 40 90</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1] 20 85 67 58 28
+#&gt; [1]  71  69   6  43 100
 sample(1:100, 5)
-#&gt; [1]  7 10 34 12 56
+#&gt; [1] 100  15  41  54  67
 
 set.seed(123)
 sample(1:100, 5)
@@ -682,12 +682,19 @@ summary(f_x)
 <div id="matrices" class="section level3">
 <h3>Matrices</h3>
 <p>Define a matrix</p>
-<pre class="r"><code>x&lt;- matrix(1:15, nrow = 3, ncol = 5)
+<pre class="r"><code>x&lt;- matrix(1:15, nrow = 3, ncol = 5, byrow = F)
 x
 #&gt;      [,1] [,2] [,3] [,4] [,5]
 #&gt; [1,]    1    4    7   10   13
 #&gt; [2,]    2    5    8   11   14
-#&gt; [3,]    3    6    9   12   15</code></pre>
+#&gt; [3,]    3    6    9   12   15
+
+x&lt;- matrix(1:15, nrow = 3, ncol = 5, byrow = T)
+x
+#&gt;      [,1] [,2] [,3] [,4] [,5]
+#&gt; [1,]    1    2    3    4    5
+#&gt; [2,]    6    7    8    9   10
+#&gt; [3,]   11   12   13   14   15</code></pre>
 <p>Subset a matrix</p>
 <pre class="r"><code>x&lt;- matrix(1:15, nrow = 3, ncol = 5)
 x[2,]
@@ -916,7 +923,7 @@ print(&quot;Not a positive number&quot;)
 }
 #&gt; [1] &quot;Not a positive number&quot;</code></pre>
 <p>or</p>
-<pre class="r"><code>ifelse(x&gt;0, &quot;Positive number&quot;, &quot;Not a positive number&quot;)
+<pre class="r"><code>ifelse(test = x&gt;0, yes = &quot;Positive number&quot;, no = &quot;Not a positive number&quot;)
 #&gt; [1] &quot;Not a positive number&quot;</code></pre>
 <p><code>if</code> … <code>else</code> ladder</p>
 <pre class="r"><code>x&lt;- 0
@@ -1016,12 +1023,12 @@ greeting()</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Write a for loop to sum up all the elements of a vector, compare the result of simply using the function <code>sum</code>. Use the function <code>Sys.time()</code> to record the time, for example:</li>
 </ol>
-<pre class="r"><code>start&lt;- Sys.time()
+<pre class="r"><code>start_t&lt;- Sys.time()
 
 #computation
 
-end&lt;- Sys.time()
-end - start</code></pre>
+end_t&lt;- Sys.time()
+end_t - start_t</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Write a loop to print out all the prime numbers smaller than 50.</li>
 <li>Make an operator <code>%$&gt;€%</code> to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars ($) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1$.</li>

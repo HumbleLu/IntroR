@@ -387,7 +387,7 @@ b
 Use `sample` to create a vector with random numbers
 
 ```{r}
-s<- sample(1:100, 5)
+s<- sample(x = 1:100, size = 5)
 s
 ```
 
@@ -518,7 +518,10 @@ summary(f_x)
 ### Matrices
 Define a matrix
 ```{r}
-x<- matrix(1:15, nrow = 3, ncol = 5)
+x<- matrix(1:15, nrow = 3, ncol = 5, byrow = F)
+x
+
+x<- matrix(1:15, nrow = 3, ncol = 5, byrow = T)
 x
 ```
 
@@ -682,7 +685,7 @@ print("Not a positive number")
 or
 
 ```{r}
-ifelse(x>0, "Positive number", "Not a positive number")
+ifelse(test = x>0, yes = "Positive number", no = "Not a positive number")
 ```
 
 `if` ... `else` ladder
@@ -791,13 +794,14 @@ Note. `lubridate::hour(Sys.time())` returns the current hour (0-24).
 
 2. Write a for loop to sum up all the elements of a vector, compare the result of simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
 ```{r, eval=F}
-start<- Sys.time()
+start_t<- Sys.time()
 
 #computation
 
-end<- Sys.time()
-end - start
+end_t<- Sys.time()
+end_t - start_t
 ```
+
 3. Write a loop to print out all the prime numbers smaller than 50.
 4. Make an operator `%$>€%` to detect if the amount of money of the left hand side is greater than the right hand side. Where the left hand side is holding US dollars (\$) and the right hand side is holding Euros (€). The exchange rate is 1€ = 1.1\$.
 5. Use `apply` to compute the coefficient of variation (CV) of each column in the steam dataset.
