@@ -169,5 +169,19 @@ predict(lm_step, input)
 ### *Exercise 6*
 [To be announced]
 
+<!-- 1. Exploring _Centrial Limit Theorem_. Generate 100 samples from a poisson distribution (`rpois()`) with parameter $\lambda = 2$. Repeate the process 1000 times. Compute the mean and standard deviation values of the samples. -->
+
+<!-- 2.  -->
+
+
+<!-- N<- 10000 -->
+<!-- pois_samples<- lapply(1:N, function(n) rpois(100, 2)) -->
+
+<!-- mu<- sapply(pois_samples, mean) -->
+
+<!-- mean(mu) -->
+
+<!-- var(mu) -->
+
 <!-- ## 7. Packages -->
 <!-- `installed.packages`, `install.packages`, `(.packages())`, `library` -->
