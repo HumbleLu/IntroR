@@ -801,7 +801,7 @@ greeting<- function(hour = as.numeric(format(strptime(Sys.time(), "%Y-%m-%d %H:%
 greeting()
 ```
 
-2. Write a for loop to sum up all the elements of a vector, compare time comsumtio to simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
+2. Write a for loop to sum up all the elements of a vector, compare time comsumption with simply using the function `sum`. Use the function `Sys.time()` to record the time, for example:
 ```{r, eval=F}
 start_t<- Sys.time()
 
