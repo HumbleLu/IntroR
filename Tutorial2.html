@@ -249,12 +249,21 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)</code></pre>
 <div id="histogram" class="section level3">
 <h3>Histogram</h3>
 <pre class="r"><code>attach(iris)
+#&gt; The following objects are masked from iris (pos = 7):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 9):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 hist(Sepal.Length)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="barplot" class="section level3">
 <h3>Barplot</h3>
 <pre class="r"><code>attach(chickwts)
+#&gt; The following objects are masked from chickwts (pos = 9):
+#&gt; 
+#&gt;     feed, weight
 barplot(table(feed))</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
@@ -328,6 +337,12 @@ rnorm(10, 0, 1)
 #&gt; The following objects are masked from iris (pos = 4):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 9):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 11):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 levels(Species)
 #&gt; [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;
 t.test(Sepal.Length[Species == &quot;setosa&quot;], Sepal.Length[Species == &quot;versicolor&quot;])
@@ -356,6 +371,9 @@ summary(aov_res)
 <div id="linear-regression" class="section level3">
 <h3>Linear Regression</h3>
 <pre class="r"><code>attach(airquality)
+#&gt; The following objects are masked from airquality (pos = 9):
+#&gt; 
+#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
 lm_res&lt;- lm(Ozone ~ Solar.R + Wind + Temp)
 summary(lm_res)
 #&gt; 
@@ -433,8 +451,8 @@ predict(lm_step, input)
 <h2>7. Packages</h2>
 <p>The packages such as <code>stats</code>, <code>base</code> are autimatically loaded.</p>
 <pre class="r"><code>(.packages())
-#&gt; [1] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
-#&gt; [7] &quot;base&quot;</code></pre>
+#&gt;  [1] &quot;tsne&quot;      &quot;rpart&quot;     &quot;nnet&quot;      &quot;stats&quot;     &quot;graphics&quot; 
+#&gt;  [6] &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;   &quot;base&quot;</code></pre>
 <p>Loading packages which are already installed.</p>
 <p>Example: Single-Layer Neurual Network</p>
 <pre class="r"><code>library(nnet)

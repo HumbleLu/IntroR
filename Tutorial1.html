@@ -547,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 95 18 31 43 76</code></pre>
+#&gt; [1] 55 66 17 62 30</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1] 65 12 16 68 21
+#&gt; [1] 73 40 95 94 70
 sample(1:100, 5)
-#&gt; [1] 39 89 61 93  7
+#&gt; [1]  26  22  59 100  51
 
 set.seed(123)
 sample(1:100, 5)
@@ -1026,7 +1026,7 @@ greeting()</code></pre>
 
 greeting()</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Write a for loop to sum up all the elements of a vector, compare the result of simply using the function <code>sum</code>. Use the function <code>Sys.time()</code> to record the time, for example:</li>
+<li>Write a for loop to sum up all the elements of a vector, compare time comsumtio to simply using the function <code>sum</code>. Use the function <code>Sys.time()</code> to record the time, for example:</li>
 </ol>
 <pre class="r"><code>start_t&lt;- Sys.time()
 
