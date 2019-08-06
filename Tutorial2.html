@@ -319,8 +319,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1] -0.5925934  0.5141991 -0.3448022  1.0675421  0.7110256  0.8404659
-#&gt;  [7]  1.3354646  1.5960363  0.8810309 -0.8718251</code></pre>
+#&gt;  [1]  1.2240818  0.3598138  0.4007715  0.1106827 -0.5558411  1.7869131
+#&gt;  [7]  0.4978505 -1.9666172  0.7013559 -0.4727914</code></pre>
 </div>
 <div id="student-t-test" class="section level3">
 <h3>Student t-test</h3>
@@ -449,12 +449,19 @@ test_dat&lt;- iris[test_ind,]
 
 nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
 #&gt; # weights:  43
-#&gt; initial  value 156.600034 
-#&gt; iter  10 value 32.437395
-#&gt; iter  20 value 1.355278
-#&gt; iter  30 value 0.016042
-#&gt; final  value 0.000065 
-#&gt; converged
+#&gt; initial  value 141.763646 
+#&gt; iter  10 value 58.342863
+#&gt; iter  20 value 38.887199
+#&gt; iter  30 value 6.141071
+#&gt; iter  40 value 3.709795
+#&gt; iter  50 value 1.933645
+#&gt; iter  60 value 1.909516
+#&gt; iter  70 value 1.909044
+#&gt; iter  80 value 1.902682
+#&gt; iter  90 value 1.463253
+#&gt; iter 100 value 1.386837
+#&gt; final  value 1.386837 
+#&gt; stopped after 100 iterations
 
 pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 
@@ -473,8 +480,8 @@ pred_cart&lt;- predict(cart_model, test_dat, type = &#39;class&#39;)
 ## Accuracy
 table(test_dat$Species == pred_cart) / nrow(test_dat)
 #&gt; 
-#&gt;     FALSE      TRUE 
-#&gt; 0.2333333 0.7666667</code></pre>
+#&gt; FALSE  TRUE 
+#&gt;   0.1   0.9</code></pre>
 <p>Use <code>install.packages()</code> to install package.</p>
 <p>Example: Use t-SNE for dimensionality reduction.</p>
 <pre class="r"><code>library(tsne)
