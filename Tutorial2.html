@@ -249,10 +249,16 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)</code></pre>
 <div id="histogram" class="section level3">
 <h3>Histogram</h3>
 <pre class="r"><code>attach(iris)
-#&gt; The following objects are masked from iris (pos = 7):
+#&gt; The following objects are masked from iris (pos = 4):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 9):
+#&gt; The following objects are masked from iris (pos = 6):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 11):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 13):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 hist(Sepal.Length)</code></pre>
@@ -261,7 +267,10 @@ hist(Sepal.Length)</code></pre>
 <div id="barplot" class="section level3">
 <h3>Barplot</h3>
 <pre class="r"><code>attach(chickwts)
-#&gt; The following objects are masked from chickwts (pos = 9):
+#&gt; The following objects are masked from chickwts (pos = 6):
+#&gt; 
+#&gt;     feed, weight
+#&gt; The following objects are masked from chickwts (pos = 13):
 #&gt; 
 #&gt;     feed, weight
 barplot(table(feed))</code></pre>
@@ -337,10 +346,16 @@ rnorm(10, 0, 1)
 #&gt; The following objects are masked from iris (pos = 4):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 9):
+#&gt; The following objects are masked from iris (pos = 6):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 11):
+#&gt; The following objects are masked from iris (pos = 8):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 13):
+#&gt; 
+#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
+#&gt; The following objects are masked from iris (pos = 15):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 levels(Species)
@@ -371,7 +386,10 @@ summary(aov_res)
 <div id="linear-regression" class="section level3">
 <h3>Linear Regression</h3>
 <pre class="r"><code>attach(airquality)
-#&gt; The following objects are masked from airquality (pos = 9):
+#&gt; The following objects are masked from airquality (pos = 6):
+#&gt; 
+#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
+#&gt; The following objects are masked from airquality (pos = 13):
 #&gt; 
 #&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
 lm_res&lt;- lm(Ozone ~ Solar.R + Wind + Temp)
