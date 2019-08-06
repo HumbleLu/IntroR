@@ -116,6 +116,18 @@ dev.off()
 
 ## 6. Statistical Computation
 
+### Descriptive Statistics
+
+* `mean()`: mean
+* `var()`: variance
+* `sd()`: standard deviation
+* `quantile()`: sample quantiles
+* `min()`: minimum
+* `max()`: maximum
+* `range()`: range (minimum and maximum values)
+* `summary()`: summary
+* `IQR()`: interquartile range
+
 ### Distributions
 
 * `d`xxx: density
@@ -226,12 +238,18 @@ table(test_dat$Species == pred_cart) / nrow(test_dat)
 
 Use `install.packages()` to install package.
 
-Example: Use t-SNE for dimensionality reduction.
+Example: Use t-SNE for dimensionality reduction, visualizing breast cancer data.
 
 ```{r}
 library(tsne)
 
+url<- "https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data"
+exp_dat<- read.table(url, sep = ",", header = F)
 
+tsne_res<- tsne(exp_dat[, 3:32], perplexity = 100)
+
+plot(tsne_res[which(exp_dat$V2 == "B"), ], col = 1, pch = 20, xlim = c(-6, 6), ylim = c(-6, 6), xlab = "", ylab = "")
+points(tsne_res[which(exp_dat$V2 == "M"), ], col = 2, pch = 20)
 ```
 
 <!-- `installed.packages`, `install.packages`, `(.packages())`, `library` -->
