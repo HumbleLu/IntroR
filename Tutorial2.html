@@ -319,8 +319,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  0.8128135 -0.4128694  1.8224569 -0.8859403 -0.4806117 -1.0103728
-#&gt;  [7]  0.4143867  0.4295820 -0.6610991  0.6079467</code></pre>
+#&gt;  [1] -0.5925934  0.5141991 -0.3448022  1.0675421  0.7110256  0.8404659
+#&gt;  [7]  1.3354646  1.5960363  0.8810309 -0.8718251</code></pre>
 </div>
 <div id="student-t-test" class="section level3">
 <h3>Student t-test</h3>
@@ -420,17 +420,66 @@ predict(lm_step, input)
 <div id="exercise-6" class="section level3">
 <h3><em>Exercise 6</em></h3>
 <p>[To be announced]</p>
-<ol style="list-style-type: decimal">
-<li><em>Centrial Limit Theorem</em>. Generate 100 samples from a poisson distribution (<code>rpois()</code>) with parameter <span class="math inline">\(\lambda = 2\)</span>. Repeate the process 1000 times. Compute the mean and standard deviation values of the samples.</li>
-</ol>
+<!-- 1. Exploring _Centrial Limit Theorem_. Generate 100 samples from a poisson distribution (`rpois()`) with parameter $\lambda = 2$. Repeate the process 1000 times. Compute the mean and standard deviation values of the samples. -->
+<!-- 2.  -->
 <!-- N<- 10000 -->
 <!-- pois_samples<- lapply(1:N, function(n) rpois(100, 2)) -->
 <!-- mu<- sapply(pois_samples, mean) -->
 <!-- mean(mu) -->
 <!-- var(mu) -->
-<!-- ## 7. Packages -->
-<!-- `installed.packages`, `install.packages`, `(.packages())`, `library` -->
 </div>
+</div>
+<div id="packages" class="section level2">
+<h2>7. Packages</h2>
+<p>The packages such as <code>stats</code>, <code>base</code> are autimatically loaded.</p>
+<pre class="r"><code>(.packages())
+#&gt; [1] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+#&gt; [7] &quot;base&quot;</code></pre>
+<p>Loading packages which are already installed.</p>
+<p>Example: Single-Layer Neurual Network</p>
+<pre class="r"><code>library(nnet)
+
+## split data into training and testing datasets
+n_samples&lt;- nrow(iris)
+train_ind&lt;- sample(1:n_samples, n_samples * (4/5))
+test_ind&lt;- (1:n_samples)[-train_ind]
+
+train_dat&lt;- iris[train_ind,]
+test_dat&lt;- iris[test_ind,]
+
+nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
+#&gt; # weights:  43
+#&gt; initial  value 156.600034 
+#&gt; iter  10 value 32.437395
+#&gt; iter  20 value 1.355278
+#&gt; iter  30 value 0.016042
+#&gt; final  value 0.000065 
+#&gt; converged
+
+pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
+
+## Accuracy
+table(test_dat$Species == pred_nn) / nrow(test_dat)
+#&gt; 
+#&gt; FALSE  TRUE 
+#&gt;   0.1   0.9</code></pre>
+<p>Example: Decision Tree</p>
+<pre class="r"><code>library(rpart)
+
+cart_model&lt;- rpart(Species ~., data = test_dat)
+
+pred_cart&lt;- predict(cart_model, test_dat, type = &#39;class&#39;)
+
+## Accuracy
+table(test_dat$Species == pred_cart) / nrow(test_dat)
+#&gt; 
+#&gt;     FALSE      TRUE 
+#&gt; 0.2333333 0.7666667</code></pre>
+<p>Use <code>install.packages()</code> to install package.</p>
+<p>Example: Use t-SNE for dimensionality reduction.</p>
+<pre class="r"><code>library(tsne)
+</code></pre>
+<!-- `installed.packages`, `install.packages`, `(.packages())`, `library` -->
 </div>
 
 

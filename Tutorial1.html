@@ -547,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 21 53 59 40 90</code></pre>
+#&gt; [1] 24 28 82 29 40</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1]  71  69   6  43 100
+#&gt; [1] 60 34 86 42 21
 sample(1:100, 5)
-#&gt; [1] 100  15  41  54  67
+#&gt; [1] 61  4  8 55 81
 
 set.seed(123)
 sample(1:100, 5)
@@ -1019,7 +1019,12 @@ apply(a, 2, sum)
 }
 
 greeting()</code></pre>
-<p>Note. <code>lubridate::hour(Sys.time())</code> returns the current hour (0-24).</p>
+<p>Note. <code>lubridate::hour(Sys.time())</code> returns the current hour (0-24). If the package <code>lubridate</code> is not installed, use:</p>
+<pre class="r"><code>greeting&lt;- function(hour = as.numeric(format(strptime(Sys.time(), &quot;%Y-%m-%d %H:%M:%S&quot;) , &quot;%H&quot;))){
+  
+}
+
+greeting()</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Write a for loop to sum up all the elements of a vector, compare the result of simply using the function <code>sum</code>. Use the function <code>Sys.time()</code> to record the time, for example:</li>
 </ol>
