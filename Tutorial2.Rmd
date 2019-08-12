@@ -270,7 +270,6 @@ predict(lm_step, input)
 ```
 
 ### *Exercise 6*
-[To be announced]
 
 1. Use the dataset `iris`, calculate the corrlations among variables `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`.
 
