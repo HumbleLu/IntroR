@@ -408,8 +408,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  1.24108848  0.06548462  0.18835911 -0.94653978 -0.65942574
-#&gt;  [6]  0.75876490 -0.33677839 -0.72915435 -1.68676190  0.27001090
+#&gt;  [1]  0.53209402 -0.13263053  0.69989882  0.40800797  1.03467739
+#&gt;  [6]  1.69081700  0.93634575 -0.07849017 -0.67668258  0.41703984
 
 x&lt;- rnorm(100000, 0, 1)
 hist(x, freq = F, ylim = c(0, .5))
@@ -424,8 +424,8 @@ qbeta(.975, 1, 2)
 pbeta(0.5, 1, 2)
 #&gt; [1] 0.75
 rbeta(10, 1, 2)
-#&gt;  [1] 0.64585356 0.05265792 0.64357964 0.50169891 0.43602391 0.39859553
-#&gt;  [7] 0.20548519 0.06728200 0.34020248 0.36302699</code></pre>
+#&gt;  [1] 0.49082942 0.07917689 0.49001273 0.30305234 0.21792756 0.30265485
+#&gt;  [7] 0.25286902 0.51872782 0.56254605 0.15683740</code></pre>
 <p>E.g. Gamma distribution</p>
 <pre class="r"><code>dgamma(10, 5)
 #&gt; [1] 0.01891664
@@ -434,8 +434,8 @@ qgamma(.5, 5)
 pgamma(10, 5)
 #&gt; [1] 0.9707473
 rgamma(10, 5)
-#&gt;  [1] 4.302396 4.860272 2.515214 5.016404 4.870570 6.733920 5.352234
-#&gt;  [8] 2.764803 5.835245 5.459239</code></pre>
+#&gt;  [1] 2.947596 5.904625 5.052970 2.230920 3.578478 6.111055 2.600024
+#&gt;  [8] 1.612654 6.702127 3.684440</code></pre>
 <p>Other commonly used distributions</p>
 <ul>
 <li>Uniform (<code>dunif</code>, <code>qunif</code>, <code>punif</code>, <code>runif</code>)</li>
@@ -562,7 +562,7 @@ predict(lm_step, input)
 <pre class="r"><code>(.packages())
 #&gt; [1] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
 #&gt; [7] &quot;base&quot;</code></pre>
-<p>Loading packages which are already installed.</p>
+<p>You can use <code>library</code> to load packages which are already installed.</p>
 <p>Example: Single-Layer Neurual Network</p>
 <pre class="r"><code>library(nnet)
 
@@ -576,16 +576,17 @@ test_dat&lt;- iris[test_ind,]
 
 nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
 #&gt; # weights:  43
-#&gt; initial  value 140.869538 
-#&gt; iter  10 value 67.797899
-#&gt; iter  20 value 8.081480
-#&gt; iter  30 value 5.711318
-#&gt; iter  40 value 5.313589
-#&gt; iter  50 value 4.790873
-#&gt; iter  60 value 4.750015
-#&gt; iter  70 value 4.749532
-#&gt; iter  80 value 4.749507
-#&gt; final  value 4.749481 
+#&gt; initial  value 163.110572 
+#&gt; iter  10 value 53.318740
+#&gt; iter  20 value 7.189069
+#&gt; iter  30 value 4.761067
+#&gt; iter  40 value 4.385471
+#&gt; iter  50 value 3.430206
+#&gt; iter  60 value 3.412761
+#&gt; iter  70 value 3.153460
+#&gt; iter  80 value 3.133331
+#&gt; iter  90 value 3.132863
+#&gt; final  value 3.132863 
 #&gt; converged
 
 pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
@@ -593,8 +594,8 @@ pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 ## Accuracy
 table(test_dat$Species == pred_nn) / nrow(test_dat)
 #&gt; 
-#&gt;      FALSE       TRUE 
-#&gt; 0.03333333 0.96666667</code></pre>
+#&gt;     FALSE      TRUE 
+#&gt; 0.1666667 0.8333333</code></pre>
 <p>Example: Decision Tree</p>
 <pre class="r"><code>library(rpart)
 
@@ -616,16 +617,16 @@ exp_dat&lt;- read.table(url, sep = &quot;,&quot;, header = F)
 
 tsne_res&lt;- tsne(exp_dat[, 3:32], perplexity = 100)
 #&gt; sigma summary: Min. : 0.38658523478823 |1st Qu. : 0.61806546548001 |Median : 0.648107496657062 |Mean : 0.651623332613159 |3rd Qu. : 0.67963590493686 |Max. : 1.05004711205922 |
-#&gt; Epoch: Iteration #100 error is: 14.5450876393316
-#&gt; Epoch: Iteration #200 error is: 1.01168237837721
-#&gt; Epoch: Iteration #300 error is: 0.984728888723997
-#&gt; Epoch: Iteration #400 error is: 0.982557743992572
-#&gt; Epoch: Iteration #500 error is: 0.982008761820144
-#&gt; Epoch: Iteration #600 error is: 0.982008760916459
-#&gt; Epoch: Iteration #700 error is: 0.982008760916459
-#&gt; Epoch: Iteration #800 error is: 0.982008760916459
-#&gt; Epoch: Iteration #900 error is: 0.982008760916459
-#&gt; Epoch: Iteration #1000 error is: 0.982008760916459
+#&gt; Epoch: Iteration #100 error is: 15.2660206611211
+#&gt; Epoch: Iteration #200 error is: 1.01921346284769
+#&gt; Epoch: Iteration #300 error is: 1.01023684696447
+#&gt; Epoch: Iteration #400 error is: 1.00171720167899
+#&gt; Epoch: Iteration #500 error is: 1.00165419802791
+#&gt; Epoch: Iteration #600 error is: 1.00165419793708
+#&gt; Epoch: Iteration #700 error is: 1.00165419793708
+#&gt; Epoch: Iteration #800 error is: 1.00165419793708
+#&gt; Epoch: Iteration #900 error is: 1.00165419793708
+#&gt; Epoch: Iteration #1000 error is: 1.00165419793708
 
 plot(tsne_res[which(exp_dat$V2 == &quot;B&quot;), ], col = 1, pch = 20, xlim = c(-6, 6), ylim = c(-6, 6), xlab = &quot;&quot;, ylab = &quot;&quot;)
 points(tsne_res[which(exp_dat$V2 == &quot;M&quot;), ], col = 2, pch = 20)</code></pre>

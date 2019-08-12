@@ -291,7 +291,7 @@ The packages such as `stats`, `base` are autimatically loaded.
 (.packages())
 ```
 
-Loading packages which are already installed.
+You can use `library` to load packages which are already installed.
 
 Example: Single-Layer Neurual Network
 ```{r}
