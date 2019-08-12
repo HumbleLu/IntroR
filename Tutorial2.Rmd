@@ -18,15 +18,18 @@ Some commonly used functions
 * `abline()`
 
 ```{r}
-x<- seq(0, 2*pi, .2)
-plot(x, sin(x), type = "p")
-plot(x, sin(x), type = "l")
-plot(x, sin(x), type = "o")
+x<- 1:5
+y<- c(3, 2, 4, 1, 5)
+plot(x, y, type = "p", main = "point")
+plot(y, type = "p", main = "point")
+plot(x, y, type = "l", main = "line")
+plot(x, y, type = "o", main = "line and point")
 ```
 
-Add points, lines, legend
+Add points, lines, title and legend
 ```{r}
-plot(x, sin(x), type = "o")
+x<- seq(0, 2*pi, .2)
+plot(x, sin(x), type = "o", pch = 19)
 points(x, cos(x), pch = 19, col = 2)
 lines(x, cos(x), lty = 2, col = 2)
 legend(4, 1, legend = c("sin", "cos"), pch = c(1, 19), lty = c(1, 2), col = c(1, 2))
@@ -45,8 +48,9 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)
 ```{r}
 plot(NULL, xlim = c(0,4), ylim = c(1,6), xlab = "", ylab = "", axes = F)
 for(i in 1:6){
-  lines(c(1, 4), c(i, i), lty = i)
-  text(0.5, i, paste("lty = ", i))
+  y_pos<- 6:1
+  lines(c(1, 4), c(y_pos[i], y_pos[i]), lty = i)
+  text(0.5, i, paste("lty = ", y_pos[i]))
 }
 ```
 
@@ -75,7 +79,7 @@ barplot(table(feed))
 boxplot(weight)
 ```
 
-Group-wise
+Group-wise boxplot
 ```{r}
 boxplot(weight~feed)
 ```
@@ -90,15 +94,15 @@ boxplot(weight~feed)
 ```
 
 ```{r}
+attach(chickwts)
 layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
 boxplot(weight~feed)
 hist(weight)
-barplot(table(feed))
+boxplot(weight)
 ```
 
-### Scatter plot
+### Scatter plot for more than 2 variables
 ```{r}
-str(trees)
 pairs(trees)
 ```
 
@@ -109,10 +113,39 @@ plot(x, sin(x), type = "o")
 dev.off()
 ```
 
-### *Exercise 5*
-[To be announced]
-<!-- 1. Make a function with parameter n to approximate the *sin* function -->
-<!-- 2. Make plot comparing with the actual value -->
+### *Exercise 5* 
+(attach the corresponding plots to the email)
+
+1. Use the dataset `airquality`. Draw a scattar to show the relationship between variables `Ozone` and `Solar.R`. Show the points with `Wind` values greater than 9.7 in red, otherwise in black.
+
+2. Make plot to monitor the convergence of the exponential function ($e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}$) with $x = 5$. Save the plot and attach to the email.
+
+```{r, eval = F}
+taylor_appox<- function(x){
+  function(N){
+    # TODO
+  }
+}
+
+x<- 5
+taylor_appox_N<- taylor_appox(x)
+
+N_vec<- 1:20
+approx_val<- sapply(N_vec, function(N){
+  # TODO
+}} 
+plot(N_vec, approx_val)
+```
+
+3. Use the dataset `sleep`. Put a histogram and a boxplot in one plot to show the overall pattern of the increased sleeping time (variable `extra`).
+
+4. Use the dataset `sleep`. Use boxplots to show the difference of the increased sleeping time between two groups.
+
+5. Use the vector `islands`. Use barplots to disply the area of the 2 smallest islands and the 2 biggest islands. (Hint. you can use `sort(, decreasing = )` to sort a vector.)
+
+6. Use dataset `iris`. Make a scatter plot of four variables `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`. Show different species in different colors. (e.g. `setosa` in black, `versicolor` in red and `virginica` in green)
+
+7. Use dataset `ChickWeight`. From each of the `Diet` group, select 1 chick (identifier variable `Chick`). Make a time series plot to show the weight changing over time of the 4 selected chicks, each in one different color. Put a legend on the plot which contains the information of the selected chicks (`Diet` and `Chick`) and their corresponding colors.
 
 ## 6. Statistical Computation
 
@@ -121,12 +154,35 @@ dev.off()
 * `mean()`: mean
 * `var()`: variance
 * `sd()`: standard deviation
+* `median()`: median
 * `quantile()`: sample quantiles
 * `min()`: minimum
 * `max()`: maximum
 * `range()`: range (minimum and maximum values)
 * `summary()`: summary
 * `IQR()`: interquartile range
+* `cov()`: covariance
+* `cor()`: correlation
+
+```{r}
+quantile(trees$Height, prob = c(.05, .15, .25, .75))
+
+mean(trees$Height)
+
+var(trees$Height)
+
+cov(trees)
+
+cor(trees)
+
+summary(trees)
+
+apply(trees, 2, range)
+
+apply(trees, 2, sd)
+
+apply(trees, 2, IQR)
+```
 
 ### Distributions
 
@@ -135,16 +191,51 @@ dev.off()
 * `p`xxx: cumulative 
 * `r`xxx: randome samples
 
-Take normal distribution for an example
+E.g. Normal distribution
 
 ```{r}
 dnorm(0, 0, 1)
 qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 rnorm(10, 0, 1)
+
+x<- rnorm(100000, 0, 1)
+hist(x, freq = F, ylim = c(0, .5))
+lines(density(x))
 ```
 
-### Student t-test
+`density`: kernel density estimation.
+
+E.g. Beta distribution
+
+```{r}
+dbeta(0.5, 1, 2)
+qbeta(.975, 1, 2)
+pbeta(0.5, 1, 2)
+rbeta(10, 1, 2)
+```
+
+E.g. Gamma distribution
+
+```{r}
+dgamma(10, 5)
+qgamma(.5, 5)
+pgamma(10, 5)
+rgamma(10, 5)
+```
+
+Other commonly used distributions 
+
+* Uniform (`dunif`, `qunif`, `punif`, `runif`)
+* Binomial (`dbinom`, `qbinom`, `pbinom`, `rbinom`)
+* Poisson (`dpois`, `qpois`, `ppois`, `rpois`)
+* Cauchy (`dcauchy`, `qcauchy`, `pcauchy`, `rcauchy`)
+* Student t (`dt`, `qt`, `pt`, `rt`)
+* Weibull (`dweibul`, `qweibul`, `pweibul`, `rweibul`)
+* Geometric (`dgeom`, `qgeom`, `pgeom`, `rgeom`)
+* ...
+
+### Student's *t*-test
 ```{r}
 attach(iris)
 levels(Species)
@@ -181,19 +272,17 @@ predict(lm_step, input)
 ### *Exercise 6*
 [To be announced]
 
-<!-- 1. Exploring _Centrial Limit Theorem_. Generate 100 samples from a poisson distribution (`rpois()`) with parameter $\lambda = 2$. Repeate the process 1000 times. Compute the mean and standard deviation values of the samples. -->
+1. Use the dataset `iris`, calculate the corrlations among variables `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`.
 
-<!-- 2.  -->
+2. Use the dataset `iris`, calculate the summary statistics of variables `Sepal.Length`, `Sepal.Width`, `Petal.Length` and `Petal.Width`.
 
+3. Exploring _Centrial Limit Theorem_. Generate 100 samples from a poisson distribution (`rpois`) with parameter $\lambda = 2$, calculate the mean value out of the 100 samples. Repeate the process 10000 times. Make a histogram of the 10000 mean values. Check the empirical mean and the standard deviation of the 10000 mean values, compare to the theoretical values $\mu = 2$ and $\sigma = \frac{\sqrt{2}}{10}$.
 
-<!-- N<- 10000 -->
-<!-- pois_samples<- lapply(1:N, function(n) rpois(100, 2)) -->
+4. Use the dataset `sleep`, conduct a statistical test of the hypothesis that there is no difference of the increased slepping hours between two groups. The significant level $\alpha = 0.05$. (Hint: `paired = T`).
 
-<!-- mu<- sapply(pois_samples, mean) -->
+5. Use the dataset `chickwts`, conduct a statistical test of the hypothesis that the feed type doesn't affect the weight of chicks.
 
-<!-- mean(mu) -->
-
-<!-- var(mu) -->
+6. Use the dataset `cars`, build a linear model to examine how the speed (`speed`) affacts the stopping distance (`dist`).
 
 ## 7. Packages
 The packages such as `stats`, `base` are autimatically loaded.

@@ -214,15 +214,19 @@ $(document).ready(function () {
 <li><code>mtest()</code></li>
 <li><code>abline()</code></li>
 </ul>
-<pre class="r"><code>x&lt;- seq(0, 2*pi, .2)
-plot(x, sin(x), type = &quot;p&quot;)</code></pre>
+<pre class="r"><code>x&lt;- 1:5
+y&lt;- c(3, 2, 4, 1, 5)
+plot(x, y, type = &quot;p&quot;, main = &quot;point&quot;)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>plot(x, sin(x), type = &quot;l&quot;)</code></pre>
+<pre class="r"><code>plot(y, type = &quot;p&quot;, main = &quot;point&quot;)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
-<pre class="r"><code>plot(x, sin(x), type = &quot;o&quot;)</code></pre>
+<pre class="r"><code>plot(x, y, type = &quot;l&quot;, main = &quot;line&quot;)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
-<p>Add points, lines, legend</p>
-<pre class="r"><code>plot(x, sin(x), type = &quot;o&quot;)
+<pre class="r"><code>plot(x, y, type = &quot;o&quot;, main = &quot;line and point&quot;)</code></pre>
+<p><img src="Tutorial2_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<p>Add points, lines, title and legend</p>
+<pre class="r"><code>x&lt;- seq(0, 2*pi, .2)
+plot(x, sin(x), type = &quot;o&quot;, pch = 19)
 points(x, cos(x), pch = 19, col = 2)
 lines(x, cos(x), lty = 2, col = 2)
 legend(4, 1, legend = c(&quot;sin&quot;, &quot;cos&quot;), pch = c(1, 19), lty = c(1, 2), col = c(1, 2))</code></pre>
@@ -236,8 +240,9 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)</code></pre>
 <p><code>lty</code>: line style</p>
 <pre class="r"><code>plot(NULL, xlim = c(0,4), ylim = c(1,6), xlab = &quot;&quot;, ylab = &quot;&quot;, axes = F)
 for(i in 1:6){
-  lines(c(1, 4), c(i, i), lty = i)
-  text(0.5, i, paste(&quot;lty = &quot;, i))
+  y_pos&lt;- 6:1
+  lines(c(1, 4), c(y_pos[i], y_pos[i]), lty = i)
+  text(0.5, i, paste(&quot;lty = &quot;, y_pos[i]))
 }</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p><code>color</code>: color</p>
@@ -249,48 +254,12 @@ text(sapply(1:5, function(x) rep(x, 5)) -.2, rep(5:1, 5), 1:25)</code></pre>
 <div id="histogram" class="section level3">
 <h3>Histogram</h3>
 <pre class="r"><code>attach(iris)
-#&gt; The following objects are masked from iris (pos = 4):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 6):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 8):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 10):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 12):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 14):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 19):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 21):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 hist(Sepal.Length)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="barplot" class="section level3">
 <h3>Barplot</h3>
 <pre class="r"><code>attach(chickwts)
-#&gt; The following objects are masked from chickwts (pos = 6):
-#&gt; 
-#&gt;     feed, weight
-#&gt; The following objects are masked from chickwts (pos = 10):
-#&gt; 
-#&gt;     feed, weight
-#&gt; The following objects are masked from chickwts (pos = 14):
-#&gt; 
-#&gt;     feed, weight
-#&gt; The following objects are masked from chickwts (pos = 21):
-#&gt; 
-#&gt;     feed, weight
 barplot(table(feed))</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
@@ -298,7 +267,7 @@ barplot(table(feed))</code></pre>
 <h3>Boxplot</h3>
 <pre class="r"><code>boxplot(weight)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>Group-wise</p>
+<p>Group-wise boxplot</p>
 <pre class="r"><code>boxplot(weight~feed)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
@@ -310,20 +279,19 @@ hist(weight)
 boxplot(weight)
 boxplot(weight~feed)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<pre class="r"><code>layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+<pre class="r"><code>attach(chickwts)
+#&gt; The following objects are masked from chickwts (pos = 3):
+#&gt; 
+#&gt;     feed, weight
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
 boxplot(weight~feed)
 hist(weight)
-barplot(table(feed))</code></pre>
+boxplot(weight)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
-<div id="scatter-plot" class="section level3">
-<h3>Scatter plot</h3>
-<pre class="r"><code>str(trees)
-#&gt; &#39;data.frame&#39;:    31 obs. of  3 variables:
-#&gt;  $ Girth : num  8.3 8.6 8.8 10.5 10.7 10.8 11 11 11.1 11.2 ...
-#&gt;  $ Height: num  70 65 63 72 81 83 66 75 80 75 ...
-#&gt;  $ Volume: num  10.3 10.3 10.2 16.4 18.8 19.7 15.6 18.2 22.6 19.9 ...
-pairs(trees)</code></pre>
+<div id="scatter-plot-for-more-than-2-variables" class="section level3">
+<h3>Scatter plot for more than 2 variables</h3>
+<pre class="r"><code>pairs(trees)</code></pre>
 <p><img src="Tutorial2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="plot-into-a-file" class="section level3">
@@ -334,7 +302,32 @@ dev.off()</code></pre>
 </div>
 <div id="exercise-5" class="section level3">
 <h3><em>Exercise 5</em></h3>
-<p>[To be announced] <!-- 1. Make a function with parameter n to approximate the *sin* function --> <!-- 2. Make plot comparing with the actual value --></p>
+<p>(attach the corresponding plots to the email)</p>
+<ol style="list-style-type: decimal">
+<li><p>Use the dataset <code>airquality</code>. Draw a scattar to show the relationship between variables <code>Ozone</code> and <code>Solar.R</code>. Show the points with <code>Wind</code> values greater than 9.7 in red, otherwise in black.</p></li>
+<li><p>Make plot to monitor the convergence of the exponential function (<span class="math inline">\(e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}\)</span>) with <span class="math inline">\(x = 5\)</span>. Save the plot and attach to the email.</p></li>
+</ol>
+<pre class="r"><code>taylor_appox&lt;- function(x){
+  function(N){
+    # TODO
+  }
+}
+
+x&lt;- 5
+taylor_appox_N&lt;- taylor_appox(x)
+
+N_vec&lt;- 1:20
+approx_val&lt;- sapply(N_vec, function(N){
+  # TODO
+}} 
+plot(N_vec, approx_val)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Use the dataset <code>sleep</code>. Put a histogram and a boxplot in one plot to show the overall pattern of the increased sleeping time (variable <code>extra</code>).</p></li>
+<li><p>Use the dataset <code>sleep</code>. Use boxplots to show the difference of the increased sleeping time between two groups.</p></li>
+<li><p>Use the vector <code>islands</code>. Use barplots to disply the area of the 2 smallest islands and the 2 biggest islands. (Hint. you can use <code>sort(, decreasing = )</code> to sort a vector.)</p></li>
+<li><p>Use dataset <code>iris</code>. Make a scatter plot of four variables <code>Sepal.Length</code>, <code>Sepal.Width</code>, <code>Petal.Length</code> and <code>Petal.Width</code>. Show different species in different colors. (e.g. <code>setosa</code> in black, <code>versicolor</code> in red and <code>virginica</code> in green)</p></li>
+<li><p>Use dataset <code>ChickWeight</code>. From each of the <code>Diet</code> group, select 1 chick (identifier variable <code>Chick</code>). Make a time series plot to show the weight changing over time of the 4 selected chicks, each in one different color. Put a legend on the plot which contains the information of the selected chicks (<code>Diet</code> and <code>Chick</code>) and their corresponding colors.</p></li>
+</ol>
 </div>
 </div>
 <div id="statistical-computation" class="section level2">
@@ -345,13 +338,59 @@ dev.off()</code></pre>
 <li><code>mean()</code>: mean</li>
 <li><code>var()</code>: variance</li>
 <li><code>sd()</code>: standard deviation</li>
+<li><code>median()</code>: median</li>
 <li><code>quantile()</code>: sample quantiles</li>
 <li><code>min()</code>: minimum</li>
 <li><code>max()</code>: maximum</li>
 <li><code>range()</code>: range (minimum and maximum values)</li>
 <li><code>summary()</code>: summary</li>
 <li><code>IQR()</code>: interquartile range</li>
+<li><code>cov()</code>: covariance</li>
+<li><code>cor()</code>: correlation</li>
 </ul>
+<pre class="r"><code>quantile(trees$Height, prob = c(.05, .15, .25, .75))
+#&gt;   5%  15%  25%  75% 
+#&gt; 64.5 69.5 72.0 80.0
+
+mean(trees$Height)
+#&gt; [1] 76
+
+var(trees$Height)
+#&gt; [1] 40.6
+
+cov(trees)
+#&gt;            Girth   Height    Volume
+#&gt; Girth   9.847914 10.38333  49.88812
+#&gt; Height 10.383333 40.60000  62.66000
+#&gt; Volume 49.888118 62.66000 270.20280
+
+cor(trees)
+#&gt;            Girth    Height    Volume
+#&gt; Girth  1.0000000 0.5192801 0.9671194
+#&gt; Height 0.5192801 1.0000000 0.5982497
+#&gt; Volume 0.9671194 0.5982497 1.0000000
+
+summary(trees)
+#&gt;      Girth           Height       Volume     
+#&gt;  Min.   : 8.30   Min.   :63   Min.   :10.20  
+#&gt;  1st Qu.:11.05   1st Qu.:72   1st Qu.:19.40  
+#&gt;  Median :12.90   Median :76   Median :24.20  
+#&gt;  Mean   :13.25   Mean   :76   Mean   :30.17  
+#&gt;  3rd Qu.:15.25   3rd Qu.:80   3rd Qu.:37.30  
+#&gt;  Max.   :20.60   Max.   :87   Max.   :77.00
+
+apply(trees, 2, range)
+#&gt;      Girth Height Volume
+#&gt; [1,]   8.3     63   10.2
+#&gt; [2,]  20.6     87   77.0
+
+apply(trees, 2, sd)
+#&gt;     Girth    Height    Volume 
+#&gt;  3.138139  6.371813 16.437846
+
+apply(trees, 2, IQR)
+#&gt;  Girth Height Volume 
+#&gt;    4.2    8.0   17.9</code></pre>
 </div>
 <div id="distributions" class="section level3">
 <h3>Distributions</h3>
@@ -361,7 +400,7 @@ dev.off()</code></pre>
 <li><code>p</code>xxx: cumulative</li>
 <li><code>r</code>xxx: randome samples</li>
 </ul>
-<p>Take normal distribution for an example</p>
+<p>E.g. Normal distribution</p>
 <pre class="r"><code>dnorm(0, 0, 1)
 #&gt; [1] 0.3989423
 qnorm(.975, 0, 1)
@@ -369,37 +408,50 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  1.2240818  0.3598138  0.4007715  0.1106827 -0.5558411  1.7869131
-#&gt;  [7]  0.4978505 -1.9666172  0.7013559 -0.4727914</code></pre>
+#&gt;  [1]  1.24108848  0.06548462  0.18835911 -0.94653978 -0.65942574
+#&gt;  [6]  0.75876490 -0.33677839 -0.72915435 -1.68676190  0.27001090
+
+x&lt;- rnorm(100000, 0, 1)
+hist(x, freq = F, ylim = c(0, .5))
+lines(density(x))</code></pre>
+<p><img src="Tutorial2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><code>density</code>: kernel density estimation.</p>
+<p>E.g. Beta distribution</p>
+<pre class="r"><code>dbeta(0.5, 1, 2)
+#&gt; [1] 1
+qbeta(.975, 1, 2)
+#&gt; [1] 0.8418861
+pbeta(0.5, 1, 2)
+#&gt; [1] 0.75
+rbeta(10, 1, 2)
+#&gt;  [1] 0.64585356 0.05265792 0.64357964 0.50169891 0.43602391 0.39859553
+#&gt;  [7] 0.20548519 0.06728200 0.34020248 0.36302699</code></pre>
+<p>E.g. Gamma distribution</p>
+<pre class="r"><code>dgamma(10, 5)
+#&gt; [1] 0.01891664
+qgamma(.5, 5)
+#&gt; [1] 4.670909
+pgamma(10, 5)
+#&gt; [1] 0.9707473
+rgamma(10, 5)
+#&gt;  [1] 4.302396 4.860272 2.515214 5.016404 4.870570 6.733920 5.352234
+#&gt;  [8] 2.764803 5.835245 5.459239</code></pre>
+<p>Other commonly used distributions</p>
+<ul>
+<li>Uniform (<code>dunif</code>, <code>qunif</code>, <code>punif</code>, <code>runif</code>)</li>
+<li>Binomial (<code>dbinom</code>, <code>qbinom</code>, <code>pbinom</code>, <code>rbinom</code>)</li>
+<li>Poisson (<code>dpois</code>, <code>qpois</code>, <code>ppois</code>, <code>rpois</code>)</li>
+<li>Cauchy (<code>dcauchy</code>, <code>qcauchy</code>, <code>pcauchy</code>, <code>rcauchy</code>)</li>
+<li>Student t (<code>dt</code>, <code>qt</code>, <code>pt</code>, <code>rt</code>)</li>
+<li>Weibull (<code>dweibul</code>, <code>qweibul</code>, <code>pweibul</code>, <code>rweibul</code>)</li>
+<li>Geometric (<code>dgeom</code>, <code>qgeom</code>, <code>pgeom</code>, <code>rgeom</code>)</li>
+<li>…</li>
+</ul>
 </div>
-<div id="student-t-test" class="section level3">
-<h3>Student t-test</h3>
+<div id="students-t-test" class="section level3">
+<h3>Student’s <em>t</em>-test</h3>
 <pre class="r"><code>attach(iris)
-#&gt; The following objects are masked from iris (pos = 4):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 6):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 8):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 10):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 12):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 14):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 16):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 21):
-#&gt; 
-#&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
-#&gt; The following objects are masked from iris (pos = 23):
+#&gt; The following objects are masked from iris (pos = 5):
 #&gt; 
 #&gt;     Petal.Length, Petal.Width, Sepal.Length, Sepal.Width, Species
 levels(Species)
@@ -430,18 +482,6 @@ summary(aov_res)
 <div id="linear-regression" class="section level3">
 <h3>Linear Regression</h3>
 <pre class="r"><code>attach(airquality)
-#&gt; The following objects are masked from airquality (pos = 6):
-#&gt; 
-#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
-#&gt; The following objects are masked from airquality (pos = 10):
-#&gt; 
-#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
-#&gt; The following objects are masked from airquality (pos = 14):
-#&gt; 
-#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
-#&gt; The following objects are masked from airquality (pos = 21):
-#&gt; 
-#&gt;     Day, Month, Ozone, Solar.R, Temp, Wind
 lm_res&lt;- lm(Ozone ~ Solar.R + Wind + Temp)
 summary(lm_res)
 #&gt; 
@@ -506,21 +546,22 @@ predict(lm_step, input)
 <div id="exercise-6" class="section level3">
 <h3><em>Exercise 6</em></h3>
 <p>[To be announced]</p>
-<!-- 1. Exploring _Centrial Limit Theorem_. Generate 100 samples from a poisson distribution (`rpois()`) with parameter $\lambda = 2$. Repeate the process 1000 times. Compute the mean and standard deviation values of the samples. -->
-<!-- 2.  -->
-<!-- N<- 10000 -->
-<!-- pois_samples<- lapply(1:N, function(n) rpois(100, 2)) -->
-<!-- mu<- sapply(pois_samples, mean) -->
-<!-- mean(mu) -->
-<!-- var(mu) -->
+<ol style="list-style-type: decimal">
+<li><p>Use the dataset <code>iris</code>, calculate the corrlations among variables <code>Sepal.Length</code>, <code>Sepal.Width</code>, <code>Petal.Length</code> and <code>Petal.Width</code>.</p></li>
+<li><p>Use the dataset <code>iris</code>, calculate the summary statistics of variables <code>Sepal.Length</code>, <code>Sepal.Width</code>, <code>Petal.Length</code> and <code>Petal.Width</code>.</p></li>
+<li><p>Exploring <em>Centrial Limit Theorem</em>. Generate 100 samples from a poisson distribution (<code>rpois</code>) with parameter <span class="math inline">\(\lambda = 2\)</span>, calculate the mean value out of the 100 samples. Repeate the process 10000 times. Make a histogram of the 10000 mean values. Check the empirical mean and the standard deviation of the 10000 mean values, compare to the theoretical values <span class="math inline">\(\mu = 2\)</span> and <span class="math inline">\(\sigma = \frac{\sqrt{2}}{10}\)</span>.</p></li>
+<li><p>Use the dataset <code>sleep</code>, conduct a statistical test of the hypothesis that there is no difference of the increased slepping hours between two groups. The significant level <span class="math inline">\(\alpha = 0.05\)</span>. (Hint: <code>paired = T</code>).</p></li>
+<li><p>Use the dataset <code>chickwts</code>, conduct a statistical test of the hypothesis that the feed type doesn’t affect the weight of chicks.</p></li>
+<li><p>Use the dataset <code>cars</code>, build a linear model to examine how the speed (<code>speed</code>) affacts the stopping distance (<code>dist</code>).</p></li>
+</ol>
 </div>
 </div>
 <div id="packages" class="section level2">
 <h2>7. Packages</h2>
 <p>The packages such as <code>stats</code>, <code>base</code> are autimatically loaded.</p>
 <pre class="r"><code>(.packages())
-#&gt;  [1] &quot;tsne&quot;      &quot;rpart&quot;     &quot;nnet&quot;      &quot;stats&quot;     &quot;graphics&quot; 
-#&gt;  [6] &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;   &quot;base&quot;</code></pre>
+#&gt; [1] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+#&gt; [7] &quot;base&quot;</code></pre>
 <p>Loading packages which are already installed.</p>
 <p>Example: Single-Layer Neurual Network</p>
 <pre class="r"><code>library(nnet)
@@ -535,27 +576,25 @@ test_dat&lt;- iris[test_ind,]
 
 nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
 #&gt; # weights:  43
-#&gt; initial  value 141.763646 
-#&gt; iter  10 value 58.342863
-#&gt; iter  20 value 38.887199
-#&gt; iter  30 value 6.141071
-#&gt; iter  40 value 3.709795
-#&gt; iter  50 value 1.933645
-#&gt; iter  60 value 1.909516
-#&gt; iter  70 value 1.909044
-#&gt; iter  80 value 1.902682
-#&gt; iter  90 value 1.463253
-#&gt; iter 100 value 1.386837
-#&gt; final  value 1.386837 
-#&gt; stopped after 100 iterations
+#&gt; initial  value 140.869538 
+#&gt; iter  10 value 67.797899
+#&gt; iter  20 value 8.081480
+#&gt; iter  30 value 5.711318
+#&gt; iter  40 value 5.313589
+#&gt; iter  50 value 4.790873
+#&gt; iter  60 value 4.750015
+#&gt; iter  70 value 4.749532
+#&gt; iter  80 value 4.749507
+#&gt; final  value 4.749481 
+#&gt; converged
 
 pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 
 ## Accuracy
 table(test_dat$Species == pred_nn) / nrow(test_dat)
 #&gt; 
-#&gt; FALSE  TRUE 
-#&gt;   0.1   0.9</code></pre>
+#&gt;      FALSE       TRUE 
+#&gt; 0.03333333 0.96666667</code></pre>
 <p>Example: Decision Tree</p>
 <pre class="r"><code>library(rpart)
 
@@ -566,8 +605,8 @@ pred_cart&lt;- predict(cart_model, test_dat, type = &#39;class&#39;)
 ## Accuracy
 table(test_dat$Species == pred_cart) / nrow(test_dat)
 #&gt; 
-#&gt; FALSE  TRUE 
-#&gt;   0.1   0.9</code></pre>
+#&gt;      FALSE       TRUE 
+#&gt; 0.03333333 0.96666667</code></pre>
 <p>Use <code>install.packages()</code> to install package.</p>
 <p>Example: Use t-SNE for dimensionality reduction, visualizing breast cancer data.</p>
 <pre class="r"><code>library(tsne)
@@ -577,20 +616,20 @@ exp_dat&lt;- read.table(url, sep = &quot;,&quot;, header = F)
 
 tsne_res&lt;- tsne(exp_dat[, 3:32], perplexity = 100)
 #&gt; sigma summary: Min. : 0.38658523478823 |1st Qu. : 0.61806546548001 |Median : 0.648107496657062 |Mean : 0.651623332613159 |3rd Qu. : 0.67963590493686 |Max. : 1.05004711205922 |
-#&gt; Epoch: Iteration #100 error is: 15.2834947614694
-#&gt; Epoch: Iteration #200 error is: 1.02441812941646
-#&gt; Epoch: Iteration #300 error is: 1.0005144823119
-#&gt; Epoch: Iteration #400 error is: 0.981391693901056
-#&gt; Epoch: Iteration #500 error is: 0.976650917801197
-#&gt; Epoch: Iteration #600 error is: 0.976532776455978
-#&gt; Epoch: Iteration #700 error is: 0.976496014659478
-#&gt; Epoch: Iteration #800 error is: 0.9764959919655
-#&gt; Epoch: Iteration #900 error is: 0.976495991814678
-#&gt; Epoch: Iteration #1000 error is: 0.976495991813241
+#&gt; Epoch: Iteration #100 error is: 14.5450876393316
+#&gt; Epoch: Iteration #200 error is: 1.01168237837721
+#&gt; Epoch: Iteration #300 error is: 0.984728888723997
+#&gt; Epoch: Iteration #400 error is: 0.982557743992572
+#&gt; Epoch: Iteration #500 error is: 0.982008761820144
+#&gt; Epoch: Iteration #600 error is: 0.982008760916459
+#&gt; Epoch: Iteration #700 error is: 0.982008760916459
+#&gt; Epoch: Iteration #800 error is: 0.982008760916459
+#&gt; Epoch: Iteration #900 error is: 0.982008760916459
+#&gt; Epoch: Iteration #1000 error is: 0.982008760916459
 
 plot(tsne_res[which(exp_dat$V2 == &quot;B&quot;), ], col = 1, pch = 20, xlim = c(-6, 6), ylim = c(-6, 6), xlab = &quot;&quot;, ylab = &quot;&quot;)
 points(tsne_res[which(exp_dat$V2 == &quot;M&quot;), ], col = 2, pch = 20)</code></pre>
-<p><img src="Tutorial2_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="Tutorial2_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <!-- `installed.packages`, `install.packages`, `(.packages())`, `library` -->
 </div>
 
