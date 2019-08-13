@@ -314,7 +314,9 @@ dev.off()</code></pre>
 </ol>
 <pre class="r"><code>taylor_appox&lt;- function(x){
   function(N){
-    # TODO
+    sum(
+     sapply(0:N, function(n) x^n / factorial(n)) 
+    )
   }
 }
 
@@ -323,9 +325,10 @@ taylor_appox_N&lt;- taylor_appox(x)
 
 N_vec&lt;- 1:20
 approx_val&lt;- sapply(N_vec, function(N){
-  # TODO
+  taylor_appox_N(N)
 })
 plot(N_vec, approx_val)</code></pre>
+<p><img src="Tutorial2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Use the dataset <code>sleep</code>. Put a histogram and a boxplot in one plot to show the overall pattern of the increased sleeping time (variable <code>extra</code>).</p></li>
 <li><p>Use the dataset <code>sleep</code>. Use boxplots to show the difference of the increased sleeping time between two groups.</p></li>
@@ -403,7 +406,7 @@ apply(trees, 2, IQR)
 <li><code>d</code>xxx: density</li>
 <li><code>q</code>xxx: quantile</li>
 <li><code>p</code>xxx: cumulative</li>
-<li><code>r</code>xxx: randome samples</li>
+<li><code>r</code>xxx: random samples</li>
 </ul>
 <p>E.g. Normal distribution</p>
 <pre class="r"><code>dnorm(0, 0, 1)
@@ -413,8 +416,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1] -0.74726606  0.44174678  0.03879510 -0.13603898  0.18763028
-#&gt;  [6] -0.40700519  0.47652632 -0.08873749  0.05847273  1.09837784
+#&gt;  [1] -0.082499319  1.238037464  0.576800506  0.327948621  0.002954996
+#&gt;  [6] -0.605853673 -0.683070254 -0.588013390 -0.246968332  2.661740345
 
 x&lt;- rnorm(100000, 0, 1)
 hist(x, freq = F, ylim = c(0, .5))
@@ -429,8 +432,8 @@ qbeta(.975, 1, 2)
 pbeta(0.5, 1, 2)
 #&gt; [1] 0.75
 rbeta(10, 1, 2)
-#&gt;  [1] 0.21733001 0.41667478 0.35589416 0.26383600 0.73092016 0.67331419
-#&gt;  [7] 0.51668758 0.07526624 0.19935107 0.58956986</code></pre>
+#&gt;  [1] 0.35680206 0.22537708 0.65392480 0.50781762 0.18261266 0.25612675
+#&gt;  [7] 0.03693892 0.23196874 0.05594814 0.10336788</code></pre>
 <p>E.g. Gamma distribution</p>
 <pre class="r"><code>dgamma(10, 5)
 #&gt; [1] 0.01891664
@@ -439,8 +442,8 @@ qgamma(.5, 5)
 pgamma(10, 5)
 #&gt; [1] 0.9707473
 rgamma(10, 5)
-#&gt;  [1]  5.758269  7.073318  5.549813  5.887339  8.196732  9.876086 11.091408
-#&gt;  [8]  4.615287 10.384104  8.202981</code></pre>
+#&gt;  [1] 5.781742 6.042156 2.889718 8.934964 3.438371 2.554639 7.914396
+#&gt;  [8] 3.740574 1.496329 2.454284</code></pre>
 <p>Other commonly used distributions</p>
 <ul>
 <li>Uniform (<code>dunif</code>, <code>qunif</code>, <code>punif</code>, <code>runif</code>)</li>
@@ -580,19 +583,14 @@ test_dat&lt;- iris[test_ind,]
 
 nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
 #&gt; # weights:  43
-#&gt; initial  value 137.447227 
-#&gt; iter  10 value 25.677214
-#&gt; iter  20 value 7.084056
-#&gt; iter  30 value 5.330994
-#&gt; iter  40 value 5.229710
-#&gt; iter  50 value 5.165055
-#&gt; iter  60 value 5.144206
-#&gt; iter  70 value 4.662962
-#&gt; iter  80 value 4.077676
-#&gt; iter  90 value 3.657395
-#&gt; iter 100 value 3.320261
-#&gt; final  value 3.320261 
-#&gt; stopped after 100 iterations
+#&gt; initial  value 170.440046 
+#&gt; iter  10 value 10.027442
+#&gt; iter  20 value 6.431536
+#&gt; iter  30 value 4.700796
+#&gt; iter  40 value 4.677042
+#&gt; iter  50 value 4.676276
+#&gt; final  value 4.676274 
+#&gt; converged
 
 pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 
@@ -600,7 +598,7 @@ pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 table(test_dat$Species == pred_nn) / nrow(test_dat)
 #&gt; 
 #&gt;      FALSE       TRUE 
-#&gt; 0.06666667 0.93333333</code></pre>
+#&gt; 0.03333333 0.96666667</code></pre>
 <p>Example: Decision Tree</p>
 <pre class="r"><code>library(rpart)
 
@@ -622,16 +620,16 @@ exp_dat&lt;- read.table(url, sep = &quot;,&quot;, header = F)
 
 tsne_res&lt;- tsne(exp_dat[, 3:32], perplexity = 100)
 #&gt; sigma summary: Min. : 0.38658523478823 |1st Qu. : 0.61806546548001 |Median : 0.648107496657062 |Mean : 0.651623332613159 |3rd Qu. : 0.67963590493686 |Max. : 1.05004711205922 |
-#&gt; Epoch: Iteration #100 error is: 15.2146791672286
-#&gt; Epoch: Iteration #200 error is: 1.01984933420589
-#&gt; Epoch: Iteration #300 error is: 1.01378534649314
-#&gt; Epoch: Iteration #400 error is: 1.01378064524078
-#&gt; Epoch: Iteration #500 error is: 1.01250117800596
-#&gt; Epoch: Iteration #600 error is: 1.01143585765231
-#&gt; Epoch: Iteration #700 error is: 1.01143517658865
-#&gt; Epoch: Iteration #800 error is: 1.01143517658486
-#&gt; Epoch: Iteration #900 error is: 1.01143517658486
-#&gt; Epoch: Iteration #1000 error is: 1.01143517658486
+#&gt; Epoch: Iteration #100 error is: 15.3528753279212
+#&gt; Epoch: Iteration #200 error is: 1.00660593156636
+#&gt; Epoch: Iteration #300 error is: 0.989442865780564
+#&gt; Epoch: Iteration #400 error is: 0.986371905142492
+#&gt; Epoch: Iteration #500 error is: 0.98454595694516
+#&gt; Epoch: Iteration #600 error is: 0.98453268198424
+#&gt; Epoch: Iteration #700 error is: 0.984532681967472
+#&gt; Epoch: Iteration #800 error is: 0.984532681967472
+#&gt; Epoch: Iteration #900 error is: 0.984532681967472
+#&gt; Epoch: Iteration #1000 error is: 0.984532681967472
 
 plot(tsne_res[which(exp_dat$V2 == &quot;B&quot;), ], col = 1, pch = 20, xlim = c(-6, 6), ylim = c(-6, 6), xlab = &quot;&quot;, ylab = &quot;&quot;)
 points(tsne_res[which(exp_dat$V2 == &quot;M&quot;), ], col = 2, pch = 20)</code></pre>

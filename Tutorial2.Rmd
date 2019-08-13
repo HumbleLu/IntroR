@@ -124,12 +124,14 @@ dev.off()
 
 1. Use the dataset `airquality`. Draw a scattar to show the relationship between variables `Ozone` and `Solar.R`. Show the points with `Wind` values greater than 9.7 in red, otherwise in black.
 
-2. (!!! Only for practice, feel free to skip) Make plot to monitor the convergence of the exponential function ($e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}$) with $x = 5$. 
+2. [!!! Only for practice (answers proviede below)] Make plot to monitor the convergence of the exponential function ($e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}$) with $x = 5$. 
 
-```{r, eval = F}
+```{r}
 taylor_appox<- function(x){
   function(N){
-    # TODO
+    sum(
+     sapply(0:N, function(n) x^n / factorial(n)) 
+    )
   }
 }
 
@@ -138,7 +140,7 @@ taylor_appox_N<- taylor_appox(x)
 
 N_vec<- 1:20
 approx_val<- sapply(N_vec, function(N){
-  # TODO
+  taylor_appox_N(N)
 })
 plot(N_vec, approx_val)
 ```
@@ -195,7 +197,7 @@ apply(trees, 2, IQR)
 * `d`xxx: density
 * `q`xxx: quantile
 * `p`xxx: cumulative 
-* `r`xxx: randome samples
+* `r`xxx: random samples
 
 E.g. Normal distribution
 
