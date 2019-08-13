@@ -13,8 +13,6 @@ Some commonly used functions
 * `plot()` 
 * `points()` 
 * `lines()`
-* `test()`
-* `mtest()`
 * `abline()`
 
 ```{r}
