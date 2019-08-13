@@ -116,7 +116,7 @@ dev.off()
 
 1. Use the dataset `airquality`. Draw a scattar to show the relationship between variables `Ozone` and `Solar.R`. Show the points with `Wind` values greater than 9.7 in red, otherwise in black.
 
-2. Make plot to monitor the convergence of the exponential function ($e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}$) with $x = 5$. Save the plot and attach to the email.
+2. Make plot to monitor the convergence of the exponential function ($e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}$) with $x = 5$. 
 
 ```{r, eval = F}
 taylor_appox<- function(x){

@@ -303,7 +303,7 @@ dev.off()</code></pre>
 <p>(attach the corresponding plots to the email)</p>
 <ol style="list-style-type: decimal">
 <li><p>Use the dataset <code>airquality</code>. Draw a scattar to show the relationship between variables <code>Ozone</code> and <code>Solar.R</code>. Show the points with <code>Wind</code> values greater than 9.7 in red, otherwise in black.</p></li>
-<li><p>Make plot to monitor the convergence of the exponential function (<span class="math inline">\(e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}\)</span>) with <span class="math inline">\(x = 5\)</span>. Save the plot and attach to the email.</p></li>
+<li><p>Make plot to monitor the convergence of the exponential function (<span class="math inline">\(e^x \ = \sum_{n=0}^{\infty} \frac{x^{n}}{n!}\)</span>) with <span class="math inline">\(x = 5\)</span>.</p></li>
 </ol>
 <pre class="r"><code>taylor_appox&lt;- function(x){
   function(N){
@@ -406,8 +406,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1]  0.4076591 -0.8662482 -0.2374863 -0.2415346  0.2070424  0.1217405
-#&gt;  [7]  0.5219544 -0.2951048  0.8023950  0.1977374
+#&gt;  [1]  1.3229381 -1.5636238 -0.6966236 -0.1004244  0.9207126 -0.5347850
+#&gt;  [7]  1.0064179  1.5696613  0.1385586 -1.2540450
 
 x&lt;- rnorm(100000, 0, 1)
 hist(x, freq = F, ylim = c(0, .5))
@@ -422,8 +422,8 @@ qbeta(.975, 1, 2)
 pbeta(0.5, 1, 2)
 #&gt; [1] 0.75
 rbeta(10, 1, 2)
-#&gt;  [1] 0.09315643 0.22011448 0.15078409 0.25145589 0.22646424 0.18370400
-#&gt;  [7] 0.75911940 0.73958023 0.11713646 0.07994158</code></pre>
+#&gt;  [1] 0.55422628 0.26246410 0.52147967 0.06391019 0.25810842 0.11188826
+#&gt;  [7] 0.27148657 0.55456176 0.25010375 0.34707107</code></pre>
 <p>E.g. Gamma distribution</p>
 <pre class="r"><code>dgamma(10, 5)
 #&gt; [1] 0.01891664
@@ -432,8 +432,8 @@ qgamma(.5, 5)
 pgamma(10, 5)
 #&gt; [1] 0.9707473
 rgamma(10, 5)
-#&gt;  [1] 2.384690 3.025892 4.875101 3.089341 2.333672 2.552008 6.463179
-#&gt;  [8] 4.159180 3.951135 4.171589</code></pre>
+#&gt;  [1] 4.314004 6.087151 8.984965 4.297075 5.966542 3.016087 3.446266
+#&gt;  [8] 9.244941 7.208725 7.133975</code></pre>
 <p>Other commonly used distributions</p>
 <ul>
 <li>Uniform (<code>dunif</code>, <code>qunif</code>, <code>punif</code>, <code>runif</code>)</li>
@@ -573,15 +573,19 @@ test_dat&lt;- iris[test_ind,]
 
 nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
 #&gt; # weights:  43
-#&gt; initial  value 147.590354 
-#&gt; iter  10 value 44.084597
-#&gt; iter  20 value 5.828086
-#&gt; iter  30 value 4.798956
-#&gt; iter  40 value 4.749709
-#&gt; iter  50 value 4.749515
-#&gt; iter  60 value 4.749490
-#&gt; final  value 4.749490 
-#&gt; converged
+#&gt; initial  value 206.187355 
+#&gt; iter  10 value 55.951710
+#&gt; iter  20 value 55.842738
+#&gt; iter  30 value 55.842283
+#&gt; iter  40 value 55.553250
+#&gt; iter  50 value 55.058979
+#&gt; iter  60 value 53.959625
+#&gt; iter  70 value 10.747224
+#&gt; iter  80 value 8.163331
+#&gt; iter  90 value 4.956823
+#&gt; iter 100 value 4.721065
+#&gt; final  value 4.721065 
+#&gt; stopped after 100 iterations
 
 pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 
@@ -589,7 +593,7 @@ pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
 table(test_dat$Species == pred_nn) / nrow(test_dat)
 #&gt; 
 #&gt;      FALSE       TRUE 
-#&gt; 0.06666667 0.93333333</code></pre>
+#&gt; 0.03333333 0.96666667</code></pre>
 <p>Example: Decision Tree</p>
 <pre class="r"><code>library(rpart)
 
@@ -600,8 +604,8 @@ pred_cart&lt;- predict(cart_model, test_dat, type = &#39;class&#39;)
 ## Accuracy
 table(test_dat$Species == pred_cart) / nrow(test_dat)
 #&gt; 
-#&gt;      FALSE       TRUE 
-#&gt; 0.03333333 0.96666667</code></pre>
+#&gt; FALSE  TRUE 
+#&gt;   0.2   0.8</code></pre>
 <p>Use <code>install.packages()</code> to install package.</p>
 <p>Example: Use t-SNE for dimensionality reduction, visualizing breast cancer data.</p>
 <pre class="r"><code>library(tsne)
@@ -611,16 +615,16 @@ exp_dat&lt;- read.table(url, sep = &quot;,&quot;, header = F)
 
 tsne_res&lt;- tsne(exp_dat[, 3:32], perplexity = 100)
 #&gt; sigma summary: Min. : 0.38658523478823 |1st Qu. : 0.61806546548001 |Median : 0.648107496657062 |Mean : 0.651623332613159 |3rd Qu. : 0.67963590493686 |Max. : 1.05004711205922 |
-#&gt; Epoch: Iteration #100 error is: 15.7490296175581
-#&gt; Epoch: Iteration #200 error is: 1.03353038440415
-#&gt; Epoch: Iteration #300 error is: 1.01806317533248
-#&gt; Epoch: Iteration #400 error is: 1.01456424704976
-#&gt; Epoch: Iteration #500 error is: 1.012075001212
-#&gt; Epoch: Iteration #600 error is: 1.01200560307017
-#&gt; Epoch: Iteration #700 error is: 1.01200560279918
-#&gt; Epoch: Iteration #800 error is: 1.01200560279918
-#&gt; Epoch: Iteration #900 error is: 1.01200560279918
-#&gt; Epoch: Iteration #1000 error is: 1.01200560279918
+#&gt; Epoch: Iteration #100 error is: 14.9633751917865
+#&gt; Epoch: Iteration #200 error is: 1.01053368959837
+#&gt; Epoch: Iteration #300 error is: 1.008040795788
+#&gt; Epoch: Iteration #400 error is: 1.00761261372925
+#&gt; Epoch: Iteration #500 error is: 1.00761258566576
+#&gt; Epoch: Iteration #600 error is: 1.00761258566567
+#&gt; Epoch: Iteration #700 error is: 1.00761258566567
+#&gt; Epoch: Iteration #800 error is: 1.00761258566567
+#&gt; Epoch: Iteration #900 error is: 1.00761258566567
+#&gt; Epoch: Iteration #1000 error is: 1.00761258566567
 
 plot(tsne_res[which(exp_dat$V2 == &quot;B&quot;), ], col = 1, pch = 20, xlim = c(-6, 6), ylim = c(-6, 6), xlab = &quot;&quot;, ylab = &quot;&quot;)
 points(tsne_res[which(exp_dat$V2 == &quot;M&quot;), ], col = 2, pch = 20)</code></pre>
