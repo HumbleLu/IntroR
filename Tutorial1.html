@@ -547,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 26 18 72  3 25</code></pre>
+#&gt; [1]  4 97 81 59 15</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1] 93 15 12 75 42
+#&gt; [1] 85 57 19 18 83
 sample(1:100, 5)
-#&gt; [1] 85 59 79 23 66
+#&gt; [1] 24 19 84 33 40
 
 set.seed(123)
 sample(1:100, 5)
@@ -814,7 +814,7 @@ toy_dat[2]
 #&gt; 4  10
 #&gt; 5  95</code></pre>
 <p>Import and Export Dataset</p>
-<p>The example dataset steam_subset.csv can be downloaded <a href="https://raw.githubusercontent.com/HumbleLu/IntroR/master/steam_subset.csv">here</a>. The colums are seperated with comma( , ) and the first line is the column names.</p>
+<p>The example dataset steam_subset.csv can be found <a href="https://raw.githubusercontent.com/HumbleLu/IntroR/master/steam_subset.csv">here</a>. (Right click -&gt; Save as). The colums are seperated with comma( , ) and the first line is the column names.</p>
 <p>Read the data set from a file with <code>read.table</code>, use functions <code>head</code> and <code>str</code> to check the dataset</p>
 <pre class="r"><code>steam&lt;- read.table(file = &quot;steam_subset.csv&quot;, sep = &quot;,&quot;, header = T)
 head(steam)
