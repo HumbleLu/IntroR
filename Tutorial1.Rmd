@@ -588,7 +588,7 @@ toy_dat[2]
 
 Import and Export Dataset
 
-The example dataset steam_subset.csv can be downloaded [here](https://gofile.io/?c=7bP3y4). The colums are seperated with comma( , ) and the first line is the column names.
+The example dataset steam_subset.csv can be downloaded [here](https://raw.githubusercontent.com/HumbleLu/IntroR/master/steam_subset.csv). The colums are seperated with comma( , ) and the first line is the column names.
 
 Read the data set from a file with `read.table`, use functions `head` and `str` to check the dataset
 
