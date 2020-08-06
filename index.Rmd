@@ -11,7 +11,7 @@ This is a tutorial website for a Tampere Summer School course **Introduction to 
 
 
 ## Course Logistics
-
+* Online sessions (Microsoft Teams): 9:00-10:30, 10:30-12:00, 13:00-14:00, 14:30-15:30
 * Leaning outcome: After this course, participants will be able to use R to conduct basic statistical analysis and data visualization.
 * Assessment: Pass/Fail
 * Course Requirement:
