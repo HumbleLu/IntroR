@@ -547,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 60 36 11 58 43</code></pre>
+#&gt; [1]  6 74 52 62 40</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1] 71 24  8 55 31
+#&gt; [1] 26 39 98 99 90
 sample(1:100, 5)
-#&gt; [1] 37 66 57 33 15
+#&gt; [1] 76 12 90 92 96
 
 set.seed(123)
 sample(1:100, 5)
@@ -872,7 +872,22 @@ detach(steam)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Create a vector <code>z</code> of length 10 with variance equals to 0 and mean equals to 5. Verify with function <code>mean</code> and <code>var</code>.</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
-<li>Create a function which approximates the sin function with 4th-order taylor series. (This you can omit)</li>
+<li>[!!! Only for practice (answers proviede below)] Create a function which approximates the sin function with 4th-order taylor series.</li>
+</ol>
+<pre class="r"><code>sin_approx&lt;- function(x){
+  x - x^3 / factorial(3)
+}
+
+sin_approx(0)
+#&gt; [1] 0
+sin(0)
+#&gt; [1] 0
+
+sin_approx(1)
+#&gt; [1] 0.8333333
+sin(1)
+#&gt; [1] 0.841471</code></pre>
+<ol start="4" style="list-style-type: decimal">
 <li>Compute the CV (coefficient of variation) values of variables <code>Levels</code> and <code>Badges</code> in the <code>steam</code> dataset.</li>
 <li>Create a toy data frame object with at least 5 rows and 3 columns, save it to a .csv file.</li>
 </ol>
