@@ -631,7 +631,7 @@ write.csv(toy_dat, file = "toy.csv", row.names = F)
 ### *Exercise Pack 3*
 1. Create a vector `z` of length 10 with variance equals to 0 and mean equals to 5. Verify with function `mean` and `var`.
 2. Create a function which returns the sum of the maximum and the mininum value of the input vector
-3. Create a function which approximates the sin function with 4th-order taylor series. 
+3. Create a function which approximates the sin function with 4th-order taylor series. (This you can omit)
 4. Compute the CV (coefficient of variation) values of variables `Levels` and `Badges` in the `steam` dataset.
 5. Create a toy data frame object with at least 5 rows and 3 columns, save it to a .csv file.
 

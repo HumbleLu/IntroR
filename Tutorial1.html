@@ -547,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 88  7 39 78 51</code></pre>
+#&gt; [1] 60 36 11 58 43</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1]  7 46 91 94 73
+#&gt; [1] 71 24  8 55 31
 sample(1:100, 5)
-#&gt; [1] 28 57 16 72 17
+#&gt; [1] 37 66 57 33 15
 
 set.seed(123)
 sample(1:100, 5)
@@ -872,7 +872,7 @@ detach(steam)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Create a vector <code>z</code> of length 10 with variance equals to 0 and mean equals to 5. Verify with function <code>mean</code> and <code>var</code>.</li>
 <li>Create a function which returns the sum of the maximum and the mininum value of the input vector</li>
-<li>Create a function which approximates the sin function with 4th-order taylor series.</li>
+<li>Create a function which approximates the sin function with 4th-order taylor series. (This you can omit)</li>
 <li>Compute the CV (coefficient of variation) values of variables <code>Levels</code> and <code>Badges</code> in the <code>steam</code> dataset.</li>
 <li>Create a toy data frame object with at least 5 rows and 3 columns, save it to a .csv file.</li>
 </ol>
