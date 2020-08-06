@@ -323,7 +323,7 @@ my_square(4)
 ### *Exercise Pack 2*
 1. Check `identical(as.integer(5), 5.0)` and `as.integer(5.0) == 5`, which one is TRUE?
 2. List all object under the current environment. Check the memory used by the first object in the list.
-3. Check the types of the following objects
+3. Check the types of the following objects (choose one from `class`, `typeof`, and `mode`)
 + `Inf - Inf`
 + `Inf + Inf`
 + `0/0`
