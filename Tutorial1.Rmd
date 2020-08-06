@@ -645,7 +645,7 @@ sin_approx(1)
 sin(1)
 ```
 
-4. Compute the CV (coefficient of variation) values of variables `Levels` and `Badges` in the `steam` dataset.
+4. Compute the CV (coefficient of variation) values of variables `Level` and `Badges` in the `steam` dataset.
 5. Create a toy data frame object with at least 5 rows and 3 columns, save it to a .csv file.
 
 ## 4. Computations
