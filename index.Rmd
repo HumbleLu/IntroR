@@ -20,7 +20,7 @@ This is a tutorial website for a Tampere Summer School course **Introduction to 
         + Deadline: 31.08.2020 [Extension possible]
         + Email to chien.lu@tuni.fi by the deadline
     + Data analysis course work (individual or group)
-        + PDF format (~5 pages per person)
+        + PDF format (~5 pages per person, including R code and descriptions)
         + Perform statistical data analysis using R
         + If you don't have your own dataset, come to discuss with me!
         + Deadline: 31.08.2020 [Extension possible]
