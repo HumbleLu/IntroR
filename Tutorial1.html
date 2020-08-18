@@ -547,12 +547,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 46 51 93 72 21</code></pre>
+#&gt; [1] 12 11 17 73 19</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1] 90 50  2 51 83
+#&gt; [1] 31 54 12 90 66
 sample(1:100, 5)
-#&gt; [1] 29 25 44 96 27
+#&gt; [1] 85 48 67 54  3
 
 set.seed(123)
 sample(1:100, 5)
@@ -1020,7 +1020,7 @@ apply(a, 2, sum)
 #&gt; 
 #&gt; [[4]]
 #&gt; [1] 5</code></pre>
-<p><code>lapply</code> takes a list or a vector, returns a vector</p>
+<p><code>sapply</code> takes a list or a vector, returns a vector</p>
 <pre class="r"><code>sapply(c(1, 2, 3, 4), function(x) x + 1)
 #&gt; [1] 2 3 4 5</code></pre>
 </div>
