@@ -788,7 +788,7 @@ apply(a, 2, sum)
 lapply(c(1, 2, 3, 4), function(x) x + 1)
 ```
 
-`lapply` takes a list or a vector, returns a vector
+`sapply` takes a list or a vector, returns a vector
 ```{r}
 sapply(c(1, 2, 3, 4), function(x) x + 1)
 ```
