@@ -1,5 +1,9 @@
 ---
 title: "Introduction to R"
+output: 
+  html_document:
+    includes:
+       in_header: GA_script.html
 ---
 
 This is a tutorial website for a Tampere Summer School course **Introduction to R** (corresponding [webpage](https://www.tuni.fi/en/study-with-us/introduction-r-tampere-summer-school-2020)) by the course lecturer [Chien Lu](https://humblelu.github.io/personal_website/) (chien.lu@tuni.fi).
