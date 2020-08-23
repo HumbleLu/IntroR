@@ -22,6 +22,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176004846-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-176004846-1');
+</script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -547,12 +556,12 @@ b</code></pre>
 <p>Use <code>sample</code> to create a vector with random numbers</p>
 <pre class="r"><code>s&lt;- sample(x = 1:100, size = 5)
 s
-#&gt; [1] 12 11 17 73 19</code></pre>
+#&gt; [1] 24 11 63 75 85</code></pre>
 <p>Set the seed with <code>set.seed</code> function before sampling if you want to reproduce the result.</p>
 <pre class="r"><code>sample(1:100, 5)
-#&gt; [1] 31 54 12 90 66
+#&gt; [1] 98 29 45 99 79
 sample(1:100, 5)
-#&gt; [1] 85 48 67 54  3
+#&gt; [1] 99 37 66 26 43
 
 set.seed(123)
 sample(1:100, 5)

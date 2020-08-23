@@ -1,5 +1,9 @@
 ---
 title: "Course Material [1]"
+output: 
+  html_document:
+    includes:
+       in_header: GA_script.html
 ---
 
 ```{r setup, include=FALSE}

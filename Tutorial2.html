@@ -22,6 +22,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176004846-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-176004846-1');
+</script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -416,8 +425,8 @@ qnorm(.975, 0, 1)
 pnorm(1.96, 0, 1)
 #&gt; [1] 0.9750021
 rnorm(10, 0, 1)
-#&gt;  [1] -0.8928882  0.7825652 -0.6458514 -1.4305896 -2.0996365  0.7622516
-#&gt;  [7]  1.0083695  1.2804518  0.7820582 -0.7327023
+#&gt;  [1]  0.4553153  0.7204558 -0.2075951  0.6949459  1.1768098  1.1065208
+#&gt;  [7] -1.8412702  0.5858104 -0.1618266  1.8454567
 
 x&lt;- rnorm(100000, 0, 1)
 hist(x, freq = F, ylim = c(0, .5))
@@ -432,8 +441,8 @@ qbeta(.975, 1, 2)
 pbeta(0.5, 1, 2)
 #&gt; [1] 0.75
 rbeta(10, 1, 2)
-#&gt;  [1] 0.42629925 0.22026587 0.05088673 0.72945748 0.20651446 0.39062657
-#&gt;  [7] 0.70644263 0.49529249 0.40323229 0.11682070</code></pre>
+#&gt;  [1] 0.12071798 0.60483411 0.04445160 0.17540246 0.53954067 0.02143565
+#&gt;  [7] 0.03987329 0.42490878 0.41748311 0.01702245</code></pre>
 <p>E.g. Gamma distribution</p>
 <pre class="r"><code>dgamma(10, 5)
 #&gt; [1] 0.01891664
@@ -442,8 +451,8 @@ qgamma(.5, 5)
 pgamma(10, 5)
 #&gt; [1] 0.9707473
 rgamma(10, 5)
-#&gt;  [1]  2.7942743  2.1444853  3.6881719  8.5974058  4.5867774  4.3416178
-#&gt;  [7]  1.6207320 15.6383269  3.7665928  0.8252401</code></pre>
+#&gt;  [1]  3.215150  4.609378 11.020029  6.261862  6.540449  2.583292 12.648890
+#&gt;  [8]  1.609669  4.426637  8.138750</code></pre>
 <p>Other commonly used distributions</p>
 <ul>
 <li>Uniform (<code>dunif</code>, <code>qunif</code>, <code>punif</code>, <code>runif</code>)</li>
@@ -583,18 +592,18 @@ test_dat&lt;- iris[test_ind,]
 
 nn_model&lt;- nnet(Species ~., linout = T, size = 5, data = train_dat)
 #&gt; # weights:  43
-#&gt; initial  value 206.032130 
-#&gt; iter  10 value 54.601312
-#&gt; iter  20 value 46.947243
-#&gt; iter  30 value 22.003437
-#&gt; iter  40 value 7.015933
-#&gt; iter  50 value 5.173304
-#&gt; iter  60 value 5.039944
-#&gt; iter  70 value 5.019717
-#&gt; iter  80 value 5.019021
-#&gt; iter  90 value 5.016531
-#&gt; iter 100 value 5.015134
-#&gt; final  value 5.015134 
+#&gt; initial  value 172.752842 
+#&gt; iter  10 value 22.585936
+#&gt; iter  20 value 5.743512
+#&gt; iter  30 value 4.760731
+#&gt; iter  40 value 4.750755
+#&gt; iter  50 value 4.749318
+#&gt; iter  60 value 4.749295
+#&gt; iter  70 value 4.749148
+#&gt; iter  80 value 4.745243
+#&gt; iter  90 value 4.737078
+#&gt; iter 100 value 4.359974
+#&gt; final  value 4.359974 
 #&gt; stopped after 100 iterations
 
 pred_nn&lt;- predict(nn_model, test_dat, type = &#39;class&#39;)
@@ -614,8 +623,8 @@ pred_cart&lt;- predict(cart_model, test_dat, type = &#39;class&#39;)
 ## Accuracy
 table(test_dat$Species == pred_cart) / nrow(test_dat)
 #&gt; 
-#&gt;      FALSE       TRUE 
-#&gt; 0.03333333 0.96666667</code></pre>
+#&gt;     FALSE      TRUE 
+#&gt; 0.2666667 0.7333333</code></pre>
 <p>Use <code>install.packages()</code> to install package.</p>
 <p>Example: Use t-SNE for dimensionality reduction, visualizing breast cancer data.</p>
 <pre class="r"><code>library(tsne)
@@ -625,16 +634,16 @@ exp_dat&lt;- read.table(url, sep = &quot;,&quot;, header = F)
 
 tsne_res&lt;- tsne(exp_dat[, 3:32], perplexity = 100)
 #&gt; sigma summary: Min. : 0.38658523478823 |1st Qu. : 0.61806546548001 |Median : 0.648107496657062 |Mean : 0.651623332613159 |3rd Qu. : 0.67963590493686 |Max. : 1.05004711205922 |
-#&gt; Epoch: Iteration #100 error is: 15.7691966168907
-#&gt; Epoch: Iteration #200 error is: 1.02556399310609
-#&gt; Epoch: Iteration #300 error is: 1.02488163204981
-#&gt; Epoch: Iteration #400 error is: 1.0248802838785
-#&gt; Epoch: Iteration #500 error is: 1.0248802838784
-#&gt; Epoch: Iteration #600 error is: 1.0248802838784
-#&gt; Epoch: Iteration #700 error is: 1.0248802838784
-#&gt; Epoch: Iteration #800 error is: 1.0248802838784
-#&gt; Epoch: Iteration #900 error is: 1.0248802838784
-#&gt; Epoch: Iteration #1000 error is: 1.0248802838784
+#&gt; Epoch: Iteration #100 error is: 15.1274103570016
+#&gt; Epoch: Iteration #200 error is: 1.03644698502553
+#&gt; Epoch: Iteration #300 error is: 1.01957670964693
+#&gt; Epoch: Iteration #400 error is: 1.01153505500181
+#&gt; Epoch: Iteration #500 error is: 1.01149416125303
+#&gt; Epoch: Iteration #600 error is: 1.01149414953472
+#&gt; Epoch: Iteration #700 error is: 1.01149414953464
+#&gt; Epoch: Iteration #800 error is: 1.01149414953464
+#&gt; Epoch: Iteration #900 error is: 1.01149414953464
+#&gt; Epoch: Iteration #1000 error is: 1.01149414953464
 
 plot(tsne_res[which(exp_dat$V2 == &quot;B&quot;), ], col = 1, pch = 20, xlim = c(-6, 6), ylim = c(-6, 6), xlab = &quot;&quot;, ylab = &quot;&quot;)
 points(tsne_res[which(exp_dat$V2 == &quot;M&quot;), ], col = 2, pch = 20)</code></pre>
